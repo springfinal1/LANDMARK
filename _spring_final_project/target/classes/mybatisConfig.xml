@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+	<settings>
+		<!-- db와 java의 다른 문장 표기법을 맞춰줌 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.easyfestival.www.security.AuthVO" alias="authvo"/>
+		<typeAlias type="com.easyfestival.www.security.UserVO" alias="uvo"/>  		
+		<typeAlias type="com.easyfestival.www.domain.PackageVO" alias="packvo"/>  
+		<typeAlias type="com.easyfestival.www.domain.PlaceVO" alias="plvo"/>  
+		<typeAlias type="com.easyfestival.www.domain.HotelVO" alias="hvo"/>  
+		<typeAlias type="com.easyfestival.www.domain.AirplaneVO" alias="avo"/>
+		<typeAlias type="com.easyfestival.www.domain.FestivalVO" alias="fvo"/>
+		<typeAlias type="com.easyfestival.www.domain.ProductFileVO" alias="pfvo"/>
+		<typeAlias type="com.easyfestival.www.domain.HelpDTO" alias="hdto"/>
+	</typeAliases>
+  	 
+</configuration>
