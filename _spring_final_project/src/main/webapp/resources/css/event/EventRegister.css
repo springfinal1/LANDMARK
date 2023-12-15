@@ -1,0 +1,142 @@
+body{
+  margin-top: 100px;
+  font-family: 'Trebuchet MS', serif;
+  line-height: 1.6;
+  background-color: #ededed;
+}
+form{
+	width: 70%	
+}
+.container{
+	padding-top:20px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 130px;
+  margin-bottom:20px;
+  background-color: white;
+}
+
+ul.tabs{
+  width:100%;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+ul.tabs li{
+	width:50%;
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+}
+
+.tab-content{
+  display: none;
+  padding: 15px;
+}
+
+
+.sub{
+	display: none;
+}
+
+.sub div{
+	padding: 5px;
+}
+
+.sub p{
+	display:block;
+	font-size: 16px;
+	font-weight: 800;
+}
+.sub small{
+	display: block;
+}
+
+#tab-1{
+	width: 100%;
+}
+.sub-container{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+#tab-1 .sub{
+	margin: 0px 10px 0px 10px;
+	width: 33%;
+	height: 100%;
+	padding: 15px;
+}
+
+#tab-1 .sub-container .sub div{
+	width:100px;
+	height:100px;
+	border: 4px solid #999999;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+
+
+#tab-1 .sub-container .sub div i{
+	font-size: 30px;
+	color: #999999;
+	user-select:none;
+	
+}
+
+.tab1-low{
+	display: flex;
+	justify-content: space-between;
+}
+
+#tab-2 div{
+	margin-bottom: 20px;
+}
+
+#tab-2 label{
+	margin-right: 10px;
+}
+
+
+#evName,#evStart,#evEnd{
+	border: none;
+	border-bottom: 2px solid #999999;
+	outline: none;
+	width: 300px;
+}
+
+#tab-2 input:focus{
+	border-color: #4caf50;
+}
+
+
+
+
+/* current 영역 */
+ul.tabs li.current{
+  background: #9c27b0;
+  color: white;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 
+  0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+
+.tab-content.current{
+  display: inherit;
+}
+
+.sub.current{
+	display: flex;
+	justify-content:center;
+	flex-direction: column;
+  align-items: center;
+}
