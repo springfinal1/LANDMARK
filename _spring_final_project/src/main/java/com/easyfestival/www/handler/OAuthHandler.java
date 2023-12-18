@@ -16,7 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Component
-@PropertySource("classpath:oauth.properties")
+@PropertySource({"classpath:oauth.properties", "classpath:mail.properties"})
 public class OAuthHandler {
 	// oauth.properties 안에 저장되어 있는 정보 핸들러
 	
@@ -42,4 +42,6 @@ public class OAuthHandler {
 	@Value("${google_token_url}") String googleTokenUrl;
 	@Value("${google_profile_url}") String googleProfileUrl;
 	
+	@Value("${google_mail_id}") String googleId;
+	@Value("${google_mail_pwd}") String googlePwd;
 }

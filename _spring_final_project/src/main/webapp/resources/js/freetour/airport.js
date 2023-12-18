@@ -7,7 +7,6 @@ let depInfo = document.querySelector('.dep-info');
 let arrInfo = document.querySelector('.arr-info');
 
 let startAirport = document.querySelector('.startAirport');
-//${e.closest('div').dataset.airport }
 
 let depName = document.querySelector('.depName');
 let depTime = document.querySelector('.depTime');
@@ -18,6 +17,11 @@ let arrTime = document.querySelector('.arrTime');
 let arrAir = document.querySelector('.arrAir');
 
 let reserH1 = document.querySelector('.reser-h1');
+
+
+
+
+
 
 reservationBtn.forEach(e=>{
     e.addEventListener('click',()=>{
@@ -32,7 +36,13 @@ arrChoice.forEach(e=>{
         reserH1.innerHTML=""
         arrName.innerHTML = e.closest('div').dataset.airline;
         arrTime.innerHTML = `${e.closest('div').dataset.schedule.substring(8,10)}`+" : "+`${e.closest('div').dataset.schedule.substring(10,12)}`;
-        arrAir.innerHTML =  e.closest('div').dataset.airport+` <i class="fa-solid fa-arrow-right"></i> ${startAirport.innerHTML}`;
+        arrAir.innerHTML =  e.closest('div').dataset.airport+" "+` <i class="fa-solid fa-arrow-right"></i> ${startAirport.innerHTML}`;
     })
 })
-                  
+
+
+let adult = document.querySelector('.adult');
+let child = document.querySelector('.child');
+let infant = document.querySelector('.infant');
+let seat = document.querySelector('.seat');
+

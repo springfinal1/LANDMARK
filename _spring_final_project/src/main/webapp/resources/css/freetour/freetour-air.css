@@ -96,7 +96,7 @@ body{
 }
 
 
-.checked{
+.freeChecked{
     border-bottom: 3.5px solid red;
 }
 .fa-solid{

@@ -83,13 +83,24 @@ function randomImage(){
     }
 }
 
-let tripInfo = document.querySelectorAll(".trip-operation");
 
-document.addEventListener('click',(e)=>{
-    if(e.target.id == "roundTrip" || e.target.id==("oneWay")||e.target.id=="multipleSections"){
-        e.target.classList.add('checked');
-    }else if(e.target.classList.contains("checked")){
-        e.target.classList.remove("checked");
+let tripInfo = document.querySelectorAll(".trip-operation");
+let roundTrip = document.getElementById('roundTrip');
+let oneWay = document.getElementById('oneWay');
+
+roundTrip.addEventListener('click',()=>{
+    roundTrip.classList.add('freeChecked');
+
+    if(oneWay.classList.contains('freeChecked')){
+        oneWay.classList.remove('freeChecked');
+    }
+})
+
+oneWay.addEventListener('click',()=>{
+    oneWay.classList.add('freeChecked');
+
+    if(roundTrip.classList.contains("freeChecked")){
+        roundTrip.classList.remove("freeChecked");
     }
 })
 

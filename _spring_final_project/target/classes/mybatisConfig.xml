@@ -4,6 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 4b4d669be83800036fe45908b0877dce42b1fee9
    <settings>
       <!-- db와 java의 다른 문장 표기법을 맞춰줌 -->
       <setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -24,4 +28,29 @@
       <typeAlias type="com.easyfestival.www.domain.OllPayDTO" alias="OllPayDTO"/>
    </typeAliases>
       
+<<<<<<< HEAD
+=======
+=======
+	<settings>
+		<!-- db와 java의 다른 문장 표기법을 맞춰줌 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.easyfestival.www.security.AuthVO" alias="authvo"/>
+		<typeAlias type="com.easyfestival.www.security.UserVO" alias="uvo"/>
+		<typeAlias type="com.easyfestival.www.domain.PackageVO" alias="packvo"/>  
+		<typeAlias type="com.easyfestival.www.domain.PlaceVO" alias="plvo"/>  
+		<typeAlias type="com.easyfestival.www.domain.HotelVO" alias="hvo"/>  
+		<typeAlias type="com.easyfestival.www.domain.AirplaneVO" alias="avo"/>
+		<typeAlias type="com.easyfestival.www.domain.FestivalVO" alias="fvo"/>
+		<typeAlias type="com.easyfestival.www.domain.ProductFileVO" alias="pfvo"/>
+		<typeAlias type="com.easyfestival.www.domain.HelpDTO" alias="hdto"/>
+		<typeAlias type="com.easyfestival.www.domain.OrderVO" alias="orderVO" />
+		<typeAlias type="com.easyfestival.www.domain.PayDTO" alias="payDTO" />
+		<typeAlias type="com.easyfestival.www.domain.OllPayDTO" alias="OllPayDTO"/>
+	</typeAliases>
+  	 
+>>>>>>> 0973eaae52edaafea9207afb839aae3583b3841d
+>>>>>>> 4b4d669be83800036fe45908b0877dce42b1fee9
 </configuration>
