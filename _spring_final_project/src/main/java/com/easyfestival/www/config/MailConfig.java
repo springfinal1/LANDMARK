@@ -12,7 +12,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import com.easyfestival.www.handler.OAuthHandler;
 
 @Configuration
-@PropertySource("classpath:mail.properties")
 public class MailConfig {
 	
 	@Autowired
