@@ -36,7 +36,6 @@ loginConfirm.forEach(e =>{
         loginModal.style.display = 'none';
         loginBack.style.display = 'none';
         searchModal.style.display = 'none';
-        searchModal.style.display = 'none';
     })
 })
 
@@ -57,20 +56,23 @@ function validation(){
 
 // 아이디, 비밀번호 찾기
 function searchAccountModalOpen(e){
+	console.log(e.target);
     if(e.target.classList.contains('search-id')){
+    	loginBack.style.display = 'block';
         searchModal.style.display = 'flex';
         searchModal.innerHTML =  `<div><h2>아이디찾기</h2></div>`;
-        searchModal.innerHTML += `<div><span>이름</span></div><div><input type="text" id="nameVal" name="name"></div>`;
-        searchModal.innerHTML += `<div><span>이메일</span></div><div><input type="text" id="emailVal" name="email"></div>`;
+        searchModal.innerHTML += `<div><span>이름</span></div><div><input type="text" id="nameVal" name="name" autocomplete="off"></div>`;
+        searchModal.innerHTML += `<div><span>이메일</span></div><div><input type="text" id="emailVal" name="email" autocomplete="off"></div>`;
         searchModal.innerHTML += `<div><button type="button" id="searchIdBtn">확인</button></div>`;
-        searchModal.innerHTML += `<span class="material-symbols-outlined" id="close-btn">close</span>`;
+        searchModal.innerHTML += `<span class="material-symbols-outlined close-btn">close</span>`;
     }else if(e.target.classList.contains('search-pwd')){
+    	loginBack.style.display = 'block';
         searchModal.style.display = 'flex';
         searchModal.innerHTML =  `<div><h2>비밀번호찾기</h2></div>`;
-        searchModal.innerHTML += `<div><span>이름</span></div><div><input type="text" id="nameVal" name="name"></div>`;
-        searchModal.innerHTML += `<div><span>이메일</span></div><div><input type="text" id="emailVal" name="email"></div>`;
+        searchModal.innerHTML += `<div><span>이름</span></div><div><input type="text" id="nameVal" name="name" autocomplete="off"></div>`;
+        searchModal.innerHTML += `<div><span>이메일</span></div><div><input type="text" id="emailVal" name="email" autocomplete="off"></div>`;
         searchModal.innerHTML += `<div><button type="button" id="searchPwdBtn">확인</button></div>`;
-        searchModal.innerHTML += `<span class="material-symbols-outlined" id="close-btn">close</span>`;
+        searchModal.innerHTML += `<span class="material-symbols-outlined close-btn">close</span>`;
     }
 }
 // 아이디, 비밀번호 찾기 모달창 이벤트
