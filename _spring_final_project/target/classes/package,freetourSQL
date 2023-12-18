@@ -1,0 +1,62 @@
+
+// 공항 조회 테이블
+create table airport(
+cityJpn varchar(300),
+cityEng varchar(300),
+cityKor varchar(300),
+cityCode varchar(300));
+
+
+// 패키지
+CREATE TABLE `package` (
+  `pk_no` bigint NOT NULL AUTO_INCREMENT,
+  `pk_name` varchar(200) DEFAULT NULL,
+  `pk_price` bigint DEFAULT '0',
+  `pk_continent` varchar(100) DEFAULT NULL,
+  `pk_content` text,
+  PRIMARY KEY (`pk_no`)
+)
+// 패키지 > 비행기
+CREATE TABLE `airplane` (
+  `ap_no` bigint NOT NULL AUTO_INCREMENT,
+  `pk_no` bigint DEFAULT NULL,
+  `ap_price` bigint NOT NULL,
+  `ap_arrival` datetime NOT NULL,
+  `ap_departure` datetime NOT NULL,
+  PRIMARY KEY (`ap_no`)
+)
+// 패키지 > 축제
+CREATE TABLE `festival` (
+  `fv_no` bigint NOT NULL AUTO_INCREMENT,
+  `pk_no` bigint DEFAULT NULL,
+  `fv_name` varchar(100) NOT NULL,
+  `fv_price` bigint NOT NULL,
+  PRIMARY KEY (`fv_no`)
+)
+// 패키지 > 호텔
+CREATE TABLE `hotel` (
+  `ht_no` bigint NOT NULL AUTO_INCREMENT,
+  `pk_no` bigint DEFAULT NULL,
+  `ht_name` varchar(100) DEFAULT NULL,
+  `ht_price` bigint DEFAULT '0',
+  PRIMARY KEY (`ht_no`)
+)
+// 패키지 > 지역
+CREATE TABLE `place` (
+  `pl_no` bigint NOT NULL AUTO_INCREMENT,
+  `pl_name` varchar(100) NOT NULL,
+  `pl_country` varchar(100) NOT NULL,
+  `pk_no` bigint DEFAULT NULL,
+  `pl_continent` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`pl_no`)
+)
+// 패키지 > 사진
+CREATE TABLE `product_file` (
+  `pf_uuid` varchar(500) NOT NULL,
+  `pf_name` varchar(500) DEFAULT NULL,
+  `pf_size` bigint NOT NULL,
+  `pf_reg_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `pf_save_dir` varchar(500) DEFAULT NULL,
+  `pk_no` bigint DEFAULT NULL,
+  PRIMARY KEY (`pf_uuid`)
+)

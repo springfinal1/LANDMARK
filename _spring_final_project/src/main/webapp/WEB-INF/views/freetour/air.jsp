@@ -34,14 +34,7 @@
 								<a href="#" role="button" id="roundTrip" class="trip-operation">왕복</a>
 								<a href="#" role="button" id="oneWay" class="trip-operation">편도</a>
 							</div>
-							<div>
-								<span>
-									<input type="checkbox"><label>직항만</label>
-								</span>
-								<span>
-									<input type="checkbox"><label>무료 수하물</label>
-								</span>
-							</div>
+
 						</div>
 						
 						<div>

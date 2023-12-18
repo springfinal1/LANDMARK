@@ -75,7 +75,13 @@
 				<div class="final-reser-payment">
 					<div class="final-reser-payment-peple-info">
 						<div>
-							<span>인원수</span>
+							<span class="peple-seat">
+								<span class="adult">${adult }</span>
+								<span class="child">${child }</span>
+								<span class="infant">${infant }</span>
+								<span class="seat">${seat }</span>							  					
+							</span>
+							
 							<span class="air-detail">비행상세</span>
 						</div>
 					</div>
@@ -93,76 +99,89 @@
 				</div>
 			</div>
 		</div>
+
 		
 		<!-- 인천 -> 해외 -->
-		<div class="depArrInfo">
-			 <!-- 인천 -> 해외로 가는거 고르게 하기 -->
-			 <!-- 항공사 , 인천->해외 출발시간,도착시간 // 해외->인천 출발시간,도착시간 -->
-			 <div>
-
-				<c:forEach items="${depInfo }" var="depInfo">
-					<div class="arrInfo-div">
-						<div class="arrInfo-header">
-							<span class="arrInfo-div-span0">${startAirport} <i class="fa-solid fa-arrow-right"></i> ${depInfo.airport }</span>
-							<span> ${depInfo.airportCode }</span>
+		
+		<c:choose>
+			<c:when test="${depInfo ne 'noAirInfo' && arrInfo ne 'noAirInfo'}">
+				<div class="depArrInfo">
+				 <!-- 인천 -> 해외로 가는거 고르게 하기 -->
+				 <!-- 항공사 , 인천->해외 출발시간,도착시간 // 해외->인천 출발시간,도착시간 -->
+						 <div>
+							<c:forEach items="${depInfo }" var="depInfo">
+								<div class="arrInfo-div">
+									<div class="arrInfo-header">
+										<span class="arrInfo-div-span0">${startAirport} <i class="fa-solid fa-arrow-right"></i> ${depInfo.airport }</span>
+										<span> ${depInfo.airportCode }</span>
+									</div>
+									<div class="arrInfo-div-div">
+										<div class="arrInfo-div-span1">
+											<span>${depInfo.airline }</span>
+											<span>${depInfo.flightId }</span>
+										</div>
+										<div class="arrInfo-i">
+											<i class="fa-solid fa-plane-departure" id="dep"></i>
+										</div>
+										<div class="arrInfo-div-span2">
+											<strong>도착일자/시간</strong>
+											<span>
+												<fmt:parseDate value="${depInfo.scheduleDateTime }" pattern="yyyyMMddHHmm" var="depDate"/>
+												<fmt:formatDate value="${depDate }" pattern="yyyy년 MM월 dd일 HH:mm" />
+											</span>
+										</div>
+									</div>		
+									<div class="reservation-div" data-airport="${depInfo.airport }" data-airportcode="${depInfo.airportCode }" 
+									data-schedule="${depInfo.scheduleDateTime }" data-airline="${depInfo.airline }" data-flightId="${depInfo.flightId }">
+										<button class="reservation-btn">선택</button>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
-						<div class="arrInfo-div-div">
-							<div class="arrInfo-div-span1">
-								<span>${depInfo.airline }</span>
-								<span>${depInfo.flightId }</span>
-							</div>
-							<div class="arrInfo-i">
-								<i class="fa-solid fa-plane-departure" id="dep"></i>
-							</div>
-							<div class="arrInfo-div-span2">
-								<strong>도착일자/시간</strong>
-								<span>
-									<fmt:parseDate value="${depInfo.scheduleDateTime }" pattern="yyyyMMddHHmm" var="depDate"/>
-									<fmt:formatDate value="${depDate }" pattern="yyyy년 MM월 dd일 HH:mm" />
-								</span>
-							</div>
-						</div>
-						
-						<div class="reservation-div" data-airport="${depInfo.airport }" data-airportcode="${depInfo.airportCode }" 
-						data-schedule="${depInfo.scheduleDateTime }" data-airline="${depInfo.airline }" data-flightId="${depInfo.flightId }">
-							<button class="reservation-btn">선택</button>
+		
+						<div>
+							<c:forEach items="${arrInfo }" var="arrInfo">
+								<div class="arrInfo-div">
+									<div class="arrInfo-header">
+										<span class="arrInfo-div-span0">${arrInfo.airport } <i class="fa-solid fa-arrow-right"></i> ${startAirport }</span>
+										<span>${arrInfo.airportCode }</span>
+									</div>
+									<div class="arrInfo-div-div">
+										<div class="arrInfo-div-span1">
+											<span>${arrInfo.airline }</span>
+											<span>${arrInfo.flightId }</span>
+										</div>
+										<div class="arrInfo-i">
+											<i class="fa-solid fa-plane-arrival" id="arr"></i>
+										</div>
+										<div class="arrInfo-div-span2">
+											<strong>도착일자/시간</strong>
+											<span>
+												<fmt:parseDate value="${arrInfo.scheduleDateTime }" pattern="yyyyMMddHHmm" var="depDate"/>
+												<fmt:formatDate value="${depDate }" pattern="yyyy년 MM월 dd일 HH:mm" />
+											</span>
+										</div>
+									</div>
+									
+									<div class="reservation-div" data-airport="${arrInfo.airport }" data-airline="${arrInfo.airline }" data-flightId="${arrInfo.flightId }"
+									data-schedule="${arrInfo.scheduleDateTime }" data-airportCode="${arrInfo.airportCode }">
+										<button class="arr-choice">선택</button>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
-				</c:forEach>
-			</div>
-			<div>
-
-				<c:forEach items="${arrInfo }" var="arrInfo">
-					<div class="arrInfo-div">
-						<div class="arrInfo-header">
-							<span class="arrInfo-div-span0">${arrInfo.airport } <i class="fa-solid fa-arrow-right"></i> ${startAirport }</span>
-							<span>${arrInfo.airportCode }</span>
-						</div>
-						<div class="arrInfo-div-div">
-							<div class="arrInfo-div-span1">
-								<span>${arrInfo.airline }</span>
-								<span>${arrInfo.flightId }</span>
-							</div>
-							<div class="arrInfo-i">
-								<i class="fa-solid fa-plane-arrival" id="arr"></i>
-							</div>
-							<div class="arrInfo-div-span2">
-								<strong>도착일자/시간</strong>
-								<span>
-									<fmt:parseDate value="${arrInfo.scheduleDateTime }" pattern="yyyyMMddHHmm" var="depDate"/>
-									<fmt:formatDate value="${depDate }" pattern="yyyy년 MM월 dd일 HH:mm" />
-								</span>
-							</div>
-						</div>
-						
-						<div class="reservation-div" data-airport="${arrInfo.airport }" data-airline="${arrInfo.airline }" data-flightId="${arrInfo.flightId }"
-						data-schedule="${arrInfo.scheduleDateTime }" data-airportCode="${arrInfo.airportCode }">
-							<button class="arr-choice">선택</button>
+				</c:when>
+				<c:when test="${depInfo eq 'noAirInfo' && arrInfo eq 'noAirInfo' }">
+					<div class="noneAir">
+						<div class="none-airport">
+							<span class="material-symbols-outlined" id="noneAirport">production_quantity_limits</span>
+							<h2>선택하신 조건으로 검색된 항공권이 없습니다.</h2>
+							<a href="/freetour/air"><button type="button" class="return-btn">이전</button></a>						
 						</div>
 					</div>
-				</c:forEach>
-			</div>
-		</div>
+				</c:when>
+			</c:choose>
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
