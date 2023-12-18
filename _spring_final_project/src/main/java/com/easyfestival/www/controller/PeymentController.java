@@ -76,14 +76,13 @@ public class PeymentController {
 				"P9nYyc55RyknowCswTwMrhHUdHc2A0MJJGTjzuEGbUjsmm9XFl60NOBNleO8eljJn82tjH4O7I0kKQdr");
 	}
 	
+	/*
+	 * @GetMapping("/peyDetail") public String getTest() {
+	 * 
+	 * return "/package/peyDetail"; }
+	 */
 	
-	@GetMapping("/TestCSS")
-	public String getTest() {
-		
-		return "/package/TestCSS";
-	}
-
-	@GetMapping("/detail")
+	@GetMapping("/peyDetail")
 	public String getDetail(@RequestParam("pkNo") long pkNo, @RequestParam("userCount") long userCount,
 			HttpSession session, Model model) {
 
@@ -93,18 +92,18 @@ public class PeymentController {
 
 		long memberPrice = pldto.get(0).getPackvo().getPkPrice() * userCount;
 
+
 		
 
 		MemberShipVO msVo = memberShipService.getmemberShip(((UserVO) session.getAttribute("uvo")).getId());
 
-		PackageVO packVO = pldto.get(0).getPackvo();
+		/* PackageVO packVO = pldto.get(0).getPackvo(); */
 
-		long pkPrice = packVO.getPkPrice();
-
-		long memberDiscountPrice = Math.round(msVo.getMemberDiscountRate() * pkPrice);
+		long memberDiscountPrice = Math.round(msVo.getMemberDiscountRate() * memberPrice);
+	
 
 	
-		long lastTotalCount = Math.round(memberPrice - memberDiscountPrice);
+		long lastTotalCount = (int) (memberPrice - memberDiscountPrice);
 		
 		model.addAttribute("memShp", msVo);
 
@@ -115,8 +114,8 @@ public class PeymentController {
 		model.addAttribute("userCount", userCount);
 		
 		model.addAttribute("lastTotalCount", lastTotalCount);
-
-		return "/package/detail";
+		
+		return "/package/peyDetail";
 	}
 
 	@GetMapping("/OrderList")

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.beust.jcommander.internal.Console;
 import com.easyfestival.www.domain.MemberShipVO;
 import com.easyfestival.www.domain.OrderVO;
 import com.easyfestival.www.repository.MemberShipDAO;
@@ -45,9 +46,9 @@ public class MemberShipServiceImple implements MemberShipService {
 	    // 예: 각 등급에 필요한 최소 누적금액 기준을 설정하고 이에 따라 등급을 반환
 	    // 이 메서드는 프로젝트의 실제 요구사항에 맞게 구현되어야 합니다.
 	    // 여기서는 단순히 누적금액에 따라 브론즈, 실버, 골드, 다이아 등급을 구분하는 예시를 보여줍니다.
-	    if (totalPrice >= 100000) {
+	    if (totalPrice >= 10000000) {
 	        return "골드";
-	    } else if (totalPrice >= 50000) {
+	    } else if (totalPrice >= 5000000) {
 	        return "실버";
 	    } else {
 	        return "브론즈";
@@ -62,13 +63,13 @@ public class MemberShipServiceImple implements MemberShipService {
 		float memberDiscountRate=0.0f;
 		switch(memberShipVO.getGrade()) {
 			case "브론즈":
-				memberDiscountRate = 0.1f;
+				memberDiscountRate = 0.03f;
 				break;
 			case "실버":
-				memberDiscountRate = 0.15f;
+				memberDiscountRate = 0.05f;
 				break;
 			case "골드":
-				memberDiscountRate = 0.2f;
+				memberDiscountRate = 0.07f;
 				break;
 		}
 		memberShipVO.setMemberDiscountRate(memberDiscountRate);
@@ -114,7 +115,7 @@ public class MemberShipServiceImple implements MemberShipService {
 	private long calculatePoints(Long totalPrice) {
 	    // 포인트 계산 로직
 	    // 예: 1%의 적립 비율로 계산
-	    double pointRate = 0.01;
+	    double pointRate = 0.03;
 	    return (long) (totalPrice * pointRate);
 	}
 

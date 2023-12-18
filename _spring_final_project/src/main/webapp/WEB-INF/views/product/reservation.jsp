@@ -1,41 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-   <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/product/product_reservation.css">
+<link rel="stylesheet"
+	href="/resources/css/product/product_reservation.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 
-	<c:set value="${pldto.packvo }" var="packvo"/>
-	<c:set value="${pldto.pfList }" var="pfList"/>
-	<c:set value="${pldto.avo }" var="avo"/>
-	<c:set value="${pldto.hvo }" var="hvo"/>
-	<c:set value="${pldto.fvo }" var="fvo"/>
-	<c:set value="${pldto.plvo }" var="plvo"/>
-	
+	<c:set value="${pldto.packvo }" var="packvo" />
+	<c:set value="${pldto.pfList }" var="pfList" />
+	<c:set value="${pldto.avo }" var="avo" />
+	<c:set value="${pldto.hvo }" var="hvo" />
+	<c:set value="${pldto.fvo }" var="fvo" />
+	<c:set value="${pldto.plvo }" var="plvo" />
+
 	<!-- 최종 합계금액, 국적 , 비행 -->
 	<div class="product-container">
-		<div class="sub-container">			
+		<div class="sub-container">
 			<div class="reservation-title">
 				<strong>상품 예약하기</strong>
 				<p>예약하시면 빠른 시간 내에 담당 직원이 연락 드리겠습니다.</p>
 			</div>
-				
+
 			<div class="reservation-info">
-				<div class="reservation-info-div">				
+				<div class="reservation-info-div">
 					<div class="reservation-info-div-img">
 						<c:forEach items="${pfList }" var="flist">
-							<img class="reservation-img" alt="그림없음" src="/product_upload/${fn: replace(flist.pfSaveDir,'\\','/')}/${flist.pfUuid }_${flist.pfName}">
+							<img class="reservation-img" alt="그림없음"
+								src="/product_upload/${fn: replace(flist.pfSaveDir,'\\','/')}/${flist.pfUuid }_${flist.pfName}">
 						</c:forEach>
 					</div>
 					<div class="reservation-info-div-text">
@@ -45,139 +48,143 @@
 						</div>
 						<div>
 							<strong>가격</strong>
-							<div><fmt:formatNumber value="${packvo.pkPrice}" pattern="#,###"/> 원</div>
+							<div>
+								<fmt:formatNumber value="${packvo.pkPrice}" pattern="#,###" />
+								원
+							</div>
 						</div>
 						<div>
 							<strong>출발/도착일</strong>
-							<div>${avo.apArrival } ~ ${avo.apDeparture }</div>
+							<div>${avo.apArrival }~ ${avo.apDeparture }</div>
 						</div>
-					</div>					
+					</div>
 				</div>
-				
+
 				<div class="reservation-agree">
 					<div class="reservation-agree-strong">
 						<strong>약관동의</strong>
 					</div>
-					
+
 					<div class="reservation-agree-span">
-						<i class="fa-solid fa-check all-check" id="icon-check"></i><span class="all-agree-span">약관 전체 동의</span> <span class="all-agree-span2">약관 전문을 모두 동의 하셔야 예약이 완료됩니다.</span>
+						<i class="fa-solid fa-check all-check" id="icon-check"></i><span
+							class="all-agree-span">약관 전체 동의</span> <span
+							class="all-agree-span2">약관 전문을 모두 동의 하셔야 예약이 완료됩니다.</span>
 					</div>
-					
+
 					<div class="reservation-agree-div">
 						<div class="reservation-agree-checklist">
 							<div>
-								<i class="fa-solid fa-check all-check select-check" id="check-btn1"></i>
-								<span class="reservation-agree-check">특별약관 설명 및 확인 (필수)</span>
+								<i class="fa-solid fa-check all-check select-check"
+									id="check-btn1"></i> <span class="reservation-agree-check">특별약관
+									설명 및 확인 (필수)</span>
 							</div>
-							<span>
-								<a href="#" class="reservation-agree-content">내용보기</a>
+							<span> <a href="#" class="reservation-agree-content">내용보기</a>
 							</span>
 						</div>
-						
+
 						<div class="reservation-agree-checklist">
 							<div>
-								<i class="fa-solid fa-check all-check select-check" id="check-btn2"></i>
-								<span class="reservation-agree-check">약관동의 (필수)</span>
-							</div>						
-							<span>
-								<a href="#" class="reservation-agree-content">내용보기</a>
+								<i class="fa-solid fa-check all-check select-check"
+									id="check-btn2"></i> <span class="reservation-agree-check">약관동의
+									(필수)</span>
+							</div>
+							<span> <a href="#" class="reservation-agree-content">내용보기</a>
 							</span>
 						</div>
-						
+
 						<div class="reservation-agree-checklist">
 							<div>
-								<i class="fa-solid fa-check all-check select-check" id="check-btn3"></i>
-								<span class="reservation-agree-check">개인정보 수집 및 이용동의 (필수)</span>
+								<i class="fa-solid fa-check all-check select-check"
+									id="check-btn3"></i> <span class="reservation-agree-check">개인정보
+									수집 및 이용동의 (필수)</span>
 							</div>
-							<span>
-								<a href="#" class="reservation-agree-content">내용보기</a>
+							<span> <a href="#" class="reservation-agree-content">내용보기</a>
 							</span>
 						</div>
-						
+
 						<div class="reservation-agree-checklist">
 							<div>
-								<i class="fa-solid fa-check all-check select-check"  id="check-btn4"></i>
-								<span class="reservation-agree-check">개인정보 3자 제공 (필수)</span>
+								<i class="fa-solid fa-check all-check select-check"
+									id="check-btn4"></i> <span class="reservation-agree-check">개인정보
+									3자 제공 (필수)</span>
 							</div>
-							<span>
-								<a href="#" class="reservation-agree-content">내용보기</a>
+							<span> <a href="#" class="reservation-agree-content">내용보기</a>
 							</span>
 						</div>
-						
+
 						<div class="reservation-agree-checklist">
 							<div>
-								<i class="fa-solid fa-check all-check select-check" id="check-btn5"></i>
-								<span class="reservation-agree-check">고유식별정보 수집안내 (필수)</span>
+								<i class="fa-solid fa-check all-check select-check"
+									id="check-btn5"></i> <span class="reservation-agree-check">고유식별정보
+									수집안내 (필수)</span>
 							</div>
-							<span>
-								<a href="#" class="reservation-agree-content">내용보기</a>
+							<span> <a href="#" class="reservation-agree-content">내용보기</a>
 							</span>
 						</div>
-						
+
 					</div>
 					<div class="agree-span">
-						<span class="material-symbols-outlined">error</span> <span>개인정보의 수집, 제공 및 활용에 동의하지 않을 권리가 있으며, 미동의 시 여행서비스의 제공이 제한됩니다.</span>
+						<span class="material-symbols-outlined">error</span> <span>개인정보의
+							수집, 제공 및 활용에 동의하지 않을 권리가 있으며, 미동의 시 여행서비스의 제공이 제한됩니다.</span>
 					</div>
 				</div>
-				
+
 				<div class="reservation-information">
 					<div class="reservation-information-div-strong">
 						<strong class="reservation-information-strong">예약 정보</strong>
-					</div>	
+					</div>
 					<div class="reservation-information-div">
 						<table class="reservation-information-table">
 							<tr>
 								<th class="reservation-information-table-th">상품명</th>
-								<td class="reservation-information-table-td" >${packvo.pkName }</td>
+								<td class="reservation-information-table-td">${packvo.pkName }</td>
 							</tr>
 							<tr>
 								<th class="reservation-information-table-th">여행기간</th>
-								<td class="reservation-information-table-td">출발 ${avo.apArrival } → 도착 ${avo.apDeparture }</td>
-								
+								<td class="reservation-information-table-td">출발
+									${avo.apArrival } → 도착 ${avo.apDeparture }</td>
+
 							</tr>
 							<tr>
 								<th class="reservation-information-table-th">금액</th>
-								<td class="reservation-information-table-td" ><fmt:formatNumber value="${packvo.pkPrice}" pattern="#,###"/> 원</td>
+								<td class="reservation-information-table-td"><fmt:formatNumber
+										value="${packvo.pkPrice}" pattern="#,###" /> 원</td>
 							</tr>
 							<tr>
 								<th class="reservation-information-table-th">마일리지 적립비율</th>
-								<td class="reservation-information-table-td" >4</td>
+								<td class="reservation-information-table-td">4</td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				
+
 				<div class="reservation-peple-div">
-					<div class="reservation-peple-strong">					
+					<div class="reservation-peple-strong">
 						<strong>예약자 정보</strong>
 					</div>
 					<div class="reservation-peple-info">
 						<table class="reservation-peple-info-table">
 							<tr>
 								<th class="reservation-peple-info-table-th">예약자명</th>
-								<td class="reservation-peple-info-table-td"><input type="text"></td>
+								<td class="reservation-peple-info-table-td"><strong>${uvo.name}</strong></td>
 							</tr>
 							<tr>
 								<th class="reservation-peple-info-table-th">휴대폰 번호</th>
-								<td class="reservation-peple-info-table-td">
-									<input type="text">
-								</td>
+								<td class="reservation-peple-info-table-td"><strong>${uvo.phoneNumber}</strong></td>
 							</tr>
 							<tr>
 								<th class="reservation-peple-info-table-th">이메일</th>
-								<td class="reservation-peple-info-table-td">
-									<input type="text"> @ <input type="text"> 
-								</td>
+								<td class="reservation-peple-info-table-td"><strong>${uvo.email}</strong></td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				
+
 				<div class="reservation-trip-inpo">
 					<div class="reservation-footer-strong">
 						<strong>여행자 정보</strong>
 					</div>
-					
+
 					<div class="reservation-peple-price">
 						<table>
 							<tr>
@@ -185,7 +192,8 @@
 								<td class="reservation-peple-price-td">
 									<div class="reservation-peple-count">
 										<button type="button" id="minus-btn">-</button>
-										<input type="text" readonly="readonly" class="peple-input" id="peple-input" value="${peple }">
+										<input type="text" readonly="readonly" class="peple-input"
+											id="peple-input" value="${peplecount }">
 										<button type="button" id="plus-btn">+</button>
 									</div>
 								</td>
@@ -194,14 +202,15 @@
 								<th class="reservation-peple-price-th">최종 합계금액</th>
 								<td class="reservation-peple-price-td">
 									<div>
-										<input type="text" value="${price }" readonly="readonly" id="reservation-price"> 원
-										<input type="hidden" value="${packvo.pkPrice }" id="package-price">
+										<input type="text" value="${0}"
+											readonly="readonly" id="reservation-price"><input
+											type="hidden" value="${packvo.pkPrice}" id="package-price">
 									</div>
 								</td>
 							</tr>
 						</table>
 					</div>
-					
+
 				</div>
 				<div class="reservation-footer">
 					<div class="reservation-footer-strong">
@@ -217,31 +226,33 @@
 						</ul>
 					</div>
 				</div>
-				
 				<div class="reservation-footer-button">
-					<a href="/product/detail?pkNo=${packvo.pkNo }">		
+					<a href="/product/detail?pkNo=${packvo.pkNo }">
 						<button type="button" class="x-btn">취소</button>
-					</a>
-					
-					<a href="#" class="reservation-btn-a" id="reservation-btn-a">
+					</a> <a href="#" class="reservation-btn-a" id="reservation-btn-a">
 						<button type="button" class="reservation-btn" id="reservation-btn">예약하기</button>
 					</a>
 				</div>
 			</div>
-		
-		
-		
-		
-		
+
+
+
+
+
 		</div>
 	</div>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>		
-<script type="text/javascript" src="/resources/js/product/reservation.js"></script>
-<!-- <script type="text/javascript" src="/resources/js/product/product_price.js"></script>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	<!-- <script type="text/javascript" src="/resources/js/product/product_price.js"></script>
 <script type="text/javascript">
 printPrice()
 </script>
  -->
-
+ 
+<script type="text/javascript">
+	let pkNoVal = `<c:out value="${packvo.pkNo }"/>`;
+	console.log(pkNoVal);
+</script>
+	<script type="text/javascript"
+		src="/resources/js/product/reservation.js"></script>
 </body>
 </html>
