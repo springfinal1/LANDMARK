@@ -19,11 +19,11 @@
 					<a id="loginLink"></a>
 					<div>
 						<div class="title">아이디</div>
-						<div class="input-box"><input type="text" id="id" name="id" placeholder="아이디를 입력하세요."></div>
+						<div class="input-box"><input type="text" id="id" name="id" placeholder="아이디를 입력하세요." autocomplete="off"></div>
 					</div>
 					<div>
 						<div class="title">비밀번호</div>
-						<div class="input-box"><input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요."></div>
+						<div class="input-box"><input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요." autocomplete="off"></div>
 					</div>
 					<div class="search-id-pwd">
 						<span class="search-id">아이디찾기</span>
@@ -69,10 +69,11 @@
 </script>
 <script type="text/javascript" src="/resources/js/user/login.js"></script>
 <script type="text/javascript">
-	let closeBtn = document.querySelector('#close-btn');
+	/* let closeBtn = document.querySelectorAll('.close-btn'); */
 	document.addEventListener('click', e=>{
-	    if(e.target.id == 'close-btn' || e.target.id == 'searchIdBtn' || e.target.id == 'searchPwdBtn'){
+	    if(e.target.id == 'searchPwdBtn' || e.target.id == 'searchIdBtn' || e.target.classList.contains('close-btn')){
 	        searchModal.style.display = 'none';
+	        loginBack.style.display = 'none';
 	    }
 	})
 </script>

@@ -47,7 +47,7 @@
 					</dd>
 					<dd><a href="#">테마여행</a>
 						<dl class="sub-menu">
-							<dd><a href="#">휴양지</a></dd>
+							<dd><a href="/peyment/OrderList?pageNo=1">휴양지</a></dd>
 							<dd><a href="#">아름다운도시</a></dd>
 							<dd><a href="#">신나는여행지</a></dd>
 						</dl>
@@ -55,12 +55,6 @@
 					<dd><a href="#">항공</a>
 						<dl class="sub-menu">
 							<dd><a href="/freetour/air">항공 바로가기</a></dd>
-							<dd><a href="#">예매</a></dd>
-							<dd><a href="#">예매</a></dd>
-							<dd><a href="#">예매</a></dd>
-							<dd><a href="#">예매</a></dd>
-							<dd><a href="#">예매</a></dd>
-							<dd><a href="#">예매</a></dd>	
 						</dl>
 					</dd>
 				</dl>
@@ -91,7 +85,7 @@
 					<!-- 로그인인증 회원 -->
 					<sec:authorize access="isAuthenticated()">
 					<dd><a href="/user/detail">마이페이지</a></dd>
-					<dd><a href="/user/logout">로그아웃</a></dd>
+					<dd><a href="/user/logout" id="logout">로그아웃</a></dd>
 					</sec:authorize>
 					
 					<dd><a href="/help/customerCenter">고객센터</a></dd>
