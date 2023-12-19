@@ -177,6 +177,7 @@ public class ReviewController
 		isOk=rsv.insertLike(rlh);
 		return  isOk > 0 ?new ResponseEntity<String>("1",HttpStatus.OK):new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 	@PutMapping(value = "/{rvNo}")
 	public ResponseEntity<String> getLikeHistory(@RequestBody ReviewLikeHistoryVO rlh)
 	{
