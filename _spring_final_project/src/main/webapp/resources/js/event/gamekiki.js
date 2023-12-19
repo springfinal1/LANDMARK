@@ -1,4 +1,4 @@
-console.log(evType);
+ console.log(evType);
 
 kshopMds.loginPage = "/user/login";
 
@@ -6,7 +6,7 @@ kshopMds.loginPage = "/user/login";
 //  let user_session_cookie = '<%=(String)session.getAttribute("uid")%>';
 // var user_session_cookie = document.cookie.match(/userLoginSession=([^;]+)/);
  let user_session_cookie=`${uid}`;
-
+console.log(user_session_cookie);
 
 let appidVal, secretkeyVal, mgIdVal;
 
@@ -33,15 +33,25 @@ let autoLogin = (user_session_cookie) ? "Y" : "N";
 
 
 
-window.addEventListener("DOMContentLoaded", function () {
-    if (user_session_cookie) {
-        // 자동 로그인
-        kshopMds.init({
-            appId: appidVal, // appId (필수)	
-            autoLogin: autoLogin // 키키위젯 로그인 쿠키 삭제여부 (옵션)
-        });
-    }
-}, false);
+// window.addEventListener("DOMContentLoaded", function () {
+//     console.log('ㅁㄴㅇㅁㅁㄴ');
+//     if (user_session_cookie) {
+//         // 자동 로그인
+//         kshopMds.init({
+//             appId: appidVal, // appId (필수)	
+//              autoLogin: autoLogin // 키키위젯 로그인 쿠키 삭제여부 (옵션)
+//         });
+//     }
+// }, false);
+
+if (user_session_cookie){
+    // 자동 로그인
+    kshopMds.init({
+        appId: appidVal, // appId (필수)	
+         autoLogin: autoLogin // 키키위젯 로그인 쿠키 삭제여부 (옵션)
+    });
+} 
+    
 
 $.ajax({
     method: "POST",
@@ -51,7 +61,7 @@ $.ajax({
     .done(function (msg) {
         console.log(msg);
         kshopMds.saveUserInfo({
-            appId: appidVal,
+            appId: appidVal,    
             userId:user_session_cookie,
             token: `${msg.token}`
         })
@@ -84,54 +94,50 @@ gamekiki.openBannerGame({
     }
  });
 
- $.ajax({
+
+
+
+
+$.ajax({
     method: "POST",
-    url: "http://api.gamekiki.com/api/v1/kiki/mg/pickrwd",
-    data: { appId: appidVal,token:token,mgId:mgIdVal,userId:user_session_cookie}
+    url: "http://api.gamekiki.com/api/v1/kiki/mg/tracklog",
+    data: { "appId": appidVal,
+    "token": token,
+    "userId": user_session_cookie,
+    "eventTyp": "G",
+    "eventId": mgIdVal,
+    "eventChk": "L",
+    "todayNumb": 1,
+    "contNumb": 1,
+    "playcount": 1 }
 })
     .done(function (msg) {
         console.log(msg);
     });
- 
-//  $.ajax({
-//     method: "GET",
-//     url: "http://api.gamekiki.com/api/v1/kiki/rewardList",
-//     data: { appId: appidVal, token: token, userId: user_session_cookie }
-// })
-//     .done(function (msg) {
-//         console.log(msg);
-//     });
 
+    $.ajax({
+        method: "GET",
+        url: "http://api.gamekiki.com/api/v1/kiki/rewardList",
+        data: { "appId": appidVal,
+        "token": token,
+        "userId": user_session_cookie}
+    })
+        .done(function (msg) {
+            console.log(msg);
+        });
+        $.ajax({
+            method: "GET",
+            url: "http://api.gamekiki.com/api/v1/kiki/pointList",
+            data: { "appId": appidVal,
+            "token": token,
+            "userId": user_session_cookie}
+        })
+            .done(function (msg) {
+                console.log(msg);
+            });
 
+let logout=document.getElementById('logout');
 
-// // $.ajax({
-// //     method: "POST",
-// //     url: "http://api.gamekiki.com/api/v1/kiki/mg/pickrwd",
-// //     data: { appId: appidVal, token: connMd.getToken(), mgId: mgIdVal, userId: user_session_cookie }
-// // })
-// //     .done(function (msg) {
-// //         console.log(msg);
-// //     })
-// //     .fail(function(msg){
-// //         console.log(msg);
-// //     });
-
-
-
-
-
-// // $.ajax({
-// //     method: "POST",
-// //     url: "http://api.gamekiki.com/api/v1/kiki/feed",
-// //     data: { appId: appidVal}
-// // })
-// //     .done(function (msg) {
-// //         console.log(msg);
-// //     });
-
-
-// let logout=document.getElementById('logout');
-
-// logout.addEventListener('click',()=>{
-//     kshopMds.logout();
-// })
+logout.addEventListener('click',()=>{
+    kshopMds.logout();
+})

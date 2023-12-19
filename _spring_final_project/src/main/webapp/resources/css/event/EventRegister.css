@@ -7,6 +7,14 @@ body{
 form{
 	width: 70%	
 }
+button{
+	background-color: #9c27b0;
+	color: #ffffff;
+	font-size: 12px;
+	border: none;
+	border-radius: 3px;
+	padding: 12px 30px;
+}
 .container{
 	padding-top:20px;
   width: 100%;
@@ -96,6 +104,11 @@ ul.tabs li{
 
 .tab1-low{
 	display: flex;
+	justify-content: flex-end;
+}
+
+.tab2-low{
+	display: flex;
 	justify-content: space-between;
 }
 
@@ -139,4 +152,8 @@ ul.tabs li.current{
 	justify-content:center;
 	flex-direction: column;
   align-items: center;
+}
+
+.nextButton,.prevButton,.submitButton{
+	color: white;
 }
