@@ -42,6 +42,7 @@ public class OAuthHandler {
 	@Value("${google_token_url}") String googleTokenUrl;
 	@Value("${google_profile_url}") String googleProfileUrl;
 	
+	// mail.properties 저장 정보
 	@Value("${google_mail_id}") String googleId;
 	@Value("${google_mail_pwd}") String googlePwd;
 }
