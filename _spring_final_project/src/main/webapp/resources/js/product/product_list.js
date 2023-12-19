@@ -78,9 +78,7 @@ async function favoriteFromServer(idVal,pkNo){
 
 
 function colorRed(){
-    selectIdvalFromServer(idVal,pkNo).then(result=>{
-        
-    })
+    
 }
 async function selectIdvalFromServer(idVal,pkNo){
     try {
@@ -90,4 +88,8 @@ async function selectIdvalFromServer(idVal,pkNo){
     } catch (error) {
         console.log(error);
     }
+}
+console.log('pk id' + idPk);
+for(let i=0; i<idPk.length; i++){
+    console.log(idPk[i].id +"ID<<");
 }

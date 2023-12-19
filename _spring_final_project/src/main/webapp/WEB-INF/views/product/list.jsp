@@ -140,7 +140,7 @@
 
 <script type="text/javascript">
 	let idVal=`<c:out value='${uvo.id}'/>`;
-	let idPk = `<c:out value='${faList}'}>`;
+	let idPk = `<c:out value='${faList}'/>`;
 </script>
 <script type="text/javascript" src="/resources/js/product/product_list.js"></script>
 
