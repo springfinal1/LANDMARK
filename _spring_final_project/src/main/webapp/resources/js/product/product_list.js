@@ -1,5 +1,6 @@
 
 
+
 let placeDiv  = document.querySelector('.placeDiv'); // 전체디브
 let placeH2 = document.querySelectorAll('.place-h2'); //지역보기
 
@@ -37,4 +38,56 @@ function time(){
 
         elem.style.fontSize = "18px";
     })
+}
+let heartBtn = document.querySelectorAll('.heart-btn');
+let pkNo = "";
+
+//console.log(e.dataset.heart);
+// 아이디가 null x
+
+heartBtn.forEach(e=>{
+    e.addEventListener('click',()=>{
+    pkNo = e.dataset.heart;
+    if(idVal != ""){
+        if(e.classList.contains('check-heart')){
+            e.classList.remove('check-heart');
+        }else{
+            e.classList.add('check-heart');
+            favoriteFromServer(idVal,pkNo).then(result=>{
+                console.log("여기까진 실행됨");
+                alert("추가성공");
+            })
+        }    
+    }else{
+        alert("로그인 후 관심상품 등록 가능합니다");
+    }
+    })
+})
+
+
+async function favoriteFromServer(idVal,pkNo){
+    try {
+        //const url = "/freetour/favorite"+idVal;
+        const resp = await fetch("/product/favorite/"+idVal+"/"+pkNo);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+function colorRed(){
+    selectIdvalFromServer(idVal,pkNo).then(result=>{
+        
+    })
+}
+async function selectIdvalFromServer(idVal,pkNo){
+    try {
+        const resp = await fetch("/product/red/"+idVal+"/"+pkNo);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
 }

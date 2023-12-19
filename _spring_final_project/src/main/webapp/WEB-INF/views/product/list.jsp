@@ -118,7 +118,7 @@
 										가격
 									</div>
 									<div>
-										<i class="fa-solid fa-heart heart-btn" style="color: #787878;"></i>
+										<i class="fa-solid fa-heart heart-btn" id="heartBtn" data-heart="${pldto.packvo.pkNo }"></i>
 									</div>
 								</div>
 								<div class="list-product-price"><fmt:formatNumber value="${pldto.packvo.pkPrice}" pattern="#,###"/> 원</div>
@@ -133,11 +133,14 @@
 			</div>
 		</div>
 	</div>
-	
+	 
 	
 	
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
+<script type="text/javascript">
+	let idVal=`<c:out value='${uvo.id}'/>`;
+</script>
 <script type="text/javascript" src="/resources/js/product/product_list.js"></script>
 
 

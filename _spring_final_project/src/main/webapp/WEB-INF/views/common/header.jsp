@@ -28,7 +28,6 @@
          <!-- 네비바 영역 -->
       <header class="header-container">
          
-<<<<<<< HEAD
          <!-- 메인로고 -->
          <div class="main-logo">
             <a href="/">
@@ -93,72 +92,6 @@
                <!-- <dd><span><i class="fa-solid fa-magnifying-glass"></i></span></dd> -->
             </dl>
          </div>
-=======
-			<!-- 메인로고 -->
-			<div class="main-logo">
-				<a href="/">
-					<img alt="" src="/resources/image/main-logo/landmark-logo2.png">
-				</a>
-			</div>
-			<div class="nav-menu">
-		   		<!-- 여행 메뉴 -->
-				<dl class="drop-menu">
-					<dd><a href="#">패키지여행</a>
-						<dl class="sub-menu">
-							<dd><a href="/product/list/?pkContinent=동북아">동북아</a></dd>
-							<dd><a href="/product/list/?pkContinent=동남아">동남아</a></dd>
-							<dd><a href="/product/list/?pkContinent=유럽">유럽</a></dd>
-							<dd><a href="/product/list/?pkContinent=아메리카">아메리카</a></dd>
-						</dl>
-					</dd>
-					<dd><a href="#">테마여행</a>
-						<dl class="sub-menu">
-							<dd><a href="/peyment/OrderList?pageNo=1">휴양지</a></dd>
-							<dd><a href="#">아름다운도시</a></dd>
-							<dd><a href="#">신나는여행지</a></dd>
-						</dl>
-					</dd>
-					<dd><a href="#">항공</a>
-						<dl class="sub-menu">
-							<dd><a href="/freetour/air">항공 바로가기</a></dd>
-						</dl>
-					</dd>
-				</dl>
-				<!-- 이벤트 메뉴 -->
-				<dl class="event-menu">
-					<dd class="not-dd"><span>|</span></dd>
-					<dd><a href="/event/eventList">이벤트</a></dd>
-					<dd><a href="/review/reviewList">리뷰</a></dd>
-					<dd><a href="#">할인/혜택</a></dd>
-				</dl>
-			</div>
-
-			<!-- 회원 메뉴 -->
-			<div class="nav-user-menu">
-				<dl>
-					<!-- 관리자전용 -->
-					<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
-					<dd><a href="/user/list?pageNo=1">회원목록(관리자전용)</a></dd>
-					<dd><a href="/product/register">상품등록(관리자전용)</a></dd>
-					</c:if>
-					
-					<!-- 게스트 -->
-					<sec:authorize access="isAnonymous()">
-					<dd><a href="/user/join">회원가입</a></dd>
-					<dd><a href="/user/login">로그인</a></dd>
-					</sec:authorize>
-					
-					<!-- 로그인인증 회원 -->
-					<sec:authorize access="isAuthenticated()">
-					<dd><a href="/user/detail">마이페이지</a></dd>
-					<dd><a href="/user/logout" id="logout">로그아웃</a></dd>
-					</sec:authorize>
-					
-					<dd><a href="/help/customerCenter">고객센터</a></dd>
-					<!-- <dd><span><i class="fa-solid fa-magnifying-glass"></i></span></dd> -->
-				</dl>
-			</div>
->>>>>>> 4b4d669be83800036fe45908b0877dce42b1fee9
          
       </header>   
          

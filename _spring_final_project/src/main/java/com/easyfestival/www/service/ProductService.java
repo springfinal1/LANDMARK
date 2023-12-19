@@ -5,6 +5,7 @@ package com.easyfestival.www.service;
 import java.util.List;
 
 import com.easyfestival.www.domain.AirplaneVO;
+import com.easyfestival.www.domain.FavoriteVO;
 import com.easyfestival.www.domain.FestivalVO;
 import com.easyfestival.www.domain.HotelVO;
 import com.easyfestival.www.domain.PackageVO;
@@ -26,6 +27,10 @@ public interface ProductService {
 	int modify(ProductDTO productDTO);
 
 	int removeProduct(long pkNo);
+
+	int addFavorite(String idVal, long pkNo);
+
+	List<FavoriteVO> getFaList(String id);
 
 //	ProductListDTO productDetail(long pkNo);
 

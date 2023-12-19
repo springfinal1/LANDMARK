@@ -1,12 +1,11 @@
 package com.easyfestival.www.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.easyfestival.www.domain.AirplaneVO;
-import com.easyfestival.www.domain.FestivalVO;
-import com.easyfestival.www.domain.HotelVO;
-import com.easyfestival.www.domain.PackageVO;
-import com.easyfestival.www.domain.PlaceVO;
+import com.easyfestival.www.domain.FavoriteVO;
 import com.easyfestival.www.domain.ProductBoardVO;
 import com.easyfestival.www.domain.ProductDTO;
 import com.easyfestival.www.domain.ProductFileVO;
 import com.easyfestival.www.domain.ProductListDTO;
 import com.easyfestival.www.handler.FileHandler;
-import com.easyfestival.www.repository.PackageDAO;
+import com.easyfestival.www.security.UserVO;
 import com.easyfestival.www.service.ProductService;
-
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,6 +38,7 @@ public class ProductController {
 	
 	@Inject
 	private FileHandler fh;
+	
 	
 	
 	
@@ -69,13 +64,21 @@ public class ProductController {
 	
 	
 	@GetMapping("list")
-	public String list(Model m,@RequestParam("pkContinent") String pkContinent) {
+	public String list(Model m,@RequestParam("pkContinent") String pkContinent, HttpSession ses) {
 
 		//List<ProductListDTO> pdto = psv.productList(pkContinent);
 		
 		
 		List<ProductListDTO> pldto = psv.getdto(pkContinent);
-
+		
+		UserVO uvo = (UserVO)ses.getAttribute("uvo");
+		
+		if(uvo != null) {
+			List<FavoriteVO> faList = psv.getFaList(uvo.getId());			
+			m.addAttribute("faList", faList);
+		}
+				
+		
 		if(pldto.size() > 0) {
 			m.addAttribute("pldto", pldto);
 		}
@@ -140,5 +143,20 @@ public class ProductController {
 		int isOk = psv.removeProduct(pkNo);
 		
 		return "index";
+	}
+	@GetMapping(value="favorite/{idVal}/{pkNo}")
+	public ResponseEntity<String> heart(@PathVariable String idVal , @PathVariable long pkNo){
+		log.info(idVal+"체크 아이디");
+		log.info(pkNo+"체크 pkNO");
+		// 관심상품 등록
+		FavoriteVO favo = new FavoriteVO();
+		favo.setId(idVal);
+		favo.setPkNo(pkNo);
+		
+		//int isOK =psv.addFavorite(favo);
+		int isOk = psv.addFavorite(idVal,pkNo);
+		
+		
+		return new ResponseEntity<String>("1",HttpStatus.OK);
 	}
 }

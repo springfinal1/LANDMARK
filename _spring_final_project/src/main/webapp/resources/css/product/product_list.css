@@ -121,7 +121,10 @@ body{
     justify-content: space-between;
 }
 .heart-btn{
-    font-size: 23px;
+    font-size: 35px;
+    color: #ccc;
+    cursor: pointer;
+    
 }
 .list-product-price{
     font-weight: 700;
@@ -130,4 +133,7 @@ body{
 h5{
     margin-top: 15px;
     margin-bottom: 15px;
+}
+.check-heart{
+    color: #E53E30;
 }

@@ -99,7 +99,7 @@ public class FreeTourController {
 		List<AirArrInfoVO> arrInfo = fhd.getArrivalInfo(departureAirportCode, aivo); // 도착 정보 / 해외 -> 인천
 		
 		
-		
+		//100 150 200 300
 		
 		if(arrInfo != null) {			
 			m.addAttribute("arrInfo", arrInfo);
