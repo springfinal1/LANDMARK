@@ -160,8 +160,12 @@ public class UserController {
 	@GetMapping("detail")
 	public void getDetailUser(HttpSession session, Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("uvo");
-		// 문의사항 리스트
+
 		List<HelpDTO> hList = hsv.getList(uvo.getId(), "");
+		// 문의사항 리스트
+
+
+
 		// 패키지상품 예약 리스트
 		List<OllPayDTO> packageList = oderService.getPackageList(uvo.getId());
 		MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
