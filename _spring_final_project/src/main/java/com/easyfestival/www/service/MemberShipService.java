@@ -6,7 +6,7 @@ import com.easyfestival.www.security.UserVO;
 
 public interface MemberShipService {
 
-	void insert_point(OrderVO orderDTO);
+	int insert_point(OrderVO orderDTO);
 
 	MemberShipVO getmemberShip(String id);
 

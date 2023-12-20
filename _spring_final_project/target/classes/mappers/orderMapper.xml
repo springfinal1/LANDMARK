@@ -7,23 +7,24 @@
 
 
 	<!-- 주문 정보 생성 -->
+	<!-- 주문 정보 생성 -->
 	<insert id="insert_pay" parameterType="orderVO">
-		insert into
-		pay_order_user(order_num, pk_no, id, order_date, total_price,
-		imp_uid,
-		user_count, sayong_pointeu)
-		values(#{orderNum}, #{pkNo}, #{id}, #{orderDate},
-		#{totalPrice}, #{impUid}, #{userCount}, #{sayongPointeu})
-
+		INSERT INTO pay_order_user (order_num, pk_no, id, order_date, total_price,
+		imp_uid, user_count, sayong_pointeu, product_name)
+		VALUES (#{orderNum}, #{pkNo}, #{id}, #{orderDate}, #{totalPrice}, #{impUid},
+		#{userCount}, #{sayongPointeu}, #{productName});
 	</insert>
+
 
 
 
 	<insert id="insert_payinfo" parameterType="payDTO">
 		insert into sc_pay
-		(id, order_num, pay_method, pay_date, product_name,
-		pay_amount, pk_no, sayong_pointeu)
-		values (#{id}, #{orderNum}, #{payMethod}, #{payDate}, #{productName},
+		(id, order_num, pay_method, product_name,
+		pay_amount, pk_no,
+		sayong_pointeu)
+		values (#{id}, #{orderNum}, #{payMethod}, 
+		#{productName},
 		#{payAmount}, #{pkNo}, #{sayongPointeu})
 	</insert>
 
@@ -99,6 +100,21 @@
 		pf.pk_no = o.pk_no
 		WHERE o.order_num = #{orderNum}
 	</select>
+
+	<update id="updateY">
+		UPDATE pay_order_user
+		SET confirmation = 'Y'
+		WHERE
+		order_num = #{orderNum};
+	</update>
+
+	<select id="getConfirmation" resultType="java.lang.String">
+		SELECT confirmation
+		FROM
+		pay_order_user
+		WHERE order_num = #{orderNum};
+	</select>
+
 
 
 

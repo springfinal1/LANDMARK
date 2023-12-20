@@ -36,5 +36,9 @@ public interface OrderDAO {
 
 	List<OllPayDTO> ollList(long orderNum);
 
+	int updateY(OrderVO orderVO);
+
+	String getConfirmation(long orderNum);
+
 	
 }

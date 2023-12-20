@@ -24,7 +24,7 @@ public class MemberShipServiceImple implements MemberShipService {
 
 	@Override
 	@Transactional
-	public void insert_point(OrderVO orderDTO) {
+	public int insert_point(OrderVO orderDTO) {
 	    // 1. 결제 금액에 따라 포인트 계산
 		long point = calculatePoints(orderDTO.getTotalPrice());
 
@@ -38,7 +38,7 @@ public class MemberShipServiceImple implements MemberShipService {
 	 
 	    
 	    System.out.println("getTotalPrice+++++++++" + orderDTO.getTotalPrice());
-	    mdao.saveGrade(orderDTO.getId(), grade);
+	   return mdao.saveGrade(orderDTO.getId(), grade);
 	}
 
 	private String determineGrade(Long totalPrice) {
@@ -130,7 +130,9 @@ public class MemberShipServiceImple implements MemberShipService {
 	@Transactional
 	public int pointCancle(OrderVO orderVO) {
 		// TODO Auto-generated method stub
+		
 		MemberShipVO memberShipVO = mdao.getmemberShip(orderVO.getId());
+		
 	    if (memberShipVO == null) {
 	        // 멤버십 정보가 없으면 처리 중단
 	        return 0;

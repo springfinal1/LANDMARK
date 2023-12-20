@@ -101,6 +101,16 @@ public class OrderService {
 		return orderDAO.ollList(orderNum);
 	}
 
+	public int updateY(OrderVO orderVO) {
+		// TODO Auto-generated method stub
+		return orderDAO.updateY(orderVO);
+	}
+
+	public String getConfirmation(long orderNum) {
+		// TODO Auto-generated method stub
+		return  orderDAO.getConfirmation(orderNum);
+	}
+
 
 
 }

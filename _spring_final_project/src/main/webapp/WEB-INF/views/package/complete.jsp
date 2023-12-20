@@ -47,13 +47,14 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 						<span>${uvo.name }</span>님이 좋아하는 여행 스타일은 어떤걸까요 ?
 					</p>
 				</div>
+				
 				<div class="text-bottom">
-					나는 <span class="current-icon"> <img
+					${uvo.name }님은 <span class="current-icon"> <img
 						src="https://img-kyowontour.kyowontour.com/hp/icon/who.icon2.svg"
-						alt="">친구와 함께
-					</span> <span class="current-icon"> <img
+						alt="">
+					</span>${packvo.content}에서 <span class="current-icon"> <img
 						src="https://img-kyowontour.kyowontour.com/hp/icon/where.icon3.svg"
-						alt="">일본에서
+						alt="">
 					</span> <br> <span class="current-icon"> <img
 						src=" https://cdn-icons-png.flaticon.com/512/2314/2314620.png "
 						width="50" height="50"> 온천을
@@ -96,30 +97,39 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 									<dd>${ollList.apArrival }</dd>
 								</dl>
 								<dl>
+									<dt>여행권</dt>
+									<dd>${ollList.pkContinent }</dd>
+								</dl>
+								<dl>
 									<dt>여행지</dt>
 									<dd>${ollList.pkName }</dd>
 								</dl>
+									<dl>
+									<dt>호텔</dt>
+									<dd>${ollList.htName }</dd>
+								</dl>
 							</div>
 							<div class="item-info-tit">
-								<strong>${ollList.pkContent }</strong>
+									<Strong>상품소개</Strong>
+									<p>${ollList.pkContent }</p>
+							</div>
+							<div class="item-price">
+								<span><strong>${ollList.totalPrice}원</strong></span>
 							</div>
 							<div class="button-class">
 
 								<button type="button" order-num="${ollList.orderNum}"
-									class="payMentOk site-btn">
+									class="payMentOk site-btn" id="confirmButton">
 									<span>결제 확정</span>
 								</button>
-								
-								
+
+
 								<button type="button" order-num="${ollList.orderNum}"
-									class="payMentCancel site-btn">
+									class="payMentCancel site-btn" id="cancelButton">
 									<span>결제 취소</span>
 								</button>
 
 
-							</div>
-							<div class="item-price">
-								<strong>${ollList.totalPrice}원</strong>
 							</div>
 						</div>
 
