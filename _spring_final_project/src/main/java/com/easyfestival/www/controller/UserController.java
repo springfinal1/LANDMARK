@@ -25,12 +25,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.easyfestival.www.domain.HelpDTO;
+import com.easyfestival.www.domain.MemberShipVO;
+import com.easyfestival.www.domain.OllPayDTO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.security.AuthVO;
 import com.easyfestival.www.security.UserVO;
 import com.easyfestival.www.service.HelpService;
 import com.easyfestival.www.service.MailService;
 import com.easyfestival.www.service.MemberShipService;
+<<<<<<< HEAD
+=======
+import com.easyfestival.www.service.OrderService;
+>>>>>>> 994631ddb04c4657884900c0ae89b33c85fd7565
 import com.easyfestival.www.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -45,6 +51,8 @@ public class UserController {
 	private final UserService usv;
 	private final HelpService hsv;
 	private final MailService msv;
+    private final MemberShipService memberShipService;
+    private final OrderService oderService;
 	private final BCryptPasswordEncoder bcEncoder; // password 암호화 객체
 	
 	@GetMapping("index")
@@ -72,6 +80,7 @@ public class UserController {
 		if (isOk > 0) {
 			re.addFlashAttribute("message", 1); // 성공하면 메시지로 1 리턴
 			re.addFlashAttribute("joinID", uvo.getId()); // 회원가입 완료 아이디 전달
+			memberShipService.insertId(uvo.getId());
 		}
 		return "redirect:/";
 	}
@@ -155,8 +164,18 @@ public class UserController {
 	@GetMapping("detail")
 	public void getDetailUser(HttpSession session, Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("uvo");
+<<<<<<< HEAD
 		List<HelpDTO> hList = hsv.getList(uvo.getId(), "");
+=======
+		// 문의사항 리스트
+		List<HelpDTO>hList = hsv.getList(uvo.getId(), "");
+		// 패키지상품 예약 리스트
+		List<OllPayDTO> packageList = oderService.getPackageList(uvo.getId());
+		MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
+		model.addAttribute("msvo", msvo); // 멤버쉽정보
+>>>>>>> 994631ddb04c4657884900c0ae89b33c85fd7565
 		model.addAttribute("hList", hList);
+		model.addAttribute("packList", packageList);
 	}
 
 	// 아이디, 비밀번호 찾기

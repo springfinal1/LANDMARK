@@ -26,15 +26,15 @@
 			<div>
 				<div>
 					<span>포인트</span>
-					<span>10000<i id="p" class="fa-solid fa-p"></i></span>
+					<span>${msvo.point}<i id="p" class="fa-solid fa-p"></i></span>
 				</div>
 				<div>
 					<span>회원등급</span>
-					<span>브론즈</span>
+					<span>${msvo.grade}</span>
 				</div>
 				<div>
 					<span>누적결제금액</span>
-					<span>1000000 원</span>
+					<span>${msvo.totalPrice} 원</span>
 				</div>
 			</div>
 			<div class="user-detail-top">
@@ -62,7 +62,27 @@
 				</div>
 				<div class="my-list">
 					<!-- 패키지예약내역 영역 -->
-					<div class="noHistory"><i class="fa-solid fa-cart-shopping"></i>예약내역이 없습니다.</div>
+					<c:choose>
+						<c:when test="${not empty packList}">
+							<div class="list-items">
+								<div class="fixed-title">
+									<span class="packge-orderDate">예약일자</span>
+									<span class="packge-name">상품명</span>
+									<span class="packge-price">결제금액</span>
+								</div>
+								<c:forEach items="${packList}" var="pack">
+								<div class="qa-list">
+									<span class="packge-orderDate">${pack.orderDate}</span>
+									<span class="packge-name"><a href="/peyment/getList?orderNum=${pack.orderNum}">${pack.pkName}</a></span>
+									<span class="packge-price">${pack.totalPrice}원</span>
+								</div>
+								</c:forEach>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="noHistory"><i class="fa-solid fa-cart-shopping"></i>예약내역이 없습니다.</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			

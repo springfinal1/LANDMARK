@@ -117,8 +117,8 @@
 									<div>
 										가격
 									</div>
-									<div>
-										<i class="fa-solid fa-heart heart-btn" id="heartBtn" data-heart="${pldto.packvo.pkNo }"></i>
+									<div>									
+										<i class="fa-solid fa-heart heart-btn" id="heartBtn" data-heart="${pldto.packvo.pkNo }"></i>								
 									</div>
 								</div>
 								<div class="list-product-price"><fmt:formatNumber value="${pldto.packvo.pkPrice}" pattern="#,###"/> 원</div>
@@ -140,9 +140,13 @@
 
 <script type="text/javascript">
 	let idVal=`<c:out value='${uvo.id}'/>`;
-	let idPk = `<c:out value='${faList}'/>`;
 </script>
+
 <script type="text/javascript" src="/resources/js/product/product_list.js"></script>
+
+<script type="text/javascript">
+	openFunction();
+</script>
 
 
 </body>

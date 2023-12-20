@@ -481,6 +481,7 @@
 	width: 20%;
 	height: 100%;
 }
+/* 문의 내역 */
 .inquiry-title{
 	/* 문의제목 */
 	width: 65%;
@@ -505,6 +506,30 @@
 	font-weight: 700;
 }
 
+/* package 내역*/
+.packge-orderDate{
+	/* 패키지 예약일자 */
+	width: 30%;
+	height: 100%;
+}
+.packge-name{
+	/* 패키지 상품명 */
+	width: 40%;
+	height: 100%;
+}
+.packge-name a{
+	color : inherit;
+}
+.packge-price{
+	/* 패키지 가격 */
+	width: 30%;
+	height: 100%;
+}
+.packge-orderDate,.packge-name, .packge-price{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 .noHistory{
 	/* 내역 없는경우 div */

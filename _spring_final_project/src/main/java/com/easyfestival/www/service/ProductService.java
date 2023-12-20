@@ -32,6 +32,8 @@ public interface ProductService {
 
 	List<FavoriteVO> getFaList(String id);
 
+	int removeFavoriteRemove(long pkNo, String idVal);
+
 //	ProductListDTO productDetail(long pkNo);
 
 

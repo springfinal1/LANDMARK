@@ -1,6 +1,4 @@
 
-
-
 let placeDiv  = document.querySelector('.placeDiv'); // 전체디브
 let placeH2 = document.querySelectorAll('.place-h2'); //지역보기
 
@@ -45,17 +43,33 @@ let pkNo = "";
 //console.log(e.dataset.heart);
 // 아이디가 null x
 
+function openFunction(){
+    heartBtn.forEach(e=>{
+        console.log(e.dataset.heart);
+        checkRed().then(result=>{
+            for(let i=0; i<result.length; i++){
+                if(result[i].pkNo == e.dataset.heart){
+                    e.classList.add('check-heart');
+                }
+            }
+        })
+    })
+}
+
 heartBtn.forEach(e=>{
     e.addEventListener('click',()=>{
     pkNo = e.dataset.heart;
     if(idVal != ""){
         if(e.classList.contains('check-heart')){
             e.classList.remove('check-heart');
+            favoriteRemoveFormServer(pkNo,idVal).then(result=>{               
+                alert("관심상품 삭제 완료");              
+            })
         }else{
             e.classList.add('check-heart');
             favoriteFromServer(idVal,pkNo).then(result=>{
-                console.log("여기까진 실행됨");
-                alert("추가성공");
+                alert("관심상품 등록 성공");
+                
             })
         }    
     }else{
@@ -76,20 +90,31 @@ async function favoriteFromServer(idVal,pkNo){
     }
 }
 
-
-function colorRed(){
-    
-}
-async function selectIdvalFromServer(idVal,pkNo){
+async function checkRed(){
     try {
-        const resp = await fetch("/product/red/"+idVal+"/"+pkNo);
-        const result = await resp.text();
+        const resp = await fetch("/product/checkRed");
+        const result = await resp.json();
         return result;
     } catch (error) {
         console.log(error);
     }
 }
-console.log('pk id' + idPk);
-for(let i=0; i<idPk.length; i++){
-    console.log(idPk[i].id +"ID<<");
+
+async function favoriteRemoveFormServer(pkNo,idVal){
+    try{
+        const url = "/product/favoriteRemove/"+pkNo+"/"+idVal;
+        const config={
+            method: "delete"
+        };
+
+        const resp = await fetch(url,config);
+        const result = await resp.text();
+        return result;
+    }catch(error){
+        console.log(error);
+    }
 }
+
+
+
+

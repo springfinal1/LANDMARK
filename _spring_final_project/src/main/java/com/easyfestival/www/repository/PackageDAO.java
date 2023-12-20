@@ -45,12 +45,7 @@ public interface PackageDAO {
 
 	List<FavoriteVO> getFaList(String id);
 
-	
-
-	//List<ProductListDTO> getDTOList(String pkContinent);
-
-	//ProductListDTO getDTO(String pkContinent);
-
+	int removeFavoriteRemove(@Param("pkNo")long pkNo, @Param("idVal")String idVal);
 
 
 

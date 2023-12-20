@@ -19,4 +19,8 @@
   	<select id="getArrivalAirport" resultType="String">
   		select (cityCode) from airport where cityKor like concat('%',#{arrivalAirport},'%') limit 1
   	</select>
+  	
+  	<select id="getPrice" resultType="int">
+  		select (ft_price) from free_ticket where city_name like concat('%',#{arrival},'%') limit 1
+  	</select>
   </mapper>

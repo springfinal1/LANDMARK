@@ -12,4 +12,6 @@ public interface FreetourService {
 
 	String getArrivalAirport(String arrivalAirport);
 
+	int getPrice(String arrival);
+
 }

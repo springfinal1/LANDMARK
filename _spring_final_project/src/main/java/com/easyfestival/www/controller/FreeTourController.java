@@ -58,40 +58,46 @@ public class FreeTourController {
 	@PostMapping("city")
 	public String getCity(AirplaneInfoVO aivo, Model m, String pepleCount) throws IOException, ParseException {
  
+		log.info(aivo+"<<<<<<<<<<<aivo");
 		
-		String adult="";
-		String child="";
-		String infant="";
-		String seat="";
+		// 일반 프리미엄일반 비즈니스 일등 (100 150 200 300) / 
+		// 가격 설정 =>((기본 가격)*(좌석))*인원수) 왕복이면 x2 편도면 그대로 
+		int ticketPrice = fsv.getPrice(aivo.getArrival());
+		log.info(ticketPrice+"티켓가격<<<<<<<<");
 		
-		String pep [] = pepleCount.split(",");
-		for(int i=0; i<pep.length; i++) {
-			if(pep[i].contains("성인")) {
-				adult = pep[i];
-			}else if(pep[i].contains("소아")) {
-				child = pep[i];
-			}else if(pep[i].contains("유아")){
-				infant = pep[i];
-			}else {
-				// 좌석
-				seat = pep[i];
-			}
+		int seatPrice = 0; // 좌석별 가격 배율
+		
+		if(aivo.getSeat().equals("일반석")) {
+			seatPrice = 1;
+		}else if(aivo.getSeat().equals("프리미엄 일반석")) {
+			seatPrice = 2;
+		}else if(aivo.getSeat().equals("비즈니스석")) {
+			seatPrice = 3;
+		}else if(aivo.getSeat().equals("일등석")) {
+			seatPrice = 4;
 		}
-		m.addAttribute("adult", adult);
-		m.addAttribute("child", child);
-		m.addAttribute("infant", infant);
-		m.addAttribute("seat", seat);
+		
+		int verification = 1;  // 편도면 1 왕복이면 2
+		
+		if(aivo.getVerification().equals("편도")) {
+			verification = 1;
+		}else if(aivo.getVerification().equals("왕복")) {
+			verification = 2;
+		}
+		
+		int finalPrice = ((ticketPrice * seatPrice) * (int)(aivo.getPeple()))*verification;
+		log.info(finalPrice+"최종 결제 금액");
+		aivo.setPrice(0);
+		
+		
 
-		String departureAirport = aivo.getDeparture(); // 출발공항
-		
+		String departureAirport = aivo.getDeparture(); // 출발공항		
 		m.addAttribute("startAirport", departureAirport);
-		
-		
 		String arrivalAirport = aivo.getArrival(); // 도착공항
 		m.addAttribute("endAirport", arrivalAirport);
-		//공항 코드 구하기
-		String departureAirportCode = fsv.getDepartureAirport(arrivalAirport);
 		
+		//공항 코드 구하기
+		String departureAirportCode = fsv.getDepartureAirport(arrivalAirport);		
 		String arrivalAirportCode = fsv.getArrivalAirport(arrivalAirport);
 
 		

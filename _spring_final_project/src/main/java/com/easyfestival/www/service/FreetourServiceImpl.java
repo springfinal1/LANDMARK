@@ -36,4 +36,10 @@ public class FreetourServiceImpl implements FreetourService{
 		return fdao.getArrivalAirport(arrivalAirport);
 	}
 
+	@Override
+	public int getPrice(String arrival) {
+		// TODO Auto-generated method stub
+		return fdao.getPrice(arrival);
+	}
+
 }
