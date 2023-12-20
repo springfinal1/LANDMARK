@@ -35,6 +35,8 @@ public interface OrderDAO {
 	List<OllPayDTO> ollOrder(@Param("ph") PagingHandler ph, @Param("id") String id);
 
 	List<OllPayDTO> ollList(long orderNum);
+	
+	List<OllPayDTO> getPackageList(String id); // 마이페이지 패키지예약내역 리스트용
 
 	
 }

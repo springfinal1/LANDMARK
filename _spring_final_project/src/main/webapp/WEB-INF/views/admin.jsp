@@ -11,7 +11,7 @@
 
 	<div class="wrapper">
 		<div class="side-bar">
-			<div class="logo">LANDMARK</div>
+			<div class="logo"> <a href="/">LANDMARK</a></div>
 			<ul>
 				<li class="on">
 					<button type="button" class="arcodian">유저</button>

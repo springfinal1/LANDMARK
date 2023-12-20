@@ -240,6 +240,17 @@
 
 
 		</div>
+		<div class="terms-modal">
+			<div class="terms-modal-header">
+			</div>
+			<div class="terms-modal-body">
+			</div>
+			<div class="terms-modal-footer">
+				<button>닫기</button>
+				<button>확인</button>
+			</div>
+		</div>
+		
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<!-- <script type="text/javascript" src="/resources/js/product/product_price.js"></script>
