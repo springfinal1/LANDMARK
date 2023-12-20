@@ -100,6 +100,10 @@ public class OrderService {
 		// TODO Auto-generated method stub
 		return  orderDAO.getConfirmation(orderNum);
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
 	public List<OllPayDTO> getPackageList(String id) {
 		// 마이페이지 패키지예약내역 리스트용
 		return orderDAO.getPackageList(id);
