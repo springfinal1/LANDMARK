@@ -7,7 +7,7 @@ import com.easyfestival.www.security.UserVO;
 
 public interface MemberShipDAO {
 
-	void saveGrade(@Param("id") String id, @Param("grade") String grade);
+	int saveGrade(@Param("id") String id, @Param("grade") String grade);
 
 	void savePoints(@Param("id") String id, @Param("point") long point, @Param("totalPrice") Long totalPrice);
 
