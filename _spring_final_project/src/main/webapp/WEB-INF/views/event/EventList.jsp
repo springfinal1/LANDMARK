@@ -40,6 +40,9 @@
 						<li>
 							<a href="/event/LasteventList" id="last">지난 이벤트<span>></span></a>
 						</li>
+						<li>
+							<a href="/event/eventRegister">이벤트 추가 <span>></span></a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -64,8 +67,6 @@
 			</ul>
 		</div>
 		</div>
-		<a href="/event/eventRegister"><button type="button">이벤트
-				추가</button></a>
 		<script type="text/javascript">
 			let msg = `<c:out value='${msg}'/>`;
 			let uid=`<c:out value='${uvo.id}'/>`;

@@ -7,7 +7,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.easyfestival.www.domain.eventDTO;
 import com.easyfestival.www.domain.eventVO;
+import com.easyfestival.www.domain.prizeVO;
+import com.easyfestival.www.domain.rouletteVO;
 import com.easyfestival.www.repository.EventDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +23,8 @@ public class EventServiceImpl implements EventService
 	private EventDAO edao;
 
 	@Override
-	public int OneventList(eventVO evo) {
-		return edao.eventRegister(evo);
+	public int OneventList(eventDTO edto) {
+		return edao.eventRegister(edto);
 	}
 	
 
@@ -51,9 +54,36 @@ public class EventServiceImpl implements EventService
 
 
 	@Override
-	public int eventRegister(eventVO evo) {
-		return edao.eventRegister(evo);
+	public int eventRegister(eventDTO edto) {
+		return edao.eventRegister(edto);
 	}
+
+
+	@Override
+	public int registerPrize(prizeVO prvo) {
+		return edao.registerPrize(prvo);
+	}
+
+
+	@Override
+	public int lastEvno() {
+		return edao.lastEvno();
+	}
+
+
+	@Override
+	public void rouletteRegister(rouletteVO rlvo) {
+		edao.rouletteRegister(rlvo);
+	}
+
+
+	@Override
+	public String getPrize(int evNo) {
+		return edao.getPrize(evNo);
+	}
+
+
+	
 
 	
 

@@ -27,4 +27,16 @@
 		update event set ev_name=#{evName},ev_start=#{evStart},ev_end=#{evEnd},ev_type=#{evType},ev_content=#{evContent}
 		where ev_no=#{evNo}
 	</update>
+	<insert id="registerPrize">
+		insert into event_prize values (#{id},#{prize})
+	</insert>
+	<select id="lastEvno" resultType="int">
+		select max(ev_no) from event;
+	</select>
+	<insert id="rouletteRegister">
+		insert into roulette values (#{evNo },#{prizes })
+	</insert>
+	<select id="getPrize" resultType="String">
+		select prizes from roulette where ev_no=#{evNo};
+	</select>
 </mapper>

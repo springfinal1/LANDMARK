@@ -32,7 +32,8 @@
 
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1" id="tab-1li">이벤트 종류 선택</li>
-			<li class="tab-link" data-tab="tab-2" id="tab-2li">설정</li>
+			<li class="tab-link" data-tab="tab-2" id="tab-2li">이벤트 상세</li>
+			<li class="tab-link" data-tab="tab-3" id="tab-3li">설정</li>
 		</ul>
 
 		<div id="tab-1" class="tab-content current">
@@ -56,9 +57,24 @@
 			<div class="tab1-low">
 				<button type="button" class="nextButton">다음</button>
 			</div>
-			
 		</div>
+		
 		<div id="tab-2" class="tab-content">
+			<ul class="prizes-ul">
+				<li><input type="text" name="prizes[]"></li>
+				<li><input type="text" name="prizes[]"></li>
+				<li><input type="text" name="prizes[]"></li>
+				<li><input type="text" name="prizes[]"></li>
+			</ul>
+			<button class="prize-add" type="button">추가</button>
+			<div class="tab2-low">
+				<button type="button" class="prevButton">이전</button>
+				<button type="button" class="nextButton">다음</button>
+			</div>
+		</div>
+		
+		
+		<div id="tab-3" class="tab-content">
 			<div>
 				<label>1. 제목</label>
 				<input type="text" name="evName" id="evName">
@@ -80,7 +96,7 @@
 				<label>3. 내용</label>
 				<textarea id="summernote" name="evContent"></textarea>
 			</div>
-			<div class="tab2-low">
+			<div class="tab3-low">
 				<button type="button" class="prevButton">이전</button>
 				<button class="submitButton" type="submit">등록</button>
 			</div>
@@ -114,10 +130,7 @@
 			});
 		}
 	</script>
-	<script type="text/javascript"
-		src="/resources/js/event/RouletteRegister.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/event/EventRegister.js"></script>
+	<script type="text/javascript" src="/resources/js/event/EventRegister.js"></script>
 
 </body>
 </html>

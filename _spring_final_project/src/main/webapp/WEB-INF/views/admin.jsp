@@ -19,7 +19,7 @@
 				</li>
 				<li>
 					<button type="button" class="arcodian">이벤트</button>
-					<a class="content">이벤트 추가</a>
+					<a class="content" id="callEventRegister">이벤트 추가</a>
 					
 				</li>
 				<li>
@@ -28,8 +28,11 @@
 				</li>
 			</ul>
 		</div>
-		<div class="main-pannel"></div>
+		<div class="main-pannel">
+			
+		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/admin.js"></script>
 </body>
 </html>

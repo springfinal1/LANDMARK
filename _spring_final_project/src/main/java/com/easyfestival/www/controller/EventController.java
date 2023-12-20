@@ -3,6 +3,8 @@ package com.easyfestival.www.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -16,6 +18,8 @@ import javax.inject.Inject;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.http.HttpResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,13 +27,16 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.easyfestival.www.domain.eventDTO;
 import com.easyfestival.www.domain.eventVO;
+import com.easyfestival.www.domain.prizeVO;
+import com.easyfestival.www.domain.rouletteVO;
 import com.easyfestival.www.service.EventService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -55,10 +62,25 @@ public class EventController {
 	}
 
 	@PostMapping("/eventRegister")
-	public String eventRegister(eventVO evo) {
-		log.info("evo는???" + evo);
-		isOk = esv.eventRegister(evo);
-		//이벤트 파일 db에 등록
+	public String eventRegister(eventDTO edto) {
+		log.info("edto는???" + edto);
+		log.info("prizes는?"+edto.getPrizes());
+		esv.eventRegister(edto);
+		rouletteVO rlvo=new rouletteVO();
+		rlvo.setEvNo(esv.lastEvno());
+		
+		String prizes="";
+		for(int i=0;i<edto.getPrizes().size();i++) {	//배열 합쳐서 문자열 만들기
+			prizes+=edto.getPrizes().get(i);
+			if(i!=edto.getPrizes().size()-1)
+				prizes+=",";
+		}
+		rlvo.setPrizes(prizes);
+		log.info("rlvo:"+prizes);
+		
+		esv.rouletteRegister(rlvo);
+		
+		
 		
 		return "index";
 	}
@@ -171,6 +193,26 @@ public class EventController {
 	public String admin()
 	{
 		return "/admin";
+	}
+	
+	@PostMapping("/postPrize")
+	public ResponseEntity<String> postPrize(@RequestBody prizeVO prvo)
+	{
+		log.info("prvo:"+prvo);
+		isOk=esv.registerPrize(prvo);
+		
+		return isOk>0 ? new ResponseEntity<String>("1",HttpStatus.OK):new ResponseEntity<String>("0",HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	@PostMapping(value = "/getPrize" )
+	public ResponseEntity<String> getPrize(@RequestParam("evNo")int evNo) throws UnsupportedEncodingException
+	{
+		log.info("evNo:"+evNo);
+		String prizes=esv.getPrize(evNo);
+//		String prizesDecode = URLDecoder.decode(prizes,"UTF-8");
+		log.info("prize 합친 결과"+prizes);
+
+		
+		return new ResponseEntity<String>(prizes,HttpStatus.OK);
 	}
 
 }
