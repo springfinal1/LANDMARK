@@ -125,6 +125,7 @@
    </select>
 
 
+
    <!-- <select id="getMyOrderList" parameterType="map" resultType="OrderDTO"> 
       SELECT * FROM pay_order_user o JOIN package PK ON o.pkNo = PK.pkNo WHERE 
       o.orderNum = #{orderNum} </select> -->
