@@ -91,6 +91,10 @@
   		select * from favorite where id = #{id}
   	</select>
   	
+  	<delete id="removeFavoriteRemove">
+  		delete from favorite where pk_no = #{pkNo} and id = #{idVal}
+  	</delete>
+  	
   	<resultMap type="com.easyfestival.www.domain.ProductListDTO" id="packlist">
   		
 	  		<association property="packvo" javaType="packvo">	

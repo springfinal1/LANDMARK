@@ -75,7 +75,10 @@ CREATE TABLE `free_ticket` (
   `airport_code` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ft_no`)
 
-
+// 찜목록
+create table favorite(
+id varchar(100),
+pk_no bigint));
 
 // 자유여행 가격
 INSERT INTO `tourdb`.`free_ticket`

@@ -84,16 +84,24 @@ function randomImage(){
 }
 
 
-let tripInfo = document.querySelectorAll(".trip-operation");
-let roundTrip = document.getElementById('roundTrip');
+let tripInfo = document.querySelectorAll(".trip-operation"); // 왕복
+let roundTrip = document.getElementById('roundTrip'); // 편도
 let oneWay = document.getElementById('oneWay');
+let hiddenVerification = document.querySelector('.hiddenVerification');
+
+let freeChecked = document.querySelector('.freeChecked');
+
+
+
 
 roundTrip.addEventListener('click',()=>{
     roundTrip.classList.add('freeChecked');
-
+    
     if(oneWay.classList.contains('freeChecked')){
         oneWay.classList.remove('freeChecked');
     }
+    hiddenVerification.value = roundTrip.innerHTML;
+    console.log(hiddenVerification.value);
 })
 
 oneWay.addEventListener('click',()=>{
@@ -102,6 +110,8 @@ oneWay.addEventListener('click',()=>{
     if(roundTrip.classList.contains("freeChecked")){
         roundTrip.classList.remove("freeChecked");
     }
+    hiddenVerification.value = oneWay.innerHTML;
+    console.log(hiddenVerification.value);
 })
 
 
@@ -146,23 +156,6 @@ departure.addEventListener('click',()=>{
 arrival.addEventListener('click',()=>{
     tripModal.style.display = 'block';
 })
-
-
-// document.addEventListener('click',(e)=>{
-//     if(e.target.classList.contains('departure')){
-//         tripModal.style.display = 'block';
-
-//         city.forEach(e=>{
-//             e.addEventListener('click',()=>{
-//                 departure.innerHTML = e.classList
-//             })
-//         }) 
-
-//     }else if(e.target.classList.contains('arrival')){
-//         tripModal.style.display = 'block';
-//     }
-// })
-
 
 // 달력
 let calBtn = document.querySelector('.cal-Btn');
@@ -332,16 +325,28 @@ seatChoice.addEventListener('click',(e)=>{
     
 })
 
-let pepleFooterButton = document.querySelector('.peple-footer-button');
+let pepleFooterButton = document.querySelector('.peple-footer-button'); // 선택버튼
+
+let choiceLi = document.querySelector('.choice-li');// 좌석선택한거
+
+let hiddenPeple = document.getElementById('hiddenPeple');
+let hiddenSeat = document.getElementById('hiddenSeat');
+
 pepleFooterButton.addEventListener('click',()=>{
     pepleModal.style.display = "none";
     // 성인 소아 유아 있는경우 / 성인,소아 / 성인 유아 / 소아, 유아만 있으면 x
     if(adultCount.value > 0 && childCount.value > 0 && infantCount.value > 0){   
         pepleCnt.value = `성인${adultCount.value},소아${childCount.value},유아${infantCount.value}, ${seatClass}`;
+        hiddenPeple.value = parseInt(adultCount.value)+ parseInt(childCount.value)+ parseInt(infantCount.value);
+        hiddenSeat.value = seatClass;
     }else if(adultCount.value > 0 && childCount.value > 0 && infantCount.value == 0){
         pepleCnt.value = `성인${adultCount.value},소아${childCount.value}, ${seatClass}`;
+        hiddenPeple.value = parseInt(adultCount.value) + parseInt(childCount.value);
+        hiddenSeat.value = seatClass;
     }else if(adultCount.value > 0 && childCount.value == 0 && infantCount.value > 0){   
         pepleCnt.value = `성인${adultCount.value},유아${infantCount.value}, ${seatClass}`;
+        hiddenPeple.value = parseInt(adultCount.value) + parseInt(infantCount.value);
+        hiddenSeat.value = seatClass;
     }else if(adultCount.value == 0 && childCount.value > 0 && infantCount.value > 0){
         alert("성인이 포함되어야 합니다");
     }
