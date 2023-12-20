@@ -4,11 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
-<<<<<<< HEAD
   
-=======
-
->>>>>>> d94acf844b7ee23f246bda1b766b0b3ee22b29ca
    <settings>
       <!-- db와 java의 다른 문장 표기법을 맞춰줌 -->
       <setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -29,8 +25,4 @@
       <typeAlias type="com.easyfestival.www.domain.OllPayDTO" alias="OllPayDTO"/>
    </typeAliases>
       
-<<<<<<< HEAD
-=======
-
->>>>>>> d94acf844b7ee23f246bda1b766b0b3ee22b29ca
 </configuration>
