@@ -29,6 +29,7 @@ reservationBtn.forEach(e=>{
         depName.innerHTML = e.closest('div').dataset.airline;
         depTime.innerHTML = `${e.closest('div').dataset.schedule.substring(8,10)}`+" : "+`${e.closest('div').dataset.schedule.substring(10,12)}`;
         depAir.innerHTML =  `${startAirport.innerHTML} <i class="fa-solid fa-arrow-right"></i> `+ e.closest('div').dataset.airport;
+
     })
 })
 arrChoice.forEach(e=>{
@@ -37,12 +38,16 @@ arrChoice.forEach(e=>{
         arrName.innerHTML = e.closest('div').dataset.airline;
         arrTime.innerHTML = `${e.closest('div').dataset.schedule.substring(8,10)}`+" : "+`${e.closest('div').dataset.schedule.substring(10,12)}`;
         arrAir.innerHTML =  e.closest('div').dataset.airport+" "+` <i class="fa-solid fa-arrow-right"></i> ${startAirport.innerHTML}`;
+
     })
 })
 
 
-let adult = document.querySelector('.adult');
-let child = document.querySelector('.child');
-let infant = document.querySelector('.infant');
-let seat = document.querySelector('.seat');
+let adult = document.querySelector('.adult').innerHTML;
+let child = document.querySelector('.child').innerHTML;
+let infant = document.querySelector('.infant').innerHTML;
+let seat = document.querySelector('.seat').innerHTML;
+
+
+let pepCnt = document.querySelector('.pep-cnt');
 

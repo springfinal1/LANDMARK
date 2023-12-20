@@ -101,6 +101,11 @@ public class OrderService {
 		return orderDAO.ollList(orderNum);
 	}
 
+	public List<OllPayDTO> getPackageList(String id) {
+		// 마이페이지 패키지예약내역 리스트용
+		return orderDAO.getPackageList(id);
+	}
+
 
 
 }
