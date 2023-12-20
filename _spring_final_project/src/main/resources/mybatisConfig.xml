@@ -4,7 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
    <settings>
       <!-- db와 java의 다른 문장 표기법을 맞춰줌 -->
       <setting name="mapUnderscoreToCamelCase" value="true"/>

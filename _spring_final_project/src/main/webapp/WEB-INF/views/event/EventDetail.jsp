@@ -27,6 +27,10 @@ canvas {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div class="event-detail-container">
 		<div class="event-tap">
@@ -79,6 +83,10 @@ canvas {
 	</div>
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script type="text/javascript">
@@ -89,6 +97,10 @@ canvas {
    <script type="text/javascript"
       src="/resources/js/event/RouletteEvent.js"></script>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
 
    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script charset="UTF-8" src="https://gamekiki.com/kshop/kwidget/js/kwidget.js"></script>
