@@ -12,7 +12,6 @@ li{
 }
 
 .event-detail-container{
-<<<<<<< HEAD
    margin-top: 15rem;
    margin-bottom: 15rem;
    display: flex;
@@ -40,35 +39,6 @@ li{
    align-items: center;
    flex-direction: column;
    gap: 0.7rem;
-=======
-	margin-top: 15rem;
-	margin-bottom: 15rem;
-	display: flex;
-	justify-content: space-between; 
-	align-items: center;
-	width: 100%;
-}
-
-.event-tap{
-	position: relative;
-	width: 20%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-direction: column;
-}
-.event-tap ul{
-	position: fixed;
-	margin: 0;
-	padding: 0;
-	top:13rem;
-	left:10rem;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	gap: 0.7rem;
->>>>>>> origin/main
 }
 .event-tap-side{
    width: 100%;
@@ -76,7 +46,6 @@ li{
 }
 
 .event-show, .event-list-show{
-<<<<<<< HEAD
    display:flex;
    width: 200px;
    height: 20px;
@@ -96,33 +65,11 @@ li{
 .event-list-show{
    background-color:#1c1c1c;
    color:#fff;
-=======
-	display:flex;
-	width: 200px;
-	height: 20px;
-	font-size: 14px;
-	color:#666;
-	padding:18px 27.9px 18px 28px;
-	border: 1px solid transparent;
-	border-radius: 16px;
-	text-align: center;
-	align-items: center;
-	box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
-	justify-content: space-between;
-}
-.event-show{
-	background-color:#fff;
-}
-.event-list-show{
-	background-color:#1c1c1c;
-	color:#fff;
->>>>>>> origin/main
 }
 .event-tap-side a:hover{
    color: red;
 }
 .event-edit{
-<<<<<<< HEAD
    width: 100%;
    display: flex;
    align-items: center;
@@ -160,45 +107,6 @@ li{
    flex-direction: column;
    gap:0.5rem;
    
-=======
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap:0.5rem;
-}
-.event-edit>a>button, .play-event{
-	cursor: pointer;
-	border-radius: 5px;
-	border: 1px solid #1c1c1c;
-	width: 8rem;
-	height: 3rem;
-	font-size: 1rem;
-	color:#fff;
-}
-.event-edit>a:first-child>button, .play-event{
-	background: red;
-}
-.event-edit>a:last-child>button{
-	background: #1c1c1c;
-	
-}
-.event-detail-div{
-	width: 80%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap:1rem;
-	}
-.event-detail-div>:first-child{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap:0.5rem;
-	
->>>>>>> origin/main
 }
 .event-detail-title{
    font-size: 22px;
@@ -206,7 +114,6 @@ li{
 }
 
 .event-detail-period{
-<<<<<<< HEAD
    font-size: 14px;
    color: #aaa;
 }
@@ -315,116 +222,6 @@ li{
    color:#febf00;
    font-size: 2rem;
    transition: .2s;
-=======
-	font-size: 14px;
-	color: #aaa;
-}
-.button-box{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap:3rem;
-	margin-top: 7rem;
-}
-
-
-.play-div{
-	width: 100%;
-	height: 100%;
-	position:relative;
-	display:flex;
-	z-index: 10;
-	display: none;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	top: 50%;
-	left: 50%;
-	background-color : rgba(0,0,0,.75);
-}
-.roulette-div{
-	position: relative;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	position: absolute;	
-	transform: translate(-40%,-50%);
-	top: 40%;
-	left: 50%;
-}
-
-.canvas-box{
-	position: relative;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	top: 50%;
-	left: 50%;
-	width: 650px;
-	height: 650px;
-	border-radius: 50%;
-	box-shadow: border-box;
-}
-.canvas-box>i{
-	position: absolute;
-	font-size:80px;
-	border-radius: 5px;
-	color: #f7444a;
-	top: 0px;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 22;
-}
-.roulette-div>div{
-	position: relative;
-	position: absolute;
-	transform: translate(-50%,-50%);
-	top: 50%;
-	left: 50%;
-	width: 690px;
-	height: 690px;
-	border-radius: 50%;
-	background-color: #f7444a;
-	box-sizing: border-box;
-}
-
-
-@keyframes leftMoving {
-	0%{
-		transform: translate(-5px, -50%);
-	}
-	100%{
-		transform: translate(0, -50%);
-	}
-}
-.moving-box{
-	position: relative;
-	position: absolute;
-	transform: translateY(-50%);
-	display: flex;
-	align-items: center;
-	top: 50%;
-	right:-33%;
-	gap:0.3rem;
-}
-.moving-box:hover{
-	animation: leftMoving 0.7s infinite;
-	transition: ease-in-out;
-}
-#roulette-btn {
-	cursor: pointer;
-	background: #febf00;
-	padding: .8rem 1.8rem;
-	border: none;
-	font-size: 1.5rem;
-	font-weight: bold;
-	border-radius: 5px;
-	transition: .2s;
-}
-#play {
-	color:#febf00;
-	font-size: 2rem;
-	transition: .2s;
->>>>>>> origin/main
 }
 .play-div button:active {
   background: #444;
@@ -443,9 +240,6 @@ li{
   left: 50%;
   transform: translateX(-50%);
   z-index: 22;
-<<<<<<< HEAD
-} */
-=======
 } */
 
 
