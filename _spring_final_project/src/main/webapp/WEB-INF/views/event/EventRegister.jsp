@@ -31,8 +31,8 @@
 	<div class="container">
 
 		<ul class="tabs">
-			<li class="tab-link current" data-tab="tab-1">이벤트 종류 선택</li>
-			<li class="tab-link" data-tab="tab-2">설정</li>
+			<li class="tab-link current" data-tab="tab-1" id="tab-1li">이벤트 종류 선택</li>
+			<li class="tab-link" data-tab="tab-2" id="tab-2li">설정</li>
 		</ul>
 
 		<div id="tab-1" class="tab-content current">
@@ -54,8 +54,7 @@
 				</div>
 			</div>
 			<div class="tab1-low">
-				<button>이전</button>
-				<button>다음</button>
+				<button type="button" class="nextButton">다음</button>
 			</div>
 			
 		</div>
@@ -81,12 +80,13 @@
 				<label>3. 내용</label>
 				<textarea id="summernote" name="evContent"></textarea>
 			</div>
+			<div class="tab2-low">
+				<button type="button" class="prevButton">이전</button>
+				<button class="submitButton" type="submit">등록</button>
+			</div>
 		</div>
-		
 
 	</div>
-	<button type="submit">등록</button>
-		
 </form>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

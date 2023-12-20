@@ -20,7 +20,7 @@ import net.coobird.thumbnailator.Thumbnails;
 @Component
 public class FileHandler {
 
-	private final String UP_DIR = "C:\\lee\\tour_workspace\\_spring_final_project\\src\\main\\webapp\\resources\\image\\_product\\_java\\fileupload";
+	private final String UP_DIR = "C:\\landmark_upload";
 	
 	public List<ProductFileVO> uploadFile(MultipartFile[] files){ 
 		List<ProductFileVO> pfList = new ArrayList<ProductFileVO>();

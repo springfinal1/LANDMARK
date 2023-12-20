@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.easyfestival.www.domain.AirplaneVO;
+import com.easyfestival.www.domain.FavoriteVO;
 import com.easyfestival.www.domain.FestivalVO;
 import com.easyfestival.www.domain.HotelVO;
 import com.easyfestival.www.domain.PackageVO;
@@ -39,6 +40,10 @@ public interface PackageDAO {
 	int packModify(PackageVO packvo);
 
 	int removeProduct(long pkNo);
+
+	int addFavorite(@Param("idVal")String idVal, @Param("pkNo")long pkNo);
+
+	List<FavoriteVO> getFaList(String id);
 
 	
 

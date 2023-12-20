@@ -82,7 +82,14 @@
 		delete from airplane where pk_no = #{pkNo};
 		delete from festival where pk_no = #{pkNo};
 	</delete>
+	<insert id="addFavorite">
+		insert into favorite(id, pk_no)
+		values(#{idVal},#{pkNo})
+	</insert>
   	
+  	<select id="getFaList" resultType="com.easyfestival.www.domain.FavoriteVO">
+  		select * from favorite where id = #{id}
+  	</select>
   	
   	<resultMap type="com.easyfestival.www.domain.ProductListDTO" id="packlist">
   		

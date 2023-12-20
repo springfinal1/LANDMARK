@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.easyfestival.www.domain.FavoriteVO;
 import com.easyfestival.www.domain.PackageVO;
 import com.easyfestival.www.domain.ProductDTO;
 import com.easyfestival.www.domain.ProductFileVO;
@@ -120,6 +121,16 @@ public class ProductServiceImpl implements ProductService{
 		
 		
 		return isOk;
+	}
+	@Override
+	public int addFavorite(String idVal, long pkNo) {
+		int isOk = packdao.addFavorite(idVal,pkNo);
+		return isOk;
+	}
+	@Override
+	public List<FavoriteVO> getFaList(String id) {
+		// TODO Auto-generated method stub
+		return packdao.getFaList(id);
 	}
 
 	

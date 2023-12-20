@@ -167,6 +167,10 @@ public class EventController {
 		return "redirect:/event/OneventList";
 	}
 	
-	
+	@GetMapping("/admin")
+	public String admin()
+	{
+		return "/admin";
+	}
 
 }
