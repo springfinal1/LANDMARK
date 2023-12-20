@@ -17,7 +17,7 @@ import lombok.ToString;
 public class OrderVO {
 
 	private Long orderNum;
-	private Long productNum;
+	private String productName;
 	private String id;
 	private String pkNo;
 	private Date orderDate;
@@ -25,6 +25,6 @@ public class OrderVO {
 	private String impUid;
 	private Long userCount;
 	private Long sayongPointeu;
-	
+	private char confirmation;
 	
 }

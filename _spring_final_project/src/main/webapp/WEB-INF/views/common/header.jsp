@@ -48,7 +48,7 @@
                <dd><a href="#">테마여행</a>
                   <dl class="sub-menu">
                      <dd><a href="/peyment/OrderList?pageNo=1">휴양지</a></dd>
-                     <dd><a href="#">아름다운도시</a></dd>
+                     <dd><a href="/peyment/PeyReservation">아름다운도시</a></dd>
                      <dd><a href="#">신나는여행지</a></dd>
                   </dl>
                </dd>

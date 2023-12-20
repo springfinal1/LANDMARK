@@ -38,5 +38,9 @@ public interface OrderDAO {
 	
 	List<OllPayDTO> getPackageList(String id); // 마이페이지 패키지예약내역 리스트용
 
+	int updateY(OrderVO orderVO);
+
+	String getConfirmation(long orderNum);
+
 	
 }

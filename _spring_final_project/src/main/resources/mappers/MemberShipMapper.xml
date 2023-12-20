@@ -6,7 +6,7 @@
 <mapper namespace="com.easyfestival.www.repository.MemberShipDAO">
 
 	<insert id="saveGrade"
-		parameterType="com.easyfestival.www.domain.MemberShipVO">
+		parameterType="com.easyfestival.www.domain.MemberShipVO" >
 		INSERT INTO membership (id, grade)
 		VALUES (#{id},
 		#{grade})
