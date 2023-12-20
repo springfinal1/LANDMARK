@@ -78,7 +78,7 @@ canvas {
          </div>
       </div>
    </div>
-
+	
    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script type="text/javascript">

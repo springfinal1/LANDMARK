@@ -96,6 +96,7 @@ public class OrderService {
       return orderDAO.updateY(orderVO);
    }
 
+
    public String getConfirmation(long orderNum) {
       // TODO Auto-generated method stub
       return  orderDAO.getConfirmation(orderNum);
@@ -105,6 +106,5 @@ public class OrderService {
       // 마이페이지 패키지예약내역 리스트용
       return orderDAO.getPackageList(id);
    }
-
 
 }
