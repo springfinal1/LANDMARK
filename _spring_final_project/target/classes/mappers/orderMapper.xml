@@ -124,7 +124,10 @@
       WHERE order_num = #{orderNum};
    </select>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a766670d140195c21827654a4af52f91ee92324a
 
 
    <!-- <select id="getMyOrderList" parameterType="map" resultType="OrderDTO"> 

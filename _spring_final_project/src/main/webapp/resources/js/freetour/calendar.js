@@ -134,43 +134,48 @@ window.onload = function () { buildCalendar(); }    // 웹 페이지가 로드�
         }
 
         
-        
+        let freeCheck = document.querySelector('.freeChecked');
         
         calInit.addEventListener('click',()=>{
-            let cal_date_year = document.querySelector(".Calendar > tbody").dataset.dataThisYear;
-            let cal_date_month = document.querySelector(".Calendar > tbody").dataset.dataThisMonth;
+            if(freeCheck.innerHTML == "왕복"){
+                let cal_date_year = document.querySelector(".Calendar > tbody").dataset.dataThisYear;
+                let cal_date_month = document.querySelector(".Calendar > tbody").dataset.dataThisMonth;
+    
+                let cal_date2_year = document.querySelector(".Calendar2 > tbody").dataset.dataNextYear;
+                let cal_date2_month = document.querySelector(".Calendar2 > tbody").dataset.dataNextMonth;
+                
+    
+                let choiceDayCount = document.querySelectorAll('.choiceDay');
+    
+                let startChoiceDay = (choiceDayCount[0].innerHTML); // 출발일
+                let endChoiceday = (choiceDayCount[1].innerHTML); // 도착일
+                
+    
+                //  table > tbody > tr > td > p 
+                // 달력 확인
+                let parentNodeTbody = choiceDayCount[0].parentNode.parentNode.parentNode.parentNode; 
+                let parentNodeTbody2 = choiceDayCount[1].parentNode.parentNode.parentNode.parentNode;
+                
+                let calInput = document.querySelector('.cal-input');
+    
+                if(parentNodeTbody.classList == "Calendar"){ // 출발지가 1번달력이라면 1번달력에있는 data-set 사용
+                    console.log("출발일 첫번째달력");
+                    calInput.value = cal_date_year +"-"+cal_date_month+"-"+ startChoiceDay;
+                }else{
+                    console.log("출발일 두번째달력");
+                    calInput.value = cal_date2_year +"-"+cal_date2_month+"-"+ startChoiceDay;
+                }
+                
+                if(parentNodeTbody2.classList == "Calendar"){
+                    console.log("도착일 첫번째달력");
+                    calInput.value += "~"+cal_date_year +"-"+cal_date_month+"-"+ endChoiceday;
+                }else{
+                    console.log("도착일 두번째달력");
+                    calInput.value += "~"+cal_date2_year +"-"+cal_date2_month+"-"+ endChoiceday;
+                }
 
-            let cal_date2_year = document.querySelector(".Calendar2 > tbody").dataset.dataNextYear;
-            let cal_date2_month = document.querySelector(".Calendar2 > tbody").dataset.dataNextMonth;
-            
-
-            let choiceDayCount = document.querySelectorAll('.choiceDay');
-
-            let startChoiceDay = (choiceDayCount[0].innerHTML); // 출발일
-            let endChoiceday = (choiceDayCount[1].innerHTML); // 도착일
-            
-
-            //  table > tbody > tr > td > p 
-            // 달력 확인
-            let parentNodeTbody = choiceDayCount[0].parentNode.parentNode.parentNode.parentNode; 
-            let parentNodeTbody2 = choiceDayCount[1].parentNode.parentNode.parentNode.parentNode;
-            
-            let calInput = document.querySelector('.cal-input');
-
-            if(parentNodeTbody.classList == "Calendar"){ // 출발지가 1번달력이라면 1번달력에있는 data-set 사용
-                console.log("출발일 첫번째달력");
-                calInput.value = cal_date_year +"-"+cal_date_month+"-"+ startChoiceDay;
-            }else{
-                console.log("출발일 두번째달력");
-                calInput.value = cal_date2_year +"-"+cal_date2_month+"-"+ startChoiceDay;
-            }
-            
-            if(parentNodeTbody2.classList == "Calendar"){
-                console.log("도착일 첫번째달력");
-                calInput.value += "~"+cal_date_year +"-"+cal_date_month+"-"+ endChoiceday;
-            }else{
-                console.log("도착일 두번째달력");
-                calInput.value += "~"+cal_date2_year +"-"+cal_date2_month+"-"+ endChoiceday;
+            }else if(freeCheck.innerHTML == "편도"){
+                
             }
             
         })

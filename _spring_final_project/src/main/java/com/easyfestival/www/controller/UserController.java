@@ -162,6 +162,17 @@ public class UserController {
 		UserVO uvo = (UserVO) session.getAttribute("uvo");
 		List<HelpDTO> hList = hsv.getList(uvo.getId(), "");
 		// 문의사항 리스트
+<<<<<<< HEAD
+=======
+=======
+
+		List<HelpDTO> hList = hsv.getList(uvo.getId(), "");
+		// 문의사항 리스트
+
+
+
+>>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
+>>>>>>> a766670d140195c21827654a4af52f91ee92324a
 		// 패키지상품 예약 리스트
 		List<OllPayDTO> packageList = oderService.getPackageList(uvo.getId());
 		MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
