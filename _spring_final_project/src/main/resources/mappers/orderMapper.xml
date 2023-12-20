@@ -124,15 +124,6 @@
       WHERE order_num = #{orderNum};
    </select>
 
-   <!-- 마이페이지 예약내역 리스트용 -->
-   <select id="getPackageList" resultType="OllPayDTO">
-      SELECT * FROM pay_order_user o
-      JOIN package p ON o.pk_no = p.pk_no
-      JOIN airplane a ON a.pk_no = o.pk_no
-      JOIN hotel h ON h.pk_no = o.pk_no
-      WHERE o.id = #{id}
-   </select>
-
 
    <!-- <select id="getMyOrderList" parameterType="map" resultType="OrderDTO"> 
       SELECT * FROM pay_order_user o JOIN package PK ON o.pkNo = PK.pkNo WHERE 
