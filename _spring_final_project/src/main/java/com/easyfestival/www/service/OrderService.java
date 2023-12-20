@@ -1,14 +1,7 @@
 package com.easyfestival.www.service;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,11 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.easyfestival.www.domain.OllPayDTO;
 import com.easyfestival.www.domain.OrderVO;
 import com.easyfestival.www.domain.PayDTO;
-import com.easyfestival.www.domain.ProductListDTO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.repository.OrderDAO;
-import com.easyfestival.www.repository.PackageDAO;
-import com.easyfestival.www.security.UserVO;
 
 @Service
 public class OrderService {
@@ -101,7 +91,6 @@ public class OrderService {
 		return orderDAO.ollList(orderNum);
 	}
 
-<<<<<<< HEAD
 	public int updateY(OrderVO orderVO) {
 		// TODO Auto-generated method stub
 		return orderDAO.updateY(orderVO);
@@ -110,11 +99,10 @@ public class OrderService {
 	public String getConfirmation(long orderNum) {
 		// TODO Auto-generated method stub
 		return  orderDAO.getConfirmation(orderNum);
-=======
+	}
 	public List<OllPayDTO> getPackageList(String id) {
 		// 마이페이지 패키지예약내역 리스트용
 		return orderDAO.getPackageList(id);
->>>>>>> 994631ddb04c4657884900c0ae89b33c85fd7565
 	}
 
 

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +32,7 @@ import com.easyfestival.www.security.UserVO;
 import com.easyfestival.www.service.HelpService;
 import com.easyfestival.www.service.MailService;
 import com.easyfestival.www.service.MemberShipService;
-<<<<<<< HEAD
-=======
 import com.easyfestival.www.service.OrderService;
->>>>>>> 994631ddb04c4657884900c0ae89b33c85fd7565
 import com.easyfestival.www.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -164,16 +160,12 @@ public class UserController {
 	@GetMapping("detail")
 	public void getDetailUser(HttpSession session, Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("uvo");
-<<<<<<< HEAD
-		List<HelpDTO> hList = hsv.getList(uvo.getId(), "");
-=======
 		// 문의사항 리스트
-		List<HelpDTO>hList = hsv.getList(uvo.getId(), "");
+		List<HelpDTO> hList = hsv.getList(uvo.getId(), "");
 		// 패키지상품 예약 리스트
 		List<OllPayDTO> packageList = oderService.getPackageList(uvo.getId());
 		MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
 		model.addAttribute("msvo", msvo); // 멤버쉽정보
->>>>>>> 994631ddb04c4657884900c0ae89b33c85fd7565
 		model.addAttribute("hList", hList);
 		model.addAttribute("packList", packageList);
 	}
