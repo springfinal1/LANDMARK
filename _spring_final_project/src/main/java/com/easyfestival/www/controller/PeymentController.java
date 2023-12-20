@@ -2,6 +2,7 @@ package com.easyfestival.www.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -75,13 +76,13 @@ public class PeymentController {
 		this.api = new IamportClient("7820725586500628",
 				"P9nYyc55RyknowCswTwMrhHUdHc2A0MJJGTjzuEGbUjsmm9XFl60NOBNleO8eljJn82tjH4O7I0kKQdr");
 	}
-	
+
 	/*
 	 * @GetMapping("/peyDetail") public String getTest() {
 	 * 
 	 * return "/package/peyDetail"; }
 	 */
-	
+
 	@GetMapping("/peyDetail")
 	public String getDetail(@RequestParam("pkNo") long pkNo, @RequestParam("userCount") long userCount,
 			HttpSession session, Model model) {
@@ -92,29 +93,24 @@ public class PeymentController {
 
 		long memberPrice = pldto.get(0).getPackvo().getPkPrice() * userCount;
 
-
-		
-
 		MemberShipVO msVo = memberShipService.getmemberShip(((UserVO) session.getAttribute("uvo")).getId());
 
 		/* PackageVO packVO = pldto.get(0).getPackvo(); */
 
 		long memberDiscountPrice = Math.round(msVo.getMemberDiscountRate() * memberPrice);
-	
 
-	
 		long lastTotalCount = (int) (memberPrice - memberDiscountPrice);
-		
+
 		model.addAttribute("memShp", msVo);
 
 		model.addAttribute("memberDiscountPrice", memberDiscountPrice);
-		
+
 		model.addAttribute("memberPrice", memberPrice);
 
 		model.addAttribute("userCount", userCount);
-		
+
 		model.addAttribute("lastTotalCount", lastTotalCount);
-		
+
 		return "/package/peyDetail";
 	}
 
@@ -166,17 +162,15 @@ public class PeymentController {
 		System.out.println("2222 : " + orderVO.getOrderNum());
 		System.out.println("2222 : " + orderVO.getTotalPrice());
 
-
 		int result1 = orderService.payMentCancle(payDTO);
 		System.out.println("rrr");
 
 		int result = orderService.orderCancle(orderVO);
-		
+
 		int result2 = memberShipService.pointCancle(orderVO); // 사용한 포인트 환불
-		
+
 		int result3 = memberShipService.ollCancle(orderVO);
 
-		
 		if (result > 0) {
 			System.out.println("예약 DB 삭제성공");
 		}
@@ -190,7 +184,32 @@ public class PeymentController {
 		return result;
 	}
 
-	// 마이페이지 - 주문 목록
+	@RequestMapping(value = "/confirmation", method = RequestMethod.POST)
+	@ResponseBody
+	public String paymentComplete(@RequestBody OrderVO orderVO, HttpSession session) throws Exception {
+		// DB 저장 부분
+
+		orderVO = orderService.adminList(orderVO);
+
+		System.out.println(orderVO);
+
+		int result = memberShipService.insert_point(orderVO);
+
+		int result2 = orderService.updateY(orderVO);
+
+		char updateYN = orderVO.getConfirmation();
+
+		String resultString = String.valueOf(updateYN);
+		System.out.println(resultString);
+		if (result > 0) {
+			System.out.println("구매 확정 포인트 등록 성공");
+		}
+		if (result2 > 0) {
+			System.out.println("업데이트 성공");
+		}
+
+		return resultString;
+	}
 
 	@RequestMapping(value = "/complete", method = RequestMethod.POST)
 	@ResponseBody
@@ -218,15 +237,12 @@ public class PeymentController {
 
 		orderService.insert_pay(orderVO);
 
-		memberShipService.insert_point(orderVO);
-
 		return res;
 
 	}
-	
 
-		@GetMapping("/complete")
-		public String getOrderComplete(@RequestParam long payNum, OrderVO orderVO, HttpSession session, Model model)
+	@GetMapping("/complete")
+	public String getOrderComplete(@RequestParam long payNum, OrderVO orderVO, HttpSession session, Model model)
 			throws Exception {
 
 		System.out.println("404에러 ");
@@ -248,36 +264,24 @@ public class PeymentController {
 
 		return "redirect:/peyment/OrderList?pageNo=1";
 	}
-	
-	
-	
-	
+
 	@GetMapping("/getList")
 	public String getOrderGetList(@RequestParam long orderNum, HttpSession session, Model model) {
-		
-		
-		
+
 		MemberShipVO msVo = memberShipService.getmemberShip(((UserVO) session.getAttribute("uvo")).getId());
-		
+
 		model.addAttribute("msVo", msVo);
-		
-		
+
 		List<OllPayDTO> ollList = orderService.ollList(orderNum);
-		
+
 		log.info("ollList >>>>>> {}", ollList);
 
 		model.addAttribute("ollList", ollList);
-		
-		
+
 		model.addAttribute("orderNum", orderNum);
-		
+
 		return "/package/complete";
 	}
-	
-	
-	
-	
-	
 
 	@RequestMapping(value = "pay_info", method = RequestMethod.GET)
 	@ResponseBody
@@ -287,7 +291,7 @@ public class PeymentController {
 		IamportResponse<Payment> result = api.paymentByImpUid(imp_uid);
 		PayDTO payDTO = new PayDTO();
 		long point = 0; // 기본값 설정
-		
+
 		if (enteredPoints != null && !enteredPoints.isEmpty()) {
 			try {
 				point = Long.parseLong(enteredPoints);
@@ -303,6 +307,7 @@ public class PeymentController {
 		payDTO.setOrderNum(Long.parseLong(result.getResponse().getMerchantUid()));
 		payDTO.setPayMethod(result.getResponse().getPayMethod());
 		payDTO.setProductName(result.getResponse().getName());
+		System.out.println("result.getResponse().getName()" + result.getResponse().getName());
 		payDTO.setPayAmount(result.getResponse().getAmount().longValue());
 		payDTO.setPkNo(pkNo);
 		payDTO.setSayongPointeu(point);
@@ -314,8 +319,7 @@ public class PeymentController {
 		// 유효성 검사 후 String을 long으로 변환
 
 		int isOK = memberShipService.updateMemberShip(((UserVO) session.getAttribute("uvo")).getId(), point);
-		
-		
+
 		/* model.addAttribute("payDTO", payDTO); */
 		System.out.println("aaa이거모임 ?" + point);
 
@@ -334,36 +338,21 @@ public class PeymentController {
 		return result;
 	}
 
-}
+	
+	@GetMapping("/status")
+	public ResponseEntity<String> getOrderStatus(@RequestParam Long orderNum) {
+	    // 서비스를 통해 데이터베이스에서 주문 상태를 가져옴
+	    String orderStatus = orderService.getConfirmation(orderNum);
 
-/*
- * @GetMapping(value = "myOrderList") public String myOrder(OrderDTO
- * orderDTO,HttpSession session, Model model,
- * 
- * @RequestParam(value = "pagingNum", required = false, defaultValue = "1")
- * String pagingNum) throws Exception{
- * 
- * System.out.println("myorderList"); Long svNum =
- * (Long)(session.getAttribute("saveNum"));
- * 
- * String saveNUM = String.valueOf(svNum); List<Long> codeList =
- * orderService.MyOrderCount(saveNUM);
- * 
- * System.out.println("saveNum : " + saveNUM); System.out.println("codeList : "
- * +codeList);
- * 
- * 
- * List<Long> limitList = new ArrayList<Long>(); try { limitList =
- * codeList.subList(cri.getPageStart(), cri.getPageStart()+3); } catch
- * (Exception e) { limitList = codeList.subList(cri.getPageStart(),
- * codeList.size()); } Map<Long, List> orderMap =
- * orderService.getMyOrderList(saveNUM, limitList);
- * 
- * UserPageMaker pm = new UserPageMaker(); pm.setCri(cri);
- * pm.setTotalCount(codeList.size());
- * 
- * model.addAttribute("orderMap", orderMap); model.addAttribute("pagingNum",
- * pagingNum); model.addAttribute("pm", pm); return "order/myOrderList"; }
- * 
- * }
- */
+	    // 문자열 형식으로 반환
+	    return new ResponseEntity<>(orderStatus, HttpStatus.OK);
+	}
+
+
+	@GetMapping("PeyReservation")
+	public String reservation() {
+
+		return "/package/PeyReservation";
+	}
+
+}

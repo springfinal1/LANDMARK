@@ -101,9 +101,20 @@ public class OrderService {
 		return orderDAO.ollList(orderNum);
 	}
 
+<<<<<<< HEAD
+	public int updateY(OrderVO orderVO) {
+		// TODO Auto-generated method stub
+		return orderDAO.updateY(orderVO);
+	}
+
+	public String getConfirmation(long orderNum) {
+		// TODO Auto-generated method stub
+		return  orderDAO.getConfirmation(orderNum);
+=======
 	public List<OllPayDTO> getPackageList(String id) {
 		// 마이페이지 패키지예약내역 리스트용
 		return orderDAO.getPackageList(id);
+>>>>>>> 994631ddb04c4657884900c0ae89b33c85fd7565
 	}
 
 
