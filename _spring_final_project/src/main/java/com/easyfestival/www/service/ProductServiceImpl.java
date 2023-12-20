@@ -132,6 +132,11 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return packdao.getFaList(id);
 	}
+	@Override
+	public int removeFavoriteRemove(long pkNo,String idVal) {
+		// TODO Auto-generated method stub
+		return packdao.removeFavoriteRemove(pkNo, idVal);
+	}
 
 	
 	

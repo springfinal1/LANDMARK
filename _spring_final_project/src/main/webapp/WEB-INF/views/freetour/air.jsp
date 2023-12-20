@@ -31,8 +31,9 @@
 					<div class="air-info">	
 						<div class="air-tranport">
 							<div class="air-operation-info">
-								<a href="#" role="button" id="roundTrip" class="trip-operation">왕복</a>
+								<a href="#" role="button" id="roundTrip" class="trip-operation freeChecked">왕복</a>
 								<a href="#" role="button" id="oneWay" class="trip-operation">편도</a>
+								<input type="hidden" name="verification" value="왕복" class="hiddenVerification"> 
 							</div>
 
 						</div>
@@ -60,8 +61,10 @@
 							
 								<div>
 									<span class="trip-peple-count">여행인원</span>
-									<div >
+									<div>
 										<input type="text" class="pepleCount-input peple-count" name="pepleCount" value="성인1 ,일반석" readonly="readonly"> <!-- 성인 -->
+										<input type="hidden" name="peple" value="1" id="hiddenPeple">
+										<input type="hidden" name="seat" value="일반석" id="hiddenSeat">
 									</div>
 								</div>
 								
@@ -288,8 +291,8 @@
 					<li class="place-margin">
 						<strong class="continent">중국</strong>
 						<ul>
-							<li class="city">북경</li>
-							<li class="city">상해/푸동</li>
+							<li class="city">베이징/다싱</li>
+							<li class="city">상하이/푸동</li>
 							<li class="city">대련</li>
 							<li class="city">연길</li>
 							<li class="city">하얼빈</li>
@@ -311,7 +314,7 @@
 					<li class="place-margin">
 						<strong class="continent">미주/중남미</strong>
 						<ul>
-							<li class="city">로스엔젤레스</li>
+							<li class="city">로스앤젤레스</li>
 							<li class="city">뉴욕</li>
 							<li class="city">샌프란시스코</li>
 							<li class="city">하와이/호놀롤루</li>
