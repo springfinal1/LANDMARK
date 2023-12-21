@@ -35,15 +35,12 @@
 						<span>
 							<a href="/product/list?pkContinent=동북아">동북아</a>
 						</span>
-						
 						<span>
 							<a href="/product/list?pkContinent=동남아">동남아</a>
-						</span>
-							
+						</span>					
 						<span>
 							<a href="/product/list?pkContinent=유럽">유럽</a>
-						</span>
-							
+						</span>					
 						<span>
 							<a href="/product/list?pkContinent=아메리카">아메리카</a>
 						</span>
@@ -58,16 +55,8 @@
 						</span>	
 						<span>
 							<a href="/product/list?pkContinent=아메리카">아메리카</a>
-						</span>	
-						<span>
-							<a href="http://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList">테스트2</a>
-						</span>	
-						<span>
-							<a href="http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?ServiceKey=ijQL0nu774ZPOX%2B4O4A1liiipYbCGKpoAGKZfExa6pDSbgqb4r1kI33P%2Byoz1pZ3MuNh4YuLM8SH%2BHI57KBwEQ%3D%3D&pageNo=1">테스트해보기]</a>
-						</span>	
-																									
-					</div>
-					
+						</span>																						
+					</div>		
 				</div>
 			</div>
 			
@@ -78,7 +67,7 @@
 			
 			
 			<!-- 리스트  -->
-			<div class="list-container">			
+			<div class="product-list-container">			
 				<c:forEach items="${pldto }" var="pldto">
 
 						<input type="hidden" value="${pldto.packvo.pkNo }" name="pkNo"> 

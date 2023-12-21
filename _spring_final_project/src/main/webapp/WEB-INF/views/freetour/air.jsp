@@ -44,7 +44,8 @@
 									<input type="text" value="인천" class="departure" name="departure"> <!-- 출발지 -->
 								</li>
 								<li>
-									<i class="fa-solid fa-repeat" id="transformation"></i>
+									<!-- <i class="fa-solid fa-repeat" id="transformation"></i> -->
+									<span class="material-symbols-outlined">chevron_right</span>
 								</li>
 								<li>
 									<input type="text" value="도착지" class="arrival" name="arrival"> <!-- 도착지 -->
@@ -416,8 +417,15 @@
 		</div>
 	</div>
 
-        
-    
+	<div></div>
+
+
+
+
+
+
+
+
 
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

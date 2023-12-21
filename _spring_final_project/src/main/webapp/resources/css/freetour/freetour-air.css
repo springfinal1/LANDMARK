@@ -69,7 +69,6 @@ body{
     transform: translate(-50%,-50%);
     top: 60%;
     left: 50%;
-    border: 1px solid black;
     background-color: white;
     width: 1200px;
     border-radius: 10px;
@@ -462,9 +461,10 @@ ul, li{
     cursor: pointer;
 }
 .themeTravel{
-    margin: 64px auto 0;
-    width: 1300px;
-    margin-bottom: 50px;
+    margin: 40px auto 0;
+    width: 1600px;
+    margin-top: 100px;
+    margin-bottom: 200px;
 }
 .themeTravel > h3{
     font-size: 28px;
@@ -472,14 +472,14 @@ ul, li{
     margin-left: 20px;
 }
 .themeImg{
-    width: 280px;
+    width: 350px;
     height: 320px;
     border-radius: 9px;
     
 }
 
 .themeTravel > ul > li{
-    width: 280px;
+    width: 350px;
     height: 320px;
     margin-left: 20px;
     margin-right: 20px;
@@ -513,6 +513,7 @@ ul, li{
 .search-city-kor{
     color: black;
     margin-right: 30px;
+    font-weight: 700;
 }
 .search-city-info{
     margin-left: 30px;
@@ -558,10 +559,22 @@ ul, li{
     display: none;
 }
 .cal-input{
-    font-size: 20px;
+    font-family: 'SpoqaHanSansNeo';
+    font-size: 25px;
     color: rgba(0, 0, 0, 0.87);
     font-weight: 700;
     border: none;
     outline: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.adult-minus-btn, .adult-plus-btn , .child-minus-btn, .child-plus-btn, .infant-minus-btn,.infant-plus-btn{
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
 }
