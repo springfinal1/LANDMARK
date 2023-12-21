@@ -1,7 +1,5 @@
 package com.easyfestival.www.domain;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +11,10 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class eventDTO 
+public class AttendanceHistoryVO 
 {
-	private eventVO evo;
-	private List<String> prizes;
-	private attendanceVO atvo;
+	private long ev_no;
+	private String id;
+	private String attendanceDate;
+
 }

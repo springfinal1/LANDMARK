@@ -39,4 +39,25 @@
 	<select id="getPrize" resultType="String">
 		select prizes from roulette where ev_no=#{evNo};
 	</select>
+	<insert id="attendanceRegister">
+		insert into attendance values (#{evNo},#{maxAttendanceCount},#{point},#{specialPointCount},#{specialPoint},#{fullAttendancePrize})
+	</insert>
+	<insert id="attendanceHistory">
+		insert into attendance_history values (#{evNo},#{id},#{now})
+	</insert>
+	<select id="getAttendanceHistory" resultType="com.easyfestival.www.domain.AttendanceHistoryVO">
+		select * from attendance_history where ev_no=#{evNo} and id=#{id} and attendance_date= #{now} 
+	</select>
+	<select id="getAttendance" resultType="com.easyfestival.www.domain.attendanceVO">
+		select * from attendance where ev_no=#{evNo}
+	</select>
+	<update id="addpoint">
+		update membership set point=point+#{point} where id=#{id}
+	</update>
+	<select id="getAttendanceCount" resultType="int">
+		select count(id) from attendance_history where ev_no=#{evNo} and id=#{id}
+	</select>
+	<update id="addSpecialPoint">
+		update membership set point=point+#{specialPoint} where id=#{id}
+	</update>
 </mapper>

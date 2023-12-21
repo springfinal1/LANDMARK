@@ -4,11 +4,11 @@ playbtn.addEventListener('click', () => {
   document.querySelector('.play-div').style.display = 'block';
 })
 
-// let closebtn= document.querySelector('.close-event');
+ let closebtn= document.querySelector('.close-playdiv-btn');
 
-// closebtn.addEventListener('click', () => {
-//   document.querySelector('.play-div').style.display = 'none';
-// })
+ closebtn.addEventListener('click', () => {
+   document.querySelector('.play-div').style.display = 'none';
+ })
 
 
 
@@ -16,7 +16,7 @@ const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
 
 let product;
-const colors = ["#dc0936", "#e6471d", "#f7a416", "#efe61f "];
+const colors = ["#ffe9bb", "#ffffff"];
 
 
   $.ajax({
@@ -42,7 +42,7 @@ const colors = ["#dc0936", "#e6471d", "#f7a416", "#efe61f "];
   });
 
 
-const newMake = () => {
+const newMake = () => { //룰렛 만들기
 
   
   const [cw, ch] = [$c.width / 2, $c.height / 2];
@@ -50,7 +50,7 @@ const newMake = () => {
 
   for (let i = 0; i < product.length; i++) {
     ctx.beginPath();
-    ctx.fillStyle = colors[i % (colors.length - 1)];
+    ctx.fillStyle = colors[i % (colors.length)];
     ctx.moveTo(cw, ch);
     ctx.arc(cw, ch, cw, arc * (i - 1), arc * i);
     ctx.fill();
@@ -81,7 +81,7 @@ const newMake = () => {
   }
 }
 
-const rotate = () => {
+const rotate = () => {  //룰렛 돌리기
   $c.style.transform = `initial`;
   $c.style.transition = `initial`;
 
@@ -90,7 +90,7 @@ const rotate = () => {
     const ran = Math.floor(Math.random() * product.length);
 
     const arc = 360 / product.length;
-    const rotate = (ran * arc) + 3600 + (arc * 3) - (arc / 4);
+    const rotate = (ran * arc) + 3600 + (arc * 2);
 
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
@@ -114,4 +114,3 @@ const rotate = () => {
 }, 1);
 
 };
-
