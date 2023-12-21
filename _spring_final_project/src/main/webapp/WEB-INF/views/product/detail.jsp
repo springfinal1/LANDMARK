@@ -65,9 +65,6 @@
 						<div>
 							<div class="manager-div">
 								<span id="managerInfoA" class="manager-div-a">담당자 정보 <span class="material-symbols-outlined" id="managerInfoSpan">error</span></span>	
-								<!-- 여행 후기 갯수 늘어나게 만들기 클릭하면 리뷰창으로 이동 -->
-								<!-- 여행후기 갯수  -->
-								<a href="#" class="tourreview manager-div-a">여행후기 <span>0</span></a>
 							</div>
 							
 						</div>
@@ -166,11 +163,6 @@
 								<div class="product-remove">상품 제거</div>
 							</div>               
              		  </c:if>
-					</div>
-					<div>
-						<span>예상 포인트 적립금액</span>
-						<!-- 마일리지  -->
-						<span>???</span>
 					</div>
 				</div> <!-- 옵션 -->
 			
