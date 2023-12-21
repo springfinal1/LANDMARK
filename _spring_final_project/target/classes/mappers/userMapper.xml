@@ -22,10 +22,6 @@
   		insert into auth_user(id, auth) values(#{id}, #{auth})
   	</insert>
   	
-  	<select id="getList" resultType="uvo">
-  		select * from user
-  	</select>
-  	
   	<update id="modifyUser">
   		update user set 
   		<include refid="modify"></include>
@@ -40,8 +36,13 @@
   		select count(id) from user;
   	</select>
   	
-  	<select id="getUserList" resultType="uvo">
+  	<select id="getList" resultType="uvo">
   		select * from user
+  		limit #{limitStart}, #{listQty}
+  	</select>
+  	
+  	<select id="getUserList" resultType="udto">
+  		select * from user left join membership using(id)
   		limit #{limitStart}, #{listQty}
   	</select>
   	
@@ -50,6 +51,10 @@
   		where name = #{name} and email = #{email}
   	</select>
   	
+  	<select id="getFavoriteList" resultType="fadto">
+  		select * from favorite f join package p using(pk_no)
+  		where f.id = #{id}
+  	</select>
   	
   	<sql id="modify">
   		<trim suffixOverrides=",">

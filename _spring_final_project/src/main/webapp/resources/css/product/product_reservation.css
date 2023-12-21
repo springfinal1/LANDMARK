@@ -113,6 +113,7 @@ body{
 }
 .reservation-agree-content:hover{
     border-bottom: 1px solid black;
+    cursor: pointer;
 }
 .agree-span{
     margin-top: 20px;
@@ -180,7 +181,7 @@ body{
     cursor: pointer;
     color: black;
 }
-.checked{
+.checked-red{
     color: red;
 }
 .reservation-footer-strong{
@@ -244,6 +245,7 @@ body{
     border: none;
     font-size: 20px;
     font-weight: 700;
+    text-align: center;
 }
 .reservation-peple-count > button ,.reservation-peple-count > input{
     border: none;
@@ -268,6 +270,108 @@ body{
 .peple-input{
     text-align: center;
 }
-.terms-modal{
-	background-color: gray;
+.terms-modal-back{
+	position:relative;
+	position:absolute;
+	top:50%;
+	left:50%;
+	display:none;
+	transform:translate(-50%,-50%);
+	width:100%;
+	height:100%;
+	background-color: rgba(0,0,0, .5);
 }
+.terms-modal{
+	position:absolute;
+	top:20%;
+	left:50%;
+	min-width:600px;
+	max-width:780px;
+	min-height:500px;
+	transform:translate(-50%,-20%);
+	box-sizing:border-box;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #fff;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.terms-modal-translate{
+	transition: .1s;
+	top:15%px;
+	left:50%;
+	transform:translate(-50%,-15%);
+	
+}
+.terms-modal-header{
+	width:100%;
+	padding:0 50px 0 50px;
+	height:90px;
+	box-sizing: border-box;
+	line-height:90px;
+}
+.terms-modal-header h2{
+	margin:0;
+	height: 100%;
+	border-bottom: 1px solid #dedede;
+	
+}
+.terms-modal-body{
+	padding:45px 50px 100px 50px;
+	font-size:14px;
+	font-weight:normal;
+    letter-spacing: -0.42px;
+    max-height: 400px;
+    overflow: auto;
+}
+.terms-modal-footer{
+	width: 100%;
+	height: 55px;
+	box-sizing: border-box;
+	display: flex;
+}
+.terms-modal-footer button{
+	width: 50%;
+	font-size: 16px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.terms-modal-footer>:first-child {
+	background: #fff;
+	border: 1px solid #dedede;
+}
+.terms-modal-footer>:first-child:hover{
+	border: 1px solid #1c1c1c;
+}
+.terms-modal-footer>:last-child {
+	background: #1c1c1c;
+	border: none;
+	color:#fff;
+}
+.terms-modal-footer>:last-child:hover{
+	background: #272829;
+}
+table{
+	border-top:1px solid #1c1c1c;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+table tr{
+	border-bottom: 1px solid #dedede;
+	text-align: left;
+	letter-spacing: -0.42px;
+}
+table td{
+	padding: 15px;
+}
+
+
+
+
+
+
+
+
+

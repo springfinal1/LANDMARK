@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.easyfestival.www.domain.FavoriteDTO;
 import com.easyfestival.www.domain.HelpDTO;
 import com.easyfestival.www.domain.MemberShipVO;
 import com.easyfestival.www.domain.OllPayDTO;
+import com.easyfestival.www.domain.UserInfoDTO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.security.AuthVO;
 import com.easyfestival.www.security.UserVO;
@@ -77,6 +79,7 @@ public class UserController {
 			re.addFlashAttribute("message", 1); // 성공하면 메시지로 1 리턴
 			re.addFlashAttribute("joinID", uvo.getId()); // 회원가입 완료 아이디 전달
 			memberShipService.insertId(uvo.getId());
+//			memberShipService.signUpPoint(uvo.getId());
 		}
 		return "redirect:/";
 	}
@@ -114,15 +117,16 @@ public class UserController {
 	// 회원 리스트
 	@GetMapping("list")
 	public void getUserList(Model model, @RequestParam("pageNo") int pageNo) {
-//		List<UserVO> uvoList = usv.getList();
 		int totalCount = usv.getUserCount(); // 총 유저수 구하기
 		log.info("유저수 >>>>>> {}", totalCount);
 		PagingHandler ph = new PagingHandler(pageNo, 10, 5, totalCount); // 페이지네이션 설정 핸들
 		log.info("ph >>>>>> {}", ph.toString());
-
-		List<UserVO> uvoList = usv.getList(ph);
+		
+//		List<UserVO> uvoList = usv.getList(ph);
+//		model.addAttribute("uvoList", uvoList);
+		List<UserInfoDTO> udto = usv.getUserList(ph);
 		model.addAttribute("ph", ph);
-		model.addAttribute("uvoList", uvoList);
+		model.addAttribute("udtoList", udto);
 	}
 
 	// 회원정보 수정
@@ -166,9 +170,12 @@ public class UserController {
 		List<OllPayDTO> packageList = oderService.getPackageList(uvo.getId());
 		// 멤버쉽 정보
 		MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
+		// 관심상품 리스트
+		List<FavoriteDTO> faList = usv.getFavoriteList(uvo.getId());
 		model.addAttribute("msvo", msvo); // 멤버쉽정보
 		model.addAttribute("hList", hList);
 		model.addAttribute("packList", packageList);
+		model.addAttribute("faList", faList);
 	}
 
 	// 아이디, 비밀번호 찾기
