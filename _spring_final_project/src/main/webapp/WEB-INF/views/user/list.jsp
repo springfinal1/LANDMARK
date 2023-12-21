@@ -23,16 +23,16 @@
 					<span>연락처</span>
 					<span>주소</span>
 				</div>
-				<c:forEach items="${uvoList}" var="uvo">
+				<c:forEach items="${udtoList}" var="udto">
 				<div>
-					<span>${uvo.id}</span>
-					<span>bronze</span>
-					<span>0</span>
-					<span>${uvo.name}</span>
-					<span>${uvo.age}</span>
-					<span>${uvo.email}</span>
-					<span>${uvo.phoneNumber}</span>
-					<span>${uvo.address}</span>
+					<span>${udto.id}</span>
+					<span>${empty udto.grade ? '브론즈' : udto.grade}</span>
+					<span>${udto.point}</span>
+					<span>${udto.name}</span>
+					<span>${udto.age}</span>
+					<span>${udto.email}</span>
+					<span>${udto.phoneNumber}</span>
+					<span>${udto.address}</span>
 				</div>
 				</c:forEach>
 			</div>

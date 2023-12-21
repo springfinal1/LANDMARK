@@ -44,16 +44,20 @@ let pkNo = "";
 // 아이디가 null x
 
 function openFunction(){
-    heartBtn.forEach(e=>{
-        console.log(e.dataset.heart);
-        checkRed().then(result=>{
-            for(let i=0; i<result.length; i++){
-                if(result[i].pkNo == e.dataset.heart){
-                    e.classList.add('check-heart');
+    if(heartBtn.length > 0){
+        heartBtn.forEach(e=>{
+            console.log(e.dataset.heart);
+            checkRed().then(result=>{
+                if(result != null){
+                    for(let i=0; i<result.length; i++){
+                        if(result[i].pkNo == e.dataset.heart){
+                            e.classList.add('check-heart');
+                        }
+                    }
                 }
-            }
+            })
         })
-    })
+    }
 }
 
 heartBtn.forEach(e=>{
@@ -116,5 +120,23 @@ async function favoriteRemoveFormServer(pkNo,idVal){
 }
 
 
+let dropSpan = document.querySelector('.place-drop-menu');
+
+
+
+    // if(placeAll.innerHTML == "지역보기"){
+    //     console.log("탄다")
+    //     dropSpan.innerHTML = `<span><a href="/product/list?pkContinent=동북아">동북아</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=동남아">동남아</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=유럽">유럽</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=아메리카">남미/중미/북미</a></span>`;
+    // }else if(placeAll.innerHTML == "테마보기"){
+    //     console.log("탄다")
+    //     dropSpan.innerHTML = `<span><a href="/product/list?pkContinent=이색휴양지">이색 휴양지</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=아름다운도시">아름다운 도시</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=커플여행">커플 여행</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=럭셔리호캉스">럭셔리 호캉스</a></span>`;
+    //     dropSpan.innerHTML += `<span><a href="/product/list?pkContinent=일본료칸(온천)">일본 료칸(온천)</a></span>`;
+    // }
 
 

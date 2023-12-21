@@ -142,7 +142,7 @@ body{
 }
 .final-sub-container{
     padding: 20px;
-    height: 100%;
+    height: 90%;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -157,6 +157,7 @@ body{
     border-left: 2px dashed #ccc;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 .final-reser-payment-peple-info{
     width: 100%;

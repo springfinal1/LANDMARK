@@ -10,7 +10,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 8rem;
     padding-bottom: 20rem;
 }
 .main-section{
@@ -141,19 +140,18 @@ body{
     transition: 1.5s;
     border: 1.5px solid black;
 }
-#evtBtn1:hover{
-    
-}
+
 
 
 
 .product-eventTap{
     margin-top: 40px;
     width: 100%;
+    font-size: 18px;
 }
 .product-point{
     padding-bottom: 40px;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
 }
 .item-div{
@@ -167,7 +165,7 @@ body{
     border-top: 1px solid black;
 }
 .product-eventTap>div:nth-child(3){
-    border-top: 1px solid #ccc;
+    padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
 }
 
@@ -201,9 +199,12 @@ body{
 }
 
 .warning-div{
+    padding-top: 20px;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     color: red;
+    gap: 10px;
 }
 .warning-div > .material-symbols-outlined{
     vertical-align: middle;
@@ -211,10 +212,12 @@ body{
 
 .warning-div > p{
     margin: 0;
+    font-size: 16px;
     vertical-align: middle;
 }
 .infoText{
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 15px;
 }
 .baggage-table-in{
     width: 100%;
@@ -224,7 +227,7 @@ body{
     width: 30%;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -232,7 +235,7 @@ body{
 .baggage-table-td{
     width: 70%;
     border-bottom: 1px solid #ccc;
-    font-size: 20px;
+    font-size: 16px;
     
     padding-top: 20px;
     padding-bottom: 20px;
@@ -248,6 +251,7 @@ body{
 }
 .notification-th , .notification-td{
     border-bottom: 1px solid #ccc;
+    font-size: 16px;
 }
 .notification-th{
     border-right: 1px solid #ccc;
@@ -269,6 +273,7 @@ body{
 .article-table-th{
     padding-left: 40px;
     padding-right: 40px;
+    width: 70px;
     border-bottom: 1px solid #ccc;
 }
 .article-table-td{
@@ -277,12 +282,14 @@ body{
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     padding-bottom: 20px;
+    font-size: 16px;
 }
 .safety-container{
     width: 100%;
     margin-bottom: 30px;
 }
 .safety-link{
+    box-sizing: border-box;
     width: 100%;
     border: 1px solid #ccc;
     padding-left: 15px;
@@ -294,15 +301,18 @@ body{
 }
 .safety-img{
     width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #e5f0f2;
     
 }
 .safety-text{
     width: 70%;
-   
+    font-size: 16px;
 }
 #airplane-image{
-    color: rgb(109, 109, 174);
+    color: dodgerblue;
     font-size: 100px;
 }
 .safety-info-div{
@@ -313,6 +323,7 @@ body{
     border-top: 1px solid black;
     border-bottom: 1px solid #ccc;
     width: 100%;
+    font-size: 16px;
 }
 
 .safety-table-th{
@@ -330,6 +341,7 @@ body{
 .safety-country{
     font-size: 26px;
     font-weight: 700;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -462,4 +474,7 @@ body{
 }
 .admin-product-controll > div > a{
     color: black;
+}
+.safety-div-li{
+    font-size: 16px;
 }
