@@ -4,22 +4,19 @@ playbtn.addEventListener('click', () => {
   document.querySelector('.play-div').style.display = 'block';
 })
 
-<<<<<<< HEAD
-// let closebtn= document.querySelector('.close-event');
+ let closebtn= document.querySelector('.close-playdiv-btn');
 
-// closebtn.addEventListener('click', () => {
-//   document.querySelector('.play-div').style.display = 'none';
-// })
-=======
->>>>>>> origin/main
+ closebtn.addEventListener('click', () => {
+   document.querySelector('.play-div').style.display = 'none';
+ })
+
 
 
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
-<<<<<<< HEAD
 
 let product;
-const colors = ["#dc0936", "#e6471d", "#f7a416", "#efe61f "];
+const colors = ["#ffe9bb", "#ffffff"];
 
 
   $.ajax({
@@ -45,33 +42,15 @@ const colors = ["#dc0936", "#e6471d", "#f7a416", "#efe61f "];
   });
 
 
-
-
-
-
-const newMake = () => {
+const newMake = () => { //룰렛 만들기
 
   
   const [cw, ch] = [$c.width / 2, $c.height / 2];
   const arc = Math.PI / (product.length / 2);
 
-=======
-
-
-const product = [
-  "떡볶이", '돈가스', "초밥", "피자", "냉면", "치킨", '족발', "피자", "삼겹살",
-];
-
-const colors = ["#dc0936", "#e6471d", "#f7a416", "#efe61f ", "#60b236", "#209b6c", "#169ed8", "#3f297e", "#87207b", "#be107f", "#e7167b"];
-
-const newMake = () => {
-  const [cw, ch] = [$c.width / 2, $c.height / 2];
-  const arc = Math.PI / (product.length / 2);
-
->>>>>>> origin/main
   for (let i = 0; i < product.length; i++) {
     ctx.beginPath();
-    ctx.fillStyle = colors[i % (colors.length - 1)];
+    ctx.fillStyle = colors[i % (colors.length)];
     ctx.moveTo(cw, ch);
     ctx.arc(cw, ch, cw, arc * (i - 1), arc * i);
     ctx.fill();
@@ -102,7 +81,7 @@ const newMake = () => {
   }
 }
 
-const rotate = () => {
+const rotate = () => {  //룰렛 돌리기
   $c.style.transform = `initial`;
   $c.style.transition = `initial`;
 
@@ -111,12 +90,11 @@ const rotate = () => {
     const ran = Math.floor(Math.random() * product.length);
 
     const arc = 360 / product.length;
-    const rotate = (ran * arc) + 3600 + (arc * 3) - (arc / 4);
+    const rotate = (ran * arc) + 3600 + (arc * 2);
 
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
 
-<<<<<<< HEAD
     setTimeout(() => alert(`축하드립니다! ${product[ran]} 당첨!`), 2000);
     var prizeVO = {
       id: uid,
@@ -133,32 +111,6 @@ const rotate = () => {
         alert("통신 실패.")
       }
     });
-=======
-    setTimeout(() => alert(`오늘의 야식은?! ${product[ran]} 어떠신가요?`), 2000);
-    // var data = {
-    //   name: uid,
-    //   sex: $("#sex").val()
-    // }
-    // // ajax 통신
-    // $.ajax({
-    //   type: "POST",            // HTTP method type(GET, POST) 형식이다.
-    //   url: "/test/ajax",      // 컨트롤러에서 대기중인 URL 주소이다.
-    //   data: params,            // Json 형식의 데이터이다.
-    //   success: function (res) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
-    //     // 응답코드 > 0000
-    //     alert(res.code);
-    //   },
-    //   error: function (XMLHttpRequest, textStatus, errorThrown) { // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-    //     alert("통신 실패.")
-    //   }
-    // });
->>>>>>> origin/main
-
 }, 1);
 
 };
-
-<<<<<<< HEAD
-=======
-newMake();
->>>>>>> origin/main

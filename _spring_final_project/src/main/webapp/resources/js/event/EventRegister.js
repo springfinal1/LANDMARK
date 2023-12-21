@@ -36,7 +36,7 @@ tabs.forEach(function (tab) { //모든 탭 li에 이벤트 추가
 });
 
 
-let events = document.querySelectorAll('#tab-1 .sub div');
+let events = document.querySelectorAll('#tab-1 .sub div'); //이벤트 선택 div
 let is = document.querySelectorAll('#tab-1 .sub div i');
 
 events.forEach(function (event) {
@@ -54,7 +54,23 @@ events.forEach(function (event) {
       i.style.color = '#999999';
     })
 
+    console.log(evSelec.value);
 
+    if(event_id=='rouletteEv'){
+
+      
+      document.querySelector('.roulette-setting-div').style.display='block';
+      
+      console.log(document.querySelector('.roulette-setting-div'));
+      document.querySelector('.attendance-setting-div').style.display='none';
+      
+    }
+    else if(event_id=='AttendanceEv'){
+      document.querySelector('.attendance-setting-div').style.display='block';
+      document.querySelector('.roulette-setting-div').style.display='none';
+      console.log(document.querySelector('.attendance-setting-div'));
+    }
+    
     let div = document.querySelector('.' + event_id);
     let i = document.querySelector('.' + event_id + ' i');
     console.log(div);
@@ -66,7 +82,8 @@ events.forEach(function (event) {
 
 })
 
-function selectEvent(evtype) {
+//eventmodify.jsp에서 사용
+function selectEvent(evtype) { //선택한 이벤트타입div에 색깔 입히기
   console.log(evtype);
   let divquery = '.' + evtype;
   let iquery = '.' + evtype + ' i';

@@ -1,5 +1,6 @@
 package com.easyfestival.www.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.easyfestival.www.domain.AttendanceHistoryVO;
+import com.easyfestival.www.domain.attendanceVO;
 import com.easyfestival.www.domain.eventDTO;
 import com.easyfestival.www.domain.eventVO;
 import com.easyfestival.www.domain.prizeVO;
@@ -23,8 +26,8 @@ public class EventServiceImpl implements EventService
 	private EventDAO edao;
 
 	@Override
-	public int OneventList(eventDTO edto) {
-		return edao.eventRegister(edto);
+	public int OneventList(eventVO evo) {
+		return edao.eventRegister(evo);
 	}
 	
 
@@ -54,9 +57,10 @@ public class EventServiceImpl implements EventService
 
 
 	@Override
-	public int eventRegister(eventDTO edto) {
-		return edao.eventRegister(edto);
+	public int eventRegister(eventVO evo) {
+		return edao.eventRegister(evo);
 	}
+	
 
 
 	@Override
@@ -81,6 +85,54 @@ public class EventServiceImpl implements EventService
 	public String getPrize(int evNo) {
 		return edao.getPrize(evNo);
 	}
+
+
+	@Override
+	public void attendanceRegister(attendanceVO atvo) {
+		edao.attendanceRegister(atvo);
+		
+	}
+
+
+	@Override
+	public void attendanceHistory(long evNo,String id, LocalDate now) {
+		edao.attendanceHistory(evNo,id,now);
+		
+	}
+
+
+	@Override
+	public AttendanceHistoryVO getAttendanceHistory(long evNo,String id, LocalDate now) {
+		return edao.getAttendanceHistory(evNo,id,now);
+	}
+
+
+	@Override
+	public attendanceVO getAttendance(long evNo) {
+		return edao.getAttendance(evNo);
+	}
+
+
+	@Override
+	public void addpoint(String id, int point) {
+		edao.addpoint(id,point);
+		
+	}
+
+
+	@Override
+	public int getAttendanceCount(long evNo, String id) {
+		return edao.getAttendanceCount(evNo,id);
+	}
+
+
+	@Override
+	public void addSpecialPoint(String id, int specialPoint) {
+		edao.addSpecialPoint(id,specialPoint);
+		
+	}
+
+
 
 
 	
