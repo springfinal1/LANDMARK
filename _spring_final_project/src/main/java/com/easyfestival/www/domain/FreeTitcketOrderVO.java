@@ -1,7 +1,5 @@
 package com.easyfestival.www.domain;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

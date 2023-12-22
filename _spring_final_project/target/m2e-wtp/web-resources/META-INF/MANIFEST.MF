@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: fecd1
+=======
+Built-By: UserK
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 Build-Jdk: 11.0.20
 Created-By: Maven Integration for Eclipse
 
