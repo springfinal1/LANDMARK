@@ -96,7 +96,7 @@
                   </div>
                   <form action="/freeTourPeyment/PeyReservation" method="post">
                      <input type="hidden" name=ftPrice value="${aivo.price}">
-                     <input type="hidden" name=arrival value="${aivo.arruval }">
+                     <input type="hidden" name=arrival value="${aivo.arrival }">
                      
                      
                      <input type="hidden" name=date value="${aivo.date }">
