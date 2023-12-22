@@ -93,7 +93,7 @@
 								<div id="countryZone">
 									<h5 class="airdate">
 									<i class="fa-solid fa-location-dot" id="countryZone-i"></i>지역</h5>
-									${pldto.plvo.plCountry }
+									${pldto.plvo.plCountry } ${pldto.plvo.plName }
 								</div>
 							
 								<div id="airZone">						

@@ -12,6 +12,7 @@
 <link href="/resources/css/common.css" rel="stylesheet">
 <link href="/resources/css/input.css" rel="stylesheet">
 <link href="/resources/css/user/user.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <title>Insert title here</title>
 </head>
 <body>
