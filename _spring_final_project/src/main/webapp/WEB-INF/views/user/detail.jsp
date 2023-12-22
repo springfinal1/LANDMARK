@@ -104,9 +104,9 @@
 									<span class="ticket-people">인원수</span>
 								</div>
 								<c:forEach items="${faList}" var="faList">
-								<div class="qa-list">
+								<div class="qa-list ticket-list">
 									<span class="ticket-date">20231220/20231224</span>
-									<span class="ticket-arrival"><a href="/product/detail?pkNo=${faList.pkNo}">${faList.pkContinent}</a></span>
+									<span class="ticket-arrival">${faList.pkContinent}</span>
 									<span class="ticket-flighType">왕복</span>
 									<span class="ticket-seatType">일반석</span>
 									<span class="ticket-people">1</span>
@@ -213,7 +213,61 @@
 			</c:if>
 		</div>
 				
-	</div> 	
+	</div>
+	
+	<!-- 항공권 모달 -->
+	<div class="flight-ticket-modal-back">
+		<div class="flight-ticket-modal">
+			<div class="section-left">
+				<div class="header-left">AIR TICKET</div>
+				<div class="body-left">
+					<div>
+						<span>ICN</span>
+						<i class="fa-solid fa-plane"></i>
+						<span class="airport-code">JFK</span><!-- airportCode 입력영역 -->
+					</div>
+					<div>
+						<div>
+							<span>DEPARTURE TIME</span>
+							<span class="departure-day">2023-12-25</span><!-- 출발일 입력영역 -->
+						</div>
+						<div>
+							<span>GATE</span>
+							<span class="gate">37A</span>
+						</div>
+						<div>
+							<span>SEAT TYPE</span>
+							<span class="seat-type">일반석</span><!-- 좌석타입 입력영역 -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section-right">
+				<div class="header-right"></div>
+				<div class="body-right">
+					<div>
+						<span>DEPARTURE TIME</span>
+						<span class="departure-day">2023-12-25</span><!-- 출발일 입력영역 -->
+					</div>
+					<div>
+						<span>GATE</span>
+						<span class="gate">37A</span>
+					</div>
+					<div>
+						<span>SEAT TYPE</span>
+						<span class="seat-type">일반석</span><!-- 좌석타입 입력영역 -->
+					</div>
+					<span class="barcode">
+						<i class="fa-solid fa-barcode"></i>
+						<i class="fa-solid fa-barcode"></i>
+						<i class="fa-solid fa-barcode"></i>
+						<i class="fa-solid fa-barcode"></i>
+						<i class="fa-solid fa-barcode"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<!-- 회원가입 완료시 모달창 오픈 -->
 	<div class="join-background">
@@ -226,4 +280,5 @@
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript" src="resources/js/user/detail.js"></script>
 </html>
