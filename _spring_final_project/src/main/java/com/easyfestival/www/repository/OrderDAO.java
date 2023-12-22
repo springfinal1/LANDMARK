@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.easyfestival.www.domain.FreeTitcketOrderVO;
 import com.easyfestival.www.domain.OllPayDTO;
 import com.easyfestival.www.domain.OrderVO;
 import com.easyfestival.www.domain.PayDTO;
@@ -41,6 +42,8 @@ public interface OrderDAO {
 	int updateY(OrderVO orderVO);
 
 	String getConfirmation(long orderNum);
+
+	int freeinfo_pay(FreeTitcketOrderVO freeTitcketOrderVO);
 
 	
 }

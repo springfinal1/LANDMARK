@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+=======
+let playbtn = document.querySelector('.play-event');
+
+playbtn.addEventListener('click', () => {
+  document.querySelector('.play-div').style.display = 'block';
+})
+
+<<<<<<< HEAD
+// let closebtn= document.querySelector('.close-event');
+
+// closebtn.addEventListener('click', () => {
+//   document.querySelector('.play-div').style.display = 'none';
+// })
+
+=======
+ let closebtn= document.querySelector('.close-playdiv-btn');
+
+ closebtn.addEventListener('click', () => {
+   document.querySelector('.play-div').style.display = 'none';
+ })
+
+>>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98
+
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 
  
 const $c = document.querySelector("canvas");
@@ -30,7 +55,11 @@ const colors = ["#ffe9bb", "#ffffff"];
   });
 
 
+<<<<<<< HEAD
+const newMake = () => {
+=======
 const newMake = () => { //룰렛 만들기
+>>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98
 
   
   const [cw, ch] = [$c.width / 2, $c.height / 2];
@@ -101,4 +130,8 @@ const rotate = () => {  //룰렛 돌리기
     });
 }, 1);
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98

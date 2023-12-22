@@ -136,4 +136,34 @@ h5{
 }
 .check-heart{
     color: #E53E30;
+<<<<<<< HEAD
+=======
+}
+.noProduct{
+    padding-top: 200px;
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noProduct > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noProduct > div > span{
+    font-size: 70px;
+    font-weight: 700;
+    color: #E53E30;
+}
+.airdate{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+#countryZone-i, #airZone-i, #dateZone-i{
+    padding-right:  5px;
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 }

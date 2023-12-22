@@ -1,11 +1,8 @@
 package com.easyfestival.www.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,20 +22,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.easyfestival.www.domain.AirplaneInfoVO;
+import com.easyfestival.www.domain.FreeTitcketOrderVO;
 import com.easyfestival.www.domain.MemberShipVO;
 import com.easyfestival.www.domain.OllPayDTO;
 import com.easyfestival.www.domain.OrderVO;
-import com.easyfestival.www.domain.PackageVO;
 import com.easyfestival.www.domain.PayDTO;
 import com.easyfestival.www.domain.ProductListDTO;
-import com.easyfestival.www.domain.pagingVO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.security.UserVO;
+import com.easyfestival.www.service.FreeTitcketOrderService;
 import com.easyfestival.www.service.MemberShipService;
 import com.easyfestival.www.service.OrderService;
 import com.easyfestival.www.service.PayService;
 import com.easyfestival.www.service.ProductService;
+import com.mysql.cj.Session;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -70,18 +70,15 @@ public class PeymentController {
 
 	@Autowired
 	private MemberShipService memberShipService;
+	
+	@Autowired
+	private FreeTitcketOrderService freeTitcketOrderService;
 
 	public PeymentController() {
 		// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
 		this.api = new IamportClient("7820725586500628",
 				"P9nYyc55RyknowCswTwMrhHUdHc2A0MJJGTjzuEGbUjsmm9XFl60NOBNleO8eljJn82tjH4O7I0kKQdr");
 	}
-
-	/*
-	 * @GetMapping("/peyDetail") public String getTest() {
-	 * 
-	 * return "/package/peyDetail"; }
-	 */
 
 	@GetMapping("/peyDetail")
 	public String getDetail(@RequestParam("pkNo") long pkNo, @RequestParam("userCount") long userCount,
@@ -94,8 +91,6 @@ public class PeymentController {
 		long memberPrice = pldto.get(0).getPackvo().getPkPrice() * userCount;
 
 		MemberShipVO msVo = memberShipService.getmemberShip(((UserVO) session.getAttribute("uvo")).getId());
-
-		/* PackageVO packVO = pldto.get(0).getPackvo(); */
 
 		long memberDiscountPrice = Math.round(msVo.getMemberDiscountRate() * memberPrice);
 
@@ -145,11 +140,13 @@ public class PeymentController {
 			@PathVariable(value = "imp_uid") String imp_uid) throws IamportResponseException, IOException {
 		return api.paymentByImpUid(imp_uid);
 	}
+	
+	
 
 	@PostMapping("orderCancle")
 	@ResponseBody
 	public int orderCancle(OrderVO orderVO, PayDTO payDTO) throws Exception {
-//		userId == 0 비회원
+
 		System.out.println("1111 : " + orderVO);
 		System.out.println("1111 : " + orderVO.getImpUid());
 		System.out.println("1111 : " + orderVO.getOrderNum());
@@ -187,7 +184,6 @@ public class PeymentController {
 	@RequestMapping(value = "/confirmation", method = RequestMethod.POST)
 	@ResponseBody
 	public String paymentComplete(@RequestBody OrderVO orderVO, HttpSession session) throws Exception {
-		// DB 저장 부분
 
 		orderVO = orderService.adminList(orderVO);
 
@@ -214,14 +210,12 @@ public class PeymentController {
 	@RequestMapping(value = "/complete", method = RequestMethod.POST)
 	@ResponseBody
 	public int paymentComplete(HttpSession session, String imp_uid, String merchant_uid, String totalPrice,
-			@RequestBody OrderVO orderVO) throws Exception {
-		// DB저장 구간
-
+			@RequestBody OrderVO orderVO, @RequestBody FreeTitcketOrderVO freeTitcketOrderVO) throws Exception {
 		log.info(" orderDTO >>>> {}", orderVO);
 		String token = payService.getToken();
+		
 		log.info(" tocen >>>> {}", token);
 
-		// 결제 완료된 금액
 		String amount = payService.paymentInfo(orderVO.getImpUid(), token);
 		log.info("============amount >>>> {}", amount);
 
@@ -234,14 +228,19 @@ public class PeymentController {
 			payService.payMentCancle(token, orderVO.getImpUid(), amount, "결제 금액 오류");
 			return res;
 		}
-
+		
+		
+		
 		orderService.insert_pay(orderVO);
-
+		
+//		freeTitcketOrderVO.setOrderNum(orderVO.getOrderNum());
+		
+//		freeTitcketOrderService.update_num(freeTitcketOrderVO, orderVO.getId());
 		return res;
 
 	}
 
-	@GetMapping("/complete")
+	@GetMapping("/")
 	public String getOrderComplete(@RequestParam long payNum, OrderVO orderVO, HttpSession session, Model model)
 			throws Exception {
 
@@ -288,6 +287,7 @@ public class PeymentController {
 	public ResponseEntity<Long> payInfoPOST(Model model, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String imp_uid, HttpSession session, @RequestParam long pkNo,
 			@RequestParam String enteredPoints) throws Exception {
+		
 		IamportResponse<Payment> result = api.paymentByImpUid(imp_uid);
 		PayDTO payDTO = new PayDTO();
 		long point = 0; // 기본값 설정
@@ -297,7 +297,6 @@ public class PeymentController {
 				point = Long.parseLong(enteredPoints);
 				System.out.println("포인트 제대로 들어옴 ? +" + point);
 			} catch (NumberFormatException e) {
-				// 예외 처리: 숫자로 변환할 수 없는 경우 기본값이 유지됨
 				e.printStackTrace(); // 또는 로깅 등을 통해 예외를 기록할 수 있음
 			}
 		}
@@ -316,12 +315,7 @@ public class PeymentController {
 		payDTO = orderService.getLastPay(payDTO);
 		System.out.println("이건" + payDTO);
 
-		// 유효성 검사 후 String을 long으로 변환
-
 		int isOK = memberShipService.updateMemberShip(((UserVO) session.getAttribute("uvo")).getId(), point);
-
-		/* model.addAttribute("payDTO", payDTO); */
-		System.out.println("aaa이거모임 ?" + point);
 
 		return new ResponseEntity<Long>(payDTO.getPayNum(), HttpStatus.OK);
 	}
@@ -338,21 +332,14 @@ public class PeymentController {
 		return result;
 	}
 
-	
 	@GetMapping("/status")
 	public ResponseEntity<String> getOrderStatus(@RequestParam Long orderNum) {
-	    // 서비스를 통해 데이터베이스에서 주문 상태를 가져옴
-	    String orderStatus = orderService.getConfirmation(orderNum);
+		// 서비스를 통해 데이터베이스에서 주문 상태를 가져옴
+		String orderStatus = orderService.getConfirmation(orderNum);
 
-	    // 문자열 형식으로 반환
-	    return new ResponseEntity<>(orderStatus, HttpStatus.OK);
+		// 문자열 형식으로 반환
+		return new ResponseEntity<>(orderStatus, HttpStatus.OK);
 	}
 
-
-	@GetMapping("PeyReservation")
-	public String reservation() {
-
-		return "/package/PeyReservation";
-	}
 
 }

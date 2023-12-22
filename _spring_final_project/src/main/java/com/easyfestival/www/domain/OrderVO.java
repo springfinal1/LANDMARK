@@ -26,5 +26,7 @@ public class OrderVO {
 	private Long userCount;
 	private Long sayongPointeu;
 	private char confirmation;
+    private String airplane;
+
 	
 }

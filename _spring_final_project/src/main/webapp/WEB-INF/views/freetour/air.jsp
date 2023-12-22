@@ -89,49 +89,49 @@
 			<h3>나만의 맞춤 테마 여행지를 <br> 확인해보세요</h3>
 			<ul> 
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=1">
 						<img class="themeImg" src="/resources/image/list-image/신혼여행.jpg">
 						<span>#신혼여행#커플여행#허니문</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=2">
 						<img class="themeImg" src="/resources/image/list-image/영화.jpg">
 						<span>#드라마명소#영화촬영지</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=3">
 						<img class="themeImg" src="/resources/image/list-image/온천.jpg">
 						<span>#겨울왕국#스키#보드</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=4">
 						<img class="themeImg" src="/resources/image/list-image/서핑.jpg">
 						<span>#서핑명소#다이빙#물놀이</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=5">
 						<img class="themeImg" src="/resources/image/list-image/야경.jpg">
 						<span>#아경맛집#감성뿜뿜</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=6">
 						<img class="themeImg" src="/resources/image/list-image/오로라.jpg">
 						<span>#오로라#밤하늘댄서</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=7">
 						<img class="themeImg" src="/resources/image/list-image/등산.jpg">
 						<span>#등산#히말라야#버킷리스트</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/freetour/theme?type=8">
 						<img class="themeImg" src="/resources/image/list-image/동화.jpg">
 						<span>#동화속나라#아이와함께</span>
 					</a>

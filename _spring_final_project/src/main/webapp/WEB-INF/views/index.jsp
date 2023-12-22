@@ -19,6 +19,7 @@
 		<div class="slider-wrapper">
 			<div id="slider" class="slider">
 				<div class="items slider-item1">
+				<a href="/product/detail?pkNo=2"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">이탈리아 베네치아</div>
 						<div class="festival-item-txt2">베니스 가면 축제</div>
@@ -26,6 +27,7 @@
 					</div>
 				</div>
 				<div class="items slider-item2">
+				<a href="/product/detail?pkNo=1"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">스페인 발렌시아</div>
 						<div class="festival-item-txt2">라 토마티나 축제</div>
@@ -33,6 +35,7 @@
 					</div>
 				</div>
 				<div class="items slider-item3">
+				<a href="/product/detail?pkNo=6"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">뉴멕시코 앨버커키</div>
 						<div class="festival-item-txt2">국제 열기구 축제</div>
@@ -40,6 +43,7 @@
 					</div>
 				</div>
 				<div class="items slider-item4">
+				<a href="/product/detail?pkNo=4"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">독일 뮌헨</div>
 						<div class="festival-item-txt2">옥토버페스트 맥주 축제</div>
@@ -47,6 +51,7 @@
 					</div>
 				</div>
 				<div class="items slider-item5">
+				<a href="/product/detail?pkNo=5"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">일본 훗카이도</div>
 						<div class="festival-item-txt2">삿포로 눈 축제</div>
@@ -54,6 +59,7 @@
 					</div>
 				</div>
 				<div class="items slider-item6">
+				<a href="/product/detail?pkNo=7"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">인도 델리</div>
 						<div class="festival-item-txt2">홀리 축제</div>
@@ -61,6 +67,7 @@
 					</div>
 				</div>
 				<div class="items slider-item7">
+				<a href="/product/detail?pkNo=3"></a>
 					<div class="festival-item">
 						<div class="festival-item-txt1">브라질 리우데자네이루</div>
 						<div class="festival-item-txt2">리우 카니발 축제</div>

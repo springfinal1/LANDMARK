@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.easyfestival.www.domain.AirArrInfoVO;
 import com.easyfestival.www.domain.AirInfoVO;
@@ -34,30 +35,31 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/freetour/*")
 public class FreeTourController {
-	
-	@Inject
-	private FreetourService fsv;
-	
-	@Inject
-	private FreetourHandler fhd;
-	
-	@GetMapping("air")
-	public String air() {
-		return "/freetour/air";
-	}
-	
-	@GetMapping(value="/search/{place}" , produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<AirplaneDTO>> searchPlace(@PathVariable String place){
-		
-		List<AirplaneDTO> searchVal = fsv.getSearch(place);
-	
-		
-		return new ResponseEntity<List<AirplaneDTO>>(searchVal,HttpStatus.OK);
-	}
-	
-	@PostMapping("city")
-	public String getCity(AirplaneInfoVO aivo, Model m, String pepleCount) throws IOException, ParseException {
+   
+   @Inject
+   private FreetourService fsv;
+   
+   @Inject
+   private FreetourHandler fhd;
+   
+   @GetMapping("air")
+   public String air() {
+      return "/freetour/air";
+   }
+   
+   @GetMapping(value="/search/{place}" , produces = MediaType.APPLICATION_JSON_VALUE)
+   public ResponseEntity<List<AirplaneDTO>> searchPlace(@PathVariable String place){
+      
+      List<AirplaneDTO> searchVal = fsv.getSearch(place);
+   
+      
+      return new ResponseEntity<List<AirplaneDTO>>(searchVal,HttpStatus.OK);
+   }
+   
+   @PostMapping("city")
+   public String getCity(AirplaneInfoVO aivo, Model m, String pepleCount) throws IOException, ParseException {
  
+
 		log.info(aivo+"<<<<<<<<<<<aivo");
 		
 		// 일반 프리미엄일반 비즈니스 일등 (100 150 200 300) / 
@@ -99,12 +101,16 @@ public class FreeTourController {
 		//공항 코드 구하기
 		String departureAirportCode = fsv.getDepartureAirport(arrivalAirport);		
 		String arrivalAirportCode = fsv.getArrivalAirport(arrivalAirport);
-
+		
+		m.addAttribute("dep", departureAirportCode);
+		m.addAttribute("arr", arrivalAirportCode);
 		
 		List<AirInfoVO> depInfo = fhd.getDepartureInfo(arrivalAirportCode,aivo); // 출발 정보 / 인천 -> 해외
 		List<AirArrInfoVO> arrInfo = fhd.getArrivalInfo(departureAirportCode, aivo); // 도착 정보 / 해외 -> 인천
 		
 		
+		
+		m.addAttribute("aivo", aivo);
 		//100 150 200 300
 		
 		if(arrInfo != null) {			
@@ -121,4 +127,15 @@ public class FreeTourController {
 		return "/freetour/city";
 	}
 	
+	@GetMapping("theme")
+	public String theme(Model m,@RequestParam("type") int type) {
+		log.info(type+"타입<<<<<<<<<<<");
+		m.addAttribute("type", type);
+		
+		
+		return "/freetour/theme";
+	}
+	
+	
 }
+

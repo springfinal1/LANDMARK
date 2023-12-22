@@ -19,4 +19,5 @@ public class AirInfoVO {
 	private String airline; // 항공사
 	private String scheduleDateTime; // 도착예정일자
 	private String flightId; // 편명
+	private String gatenumber; // 게이트
 }

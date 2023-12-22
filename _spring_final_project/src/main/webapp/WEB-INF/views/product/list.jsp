@@ -93,11 +93,16 @@
 						<div class="textDiv">
 							<div class="list-product">
 								<div>
+<<<<<<< HEAD
 									<h5>상품명</h5>
+=======
+									<h5 class="airdate"><i class="fa-solid fa-hashtag" id="dateZone-i"></i>상품명</h5>
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 									${pldto.packvo.pkName }
 								</div>
 								
 								<div id="countryZone">
+<<<<<<< HEAD
 									<h5>나라</h5>
 									${pldto.plvo.plCountry }
 								</div>
@@ -109,6 +114,15 @@
 							
 								<div id="airZone">
 									<h5>출발 ~ 도착일</h5>
+=======
+									<h5 class="airdate">
+									<i class="fa-solid fa-location-dot" id="countryZone-i"></i>지역</h5>
+									${pldto.plvo.plCountry }
+								</div>
+							
+								<div id="airZone">						
+									<h5 class="airdate"><span class="material-symbols-outlined" id="airZone-i">calendar_month</span>출발기간</h5>
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 									${pldto.avo.apArrival } ~ ${pldto.avo.apDeparture }
 								</div>
 							</div>

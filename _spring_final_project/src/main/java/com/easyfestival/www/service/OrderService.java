@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.easyfestival.www.domain.FreeTitcketOrderVO;
 import com.easyfestival.www.domain.OllPayDTO;
 import com.easyfestival.www.domain.OrderVO;
 import com.easyfestival.www.domain.PayDTO;
@@ -14,29 +15,28 @@ import com.easyfestival.www.repository.OrderDAO;
 
 @Service
 public class OrderService {
-   
-   @Autowired
-   private OrderDAO orderDAO;
-   
-   @Autowired
-   private PayService payService;
-   
 
-   public int insert_pay(OrderVO orderVO) throws Exception{
-      
-      
-      return orderDAO.insert_pay(orderVO);
-   }
 
-   public int insert_payinfo(PayDTO payVO) throws Exception{
-      
-      return orderDAO.insert_payinfo(payVO);
-   }
+	@Autowired
+	private OrderDAO orderDAO;
 
-   public PayDTO getLastPay(PayDTO payVO) throws Exception{
-      
-      return orderDAO.getLastPay(payVO);
-   }
+	@Autowired
+	private PayService payService;
+
+	public int insert_pay(OrderVO orderVO) throws Exception {
+
+		return orderDAO.insert_pay(orderVO);
+	}
+
+	public int insert_payinfo(PayDTO payVO) throws Exception {
+
+		return orderDAO.insert_payinfo(payVO);
+	}
+
+	public PayDTO getLastPay(PayDTO payVO) throws Exception {
+
+		return orderDAO.getLastPay(payVO);
+	}
 
    public PayDTO getPay(long payNum) {
       // TODO Auto-generated method stub
@@ -96,15 +96,22 @@ public class OrderService {
       return orderDAO.updateY(orderVO);
    }
 
-   public String getConfirmation(long orderNum) {
-      // TODO Auto-generated method stub
-      return  orderDAO.getConfirmation(orderNum);
-   }
 
-   public List<OllPayDTO> getPackageList(String id) {
-      // 마이페이지 패키지예약내역 리스트용
-      return orderDAO.getPackageList(id);
-   }
+	public String getConfirmation(long orderNum) {
+		// TODO Auto-generated method stub
+		return orderDAO.getConfirmation(orderNum);
+	}
 
+	public List<OllPayDTO> getPackageList(String id) {
+		// 마이페이지 패키지예약내역 리스트용
+		return orderDAO.getPackageList(id);
+	}
+
+
+	public int freeinfo_pay(FreeTitcketOrderVO freeTitcketOrderVO) {
+		return orderDAO.freeinfo_pay(freeTitcketOrderVO);
+
+
+	}
 
 }

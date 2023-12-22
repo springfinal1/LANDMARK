@@ -55,4 +55,18 @@ MODIFY COLUMN pay_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE sc_pay
 drop COLUMN sc_paycol;
 
+CREATE TABLE `free_ticket_order` (
+  `ft_no` bigint auto_increment,
+  `id` varchar(100) NOT NULL,
+`airplane` varchar(1) DEFAULT 'A',
+  `city_name` varchar(100) DEFAULT NULL,
+  `departure_day` varchar(100) DEFAULT NULL,
+  `arruval_day` varchar(100) DEFAULT NULL,
+  `seat_type` varchar(100) DEFAULT NULL,
+  `flight_type` varchar(100) DEFAULT NULL,
+  `airport_code`  varchar(100) DEFAULT NULL,
+  `ft_price` long DEFAULT NULL,
+  `ft_peple` long DEFAULT NULL,
+  PRIMARY KEY (`ft_no`)
+);
 
