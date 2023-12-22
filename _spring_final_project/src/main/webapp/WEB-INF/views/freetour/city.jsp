@@ -66,6 +66,43 @@
                      <span class="arrName"></span>
                   </div>
 
+<<<<<<< HEAD
+						
+						<div class="air-time">							
+							<span class="arrAir"></span>
+							<span class="arrTime"></span>							
+						</div>
+					</div>			
+				</div>
+				
+				<div class="final-reser-payment">
+					<div class="final-reser-payment-peple-info">
+						<div>
+							<span class="peple-seat">
+								<span class="adult">${adult }</span>
+								<span class="child">${child }</span>
+								<span class="infant">${infant }</span>
+								<span class="seat">${seat }</span>							  					
+							</span>
+							
+							<span class="air-detail">비행상세</span>
+						</div>
+					</div>
+					
+					
+					<div class="final-reser-payment-pay-info">
+						<div>
+							<span class="pep-cnt">인원</span>
+							<span class="reser-pay">0원</span>
+						</div>
+						<div>
+							<button>예약하기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+=======
                   
                   <div class="air-time">                     
                      <span class="arrAir"></span>
@@ -96,7 +133,7 @@
                   </div>
                   <form action="/freeTourPeyment/PeyReservation" method="post">
                      <input type="hidden" name=ftPrice value="${aivo.price}">
-                     <input type="hidden" name=arrival value="${aivo.arruval }">
+                     <input type="hidden" name=arrival value="${aivo.arrival }">
                      
                      
                      <input type="hidden" name=date value="${aivo.date }">
@@ -111,14 +148,20 @@
                      <input type="hidden" name="tfPeple" value="${aivo.peple }">
                      <input type="hidden" name="gate" id="gateNumber">
                      <input type="hidden" name="cityCode" value="${dep }">
+                     
+                     <input type="hidden" name="airlineArr" id="airlineArr">
+                     <input type="hidden" name="flightIdArr" id="flightIdArr">
+                     <input type="hidden" name="airlineDep" id="airlineDep">
+                     <input type="hidden" name="flightIdDep" id="flightIdDep">  
                      <div>
-                        <button type="submit">예약하기</button>
+                        <button type="submit" class="submitBtn">예약하기</button>
                      </div>
                   </form>
                </div>
             </div>
          </div>
       </div>
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 
       
       <!-- 인천 -> 해외 -->
@@ -133,13 +176,13 @@
 	                     
                         <div class="arrInfo-div">
                            <div class="arrInfo-header">
-                              <span class="arrInfo-div-span0">${startAirport} <i class="fa-solid fa-arrow-right"></i> ${depInfo.airport }</span>
+                              <span class="arrInfo-div-span0">${startAirport} <i class="fa-solid fa-right-long"></i> ${depInfo.airport }</span>
                               <span> ${depInfo.airportCode }</span>
                            </div>
                            <div class="arrInfo-div-div">
                               <div class="arrInfo-div-span1">
-                                 <span>${depInfo.airline }</span>
-                                 <span>${depInfo.flightId }</span>
+                                 <span class="depAirLine">${depInfo.airline }</span>
+                                 <span class="depFlight">${depInfo.flightId }</span>
                               </div>
                               <div class="arrInfo-i">
                                  <i class="fa-solid fa-plane-departure" id="dep"></i>
@@ -165,13 +208,13 @@
                      <input type="hidden" name="gatenumber" value="${arrInfo.gatenumber }" id="arrGate">
                         <div class="arrInfo-div">
                            <div class="arrInfo-header">
-                              <span class="arrInfo-div-span0">${arrInfo.airport } <i class="fa-solid fa-arrow-right"></i> ${startAirport }</span>
+                              <span class="arrInfo-div-span0">${arrInfo.airport } <i class="fa-solid fa-right-long"></i> ${startAirport }</span>
                               <span>${arrInfo.airportCode }</span>
                            </div>
                            <div class="arrInfo-div-div">
                               <div class="arrInfo-div-span1">
-                                 <span>${arrInfo.airline }</span>
-                                 <span>${arrInfo.flightId }</span>
+                                 <span class="arrAirLine">${arrInfo.airline }</span>
+                                 <span class="arrFlight">${arrInfo.flightId }</span>
                               </div>
                               <div class="arrInfo-i">
                                  <i class="fa-solid fa-plane-arrival" id="arr"></i>

@@ -28,6 +28,9 @@ public class FreeTitcketOrderVO {
 	private long ftPeple;
 	private String gate;
 	
-	
+	private String airlineArr;
+	private String flightIdArr;
+	private String airlineDep;
+	private String flightIdDep;
 
 }

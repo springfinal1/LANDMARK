@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resources/css/tmpCss.css" rel="stylesheet">
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link
@@ -47,7 +46,7 @@
 				<div class="sub current">
 					<div data-event="AttendanceEv" class="AttendanceEv"><i class="fa-solid fa-calendar-days"></i></div>
 					<p>출석체크형</p>
-					<small>사용자가 하루에 한번 출석체크합니다. </small>
+					<small>사용자가 하루에 한번 출석체크합니다.</small>
 				</div>
 				<div class="sub current">
 					<div data-event="prboxEv" class="prboxEv"><i class="fa-solid fa-gift"></i></div>
@@ -62,28 +61,71 @@
 		
 		<div id="tab-2" class="tab-content">
 			<div class="roulette-setting-div" style="display: none;">
-				<ul class="prizes-ul">
-					<li><input type="text" name="prizes[]"></li>
-					<li><input type="text" name="prizes[]"></li>
-					<li><input type="text" name="prizes[]"></li>
-					<li><input type="text" name="prizes[]"></li>
-				</ul>
-				<button class="prize-add" type="button">추가</button>
+				<table class="prizes-table">
+					<thead>
+						<tr>
+							<th>룰렛 아이템 번호</th>
+							<th>당첨 보상</th>
+						</tr>
+					</thead>
+					<tbody class="prizes-table-tbody">
+						<tr>
+							<td>1</td>
+							<td><input type="text" name="prizes[]"><span class="td-span">Point</span></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class="attendance-setting-div" style="display: none;">
-				<label>총 출석체크 일 수</label>
-				<input type="text" name="atvo.maxAttendanceCount" value="2">
-				<label>출석체크 1회당 지급 포인트</label>
-				<input type="text" name="atvo.point" value="2">
-				<label>지정 횟수마다 출석시 특별보상 지급</label>
-				<input type="text" name="atvo.specialPointCount" value="2">
-				<label>특별 보상</label>
-				<input type="text" name="atvo.specialPoint" value="2">
-				<label>개근상</label>
-				<input type="text" name="atvo.fullAttendancePrize" value="2">
+				<!-- <div>
+					<label>총 출석체크 일 수</label>
+					<input type="text" name="atvo.maxAttendanceCount" value="2">
+				</div>
+				<div>
+					<label>출석체크 1회당 지급 포인트</label>
+					<input type="text" name="atvo.point" value="2">
+				</div>
+				<div>
+					<label>지정 횟수마다 출석시 특별보상 지급</label>
+					<input type="text" name="atvo.specialPointCount" value="2">				
+				</div>
+				<div>
+					<label>특별 보상</label>
+					<input type="text" name="atvo.specialPoint" value="2">				
+				</div>
+				<div>
+					<label>개근상</label>
+					<input type="text" name="atvo.fullAttendancePrize" value="2">
+				</div> -->
+				<table class="attendance-table">
+					<tr>
+						<th>총 출석체크 일 수</th>
+						<td><input type="text" name="atvo.maxAttendanceCount" value="0"><span class="td-span">일</span></td>
+					</tr>
+					<tr>
+						<th>출석체크 1회당 지급 포인트</th>
+						<td><input type="text" name="atvo.point" value="0"><span class="td-span">포인트</span></td>
+					</tr>
+					<tr>
+						<th>특정 횟수마다 출석시 특별보상 지급</th>
+						<td><input type="text" name="atvo.specialPointCount" value="0"><span class="td-span">회</span></td>
+					</tr>
+					<tr>
+						<th>특별 보상</th>
+						<td><input type="text" name="atvo.specialPoint" value="0"><span class="td-span">포인트</span></td>
+					</tr>
+					<tr>
+						<th>개근상</th>
+						<td><input type="text" name="atvo.fullAttendancePrize" value="0"><span class="td-span">포인트</span></td>
+					</tr>
+				</table>
 			</div>
 			<div class="tab2-low">
 				<button type="button" class="prevButton">이전</button>
+				<div>
+					<button class="prize-add" type="button">추가</button>
+					<button class="prize-del" type="button">삭제</button>				
+				</div>
 				<button type="button" class="nextButton">다음</button>
 			</div>
 		</div>

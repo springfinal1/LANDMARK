@@ -23,54 +23,62 @@
 			
 			<div class="place-container">
 			<!-- 서치라인 -->
-			<c:choose>
-				<c:when test="${type eq 1}">
-					<div class="place-h2">
-						<h2>
-							<a href="#" id="placeAll">지역보기</a>
-						</h2>		
+				<div class="place-h2">
+					<h2>
+						<a href="#" id="placeAll">지역보기</a>
+					</h2>		
+				</div>
+				
+				<div class="placeDiv" id="placeDiv">
+				
+					<div class="place-drop-menu">
+						<span>
+							<a href="/product/list?pkContinent=동북아">동북아</a>
+						</span>
+						
+						<span>
+							<a href="/product/list?pkContinent=동남아">동남아</a>
+						</span>
+							
+						<span>
+							<a href="/product/list?pkContinent=유럽">유럽</a>
+						</span>
+							
+						<span>
+							<a href="/product/list?pkContinent=아메리카">아메리카</a>
+						</span>
+						<span>
+							<a href="/product/list?pkContinent=아메리카">아메리카</a>
+						</span>	
+						<span>
+							<a href="/product/list?pkContinent=아메리카">아메리카</a>
+						</span>	
+						<span>
+							<a href="/product/list?pkContinent=아메리카">아메리카</a>
+						</span>	
+						<span>
+							<a href="/product/list?pkContinent=아메리카">아메리카</a>
+						</span>	
+						<span>
+							<a href="http://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList">테스트2</a>
+						</span>	
+						<span>
+							<a href="http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?ServiceKey=ijQL0nu774ZPOX%2B4O4A1liiipYbCGKpoAGKZfExa6pDSbgqb4r1kI33P%2Byoz1pZ3MuNh4YuLM8SH%2BHI57KBwEQ%3D%3D&pageNo=1">테스트해보기]</a>
+						</span>	
+																									
 					</div>
 					
-					<div class="placeDiv" id="placeDiv">
-					
-						<div class="place-drop-menu">
-							<span><a href="/product/list?pkContinent=동북아">동북아</a></span>
-							<span><a href="/product/list?pkContinent=동남아">동남아</a></span>
-							<span><a href="/product/list?pkContinent=유럽">유럽</a></span>		
-							<span><a href="/product/list?pkContinent=아메리카">남미/중미/북미</a></span>												
-						</div>		
-					</div>
-				</c:when>
-				<c:when test="${type eq 2}">
-					<div class="place-h2">
-						<h2>
-							<a href="#" id="placeAll">테마보기</a>
-						</h2>		
-					</div>
-					
-					<div class="placeDiv" id="placeDiv">
-					
-						<div class="place-drop-menu">
-							<span><a href="/product/list?pkContinent=이색휴양지">이색 휴양지</a></span>
-							<span><a href="/product/list?pkContinent=아름다운도시">아름다운 도시</a></span>
-							<span><a href="/product/list?pkContinent=커플여행">커플 여행</a></span>
-							<span><a href="/product/list?pkContinent=럭셔리호캉스">럭셔리 호캉스</a></span>
-							<span><a href="/product/list?pkContinent=일본료칸(온천)">일본 료칸(온천)</a></span>						
-						</div>		
-					</div>
-				</c:when>
-			</c:choose>
+				</div>
 			</div>
+			
 			
 			
 			 
 			
 			
 			
-	<c:choose>
-		<c:when test="${pldto ne null }">
 			<!-- 리스트  -->
-			<div class="product-list-container">			
+			<div class="list-container">			
 				<c:forEach items="${pldto }" var="pldto">
 
 						<input type="hidden" value="${pldto.packvo.pkNo }" name="pkNo"> 
@@ -84,20 +92,37 @@
 						</div>							
 						<div class="textDiv">
 							<div class="list-product">
-							
 								<div>
+<<<<<<< HEAD
+									<h5>상품명</h5>
+=======
 									<h5 class="airdate"><i class="fa-solid fa-hashtag" id="dateZone-i"></i>상품명</h5>
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 									${pldto.packvo.pkName }
 								</div>
 								
 								<div id="countryZone">
+<<<<<<< HEAD
+									<h5>나라</h5>
+									${pldto.plvo.plCountry }
+								</div>
+								
+								<div id="festivalZone">
+									<h5>축제</h5>
+									${pldto.fvo.fvName }
+								</div>
+							
+								<div id="airZone">
+									<h5>출발 ~ 도착일</h5>
+=======
 									<h5 class="airdate">
 									<i class="fa-solid fa-location-dot" id="countryZone-i"></i>지역</h5>
-									${pldto.plvo.plCountry }
+									${pldto.plvo.plCountry } ${pldto.plvo.plName }
 								</div>
 							
 								<div id="airZone">						
 									<h5 class="airdate"><span class="material-symbols-outlined" id="airZone-i">calendar_month</span>출발기간</h5>
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 									${pldto.avo.apArrival } ~ ${pldto.avo.apDeparture }
 								</div>
 							</div>
@@ -118,18 +143,8 @@
 						</div>					
 					</div>			
 				</c:forEach>
-				
+			
 			</div>
-			</c:when>
-			<c:when test="${pldto eq null }">
-				<div class="noProduct">
-					<div>
-						<span class="material-symbols-outlined">production_quantity_limits</span>
-						<h2>등록된 상품이 없습니다.</h2>
-					</div>
-				</div>
-			</c:when>
-			</c:choose>
 		</div>
 	</div>
 	 
@@ -144,11 +159,7 @@
 <script type="text/javascript" src="/resources/js/product/product_list.js"></script>
 
 <script type="text/javascript">
-	if(idVal != null){
-		openFunction();
-	}else{
-		alret("로그인후 이용해주세요");
-	}
+	openFunction();
 </script>
 
 
