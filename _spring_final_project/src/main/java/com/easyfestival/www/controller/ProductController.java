@@ -1,13 +1,12 @@
 package com.easyfestival.www.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +27,6 @@ import com.easyfestival.www.domain.ProductListDTO;
 import com.easyfestival.www.handler.FileHandler;
 import com.easyfestival.www.security.UserVO;
 import com.easyfestival.www.service.ProductService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.springframework.http.MediaType;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -71,10 +66,15 @@ public class ProductController {
 	
 	
 	@GetMapping("list")
-	public String list(Model m,@RequestParam("pkContinent") String pkContinent, HttpSession ses){
+	public String list(Model m,@RequestParam("pkContinent") String pkContinent, HttpSession ses, RedirectAttributes re){
 
 		//List<ProductListDTO> pdto = psv.productList(pkContinent);
+		int type = 2;
+		if(pkContinent.equals("동북아")||pkContinent.equals("동남아")||pkContinent.equals("유럽")||pkContinent.equals("아메리카")) {
+			type = 1;
+		}
 		
+		m.addAttribute("type", type);
 		
 		List<ProductListDTO> pldto = psv.getdto(pkContinent);
 		

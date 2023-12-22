@@ -98,19 +98,25 @@ window.onload = function () { buildCalendar(); }    // 웹 페이지가 로드�
                 else {                                      // 미래인 경우
                     newDIV2.className = "futureDay";
                     newDIV2.onclick = function () { choiceDate(this); }
+                    
                 }
             }
         }
 
         // 출발 날짜 선택
         function choiceDate(newDIV) {
-            if (document.getElementsByClassName("choiceDay")[1]) {                              // 기존에 선택한 날짜가 있으면
-                document.getElementsByClassName("choiceDay")[1].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
+            let free = document.querySelector('.freeChecked').innerHTML;
+            if(free == "왕복"){
+                if (document.getElementsByClassName("choiceDay")[1]) {                              // 기존에 선택한 날짜가 있으면
+                    document.getElementsByClassName("choiceDay")[1].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
+                }
+            }else if(free == "편도"){
+                if (document.getElementsByClassName("choiceDay")[0]) {                              // 기존에 선택한 날짜가 있으면
+                    document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
+                }
             }
             
             newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
-
-            
         }
 
         // 이전달 버튼 클릭
@@ -134,10 +140,14 @@ window.onload = function () { buildCalendar(); }    // 웹 페이지가 로드�
         }
 
         
-        let freeCheck = document.querySelector('.freeChecked');
         
         calInit.addEventListener('click',()=>{
+            let freeCheck = document.querySelector('.freeChecked');
+
+            console.log(freeCheck.innerHTML+"< 달력닫을때 편도/왕복인지 체크");
+
             if(freeCheck.innerHTML == "왕복"){
+
                 let cal_date_year = document.querySelector(".Calendar > tbody").dataset.dataThisYear;
                 let cal_date_month = document.querySelector(".Calendar > tbody").dataset.dataThisMonth;
     
@@ -175,6 +185,38 @@ window.onload = function () { buildCalendar(); }    // 웹 페이지가 로드�
                 }
 
             }else if(freeCheck.innerHTML == "편도"){
+
+                let cal_date_year = document.querySelector(".Calendar > tbody").dataset.dataThisYear;
+                let cal_date_month = document.querySelector(".Calendar > tbody").dataset.dataThisMonth;
+    
+                let cal_date2_year = document.querySelector(".Calendar2 > tbody").dataset.dataNextYear;
+                let cal_date2_month = document.querySelector(".Calendar2 > tbody").dataset.dataNextMonth;
+                
+    
+                let choiceDayCount = document.querySelectorAll('.choiceDay');
+    
+                let startChoiceDay = (choiceDayCount[0].innerHTML); // 출발일
+               // let endChoiceday = (choiceDayCount[1].innerHTML); // 도착일
+                
+    
+                //  table > tbody > tr > td > p 
+                // 달력 확인
+
+                let parentNodeTbody = choiceDayCount[0].parentNode.parentNode.parentNode.parentNode;
+                
+                let calInput = document.querySelector('.cal-input');
+    
+                if(parentNodeTbody.classList == "Calendar"){ // 출발지가 1번달력이라면 1번달력에있는 data-set 사용
+                    console.log("출발일 첫번째달력");
+                    calInput.value = cal_date_year +"-"+cal_date_month+"-"+ startChoiceDay;
+                }else{
+                    console.log("출발일 두번째달력");
+                    calInput.value = cal_date2_year +"-"+cal_date2_month+"-"+ startChoiceDay;
+                }
+                
+               
+
+                
                 
             }
             

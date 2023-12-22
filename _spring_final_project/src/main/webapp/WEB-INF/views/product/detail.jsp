@@ -3,6 +3,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,15 @@
 
 </head>
 <body>
+		<sec:authorize access="isAuthenticated()">
+	      <sec:authentication property="principal.uvo.id" var="authId" />
+	      <sec:authentication property="principal.uvo.email" var="authEmail" />
+	      <sec:authentication property="principal.uvo.name" var="authName" />
+	      <sec:authentication property="principal.uvo.age" var="authAge" />
+	      <sec:authentication property="principal.uvo.phoneNumber" var="authPhoneNumber" />
+	      <sec:authentication property="principal.uvo.authList" var="auths" />
+      </sec:authorize>
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
 	<c:set value="${pldto.packvo }" var="packvo"/>
@@ -55,9 +65,6 @@
 						<div>
 							<div class="manager-div">
 								<span id="managerInfoA" class="manager-div-a">담당자 정보 <span class="material-symbols-outlined" id="managerInfoSpan">error</span></span>	
-								<!-- 여행 후기 갯수 늘어나게 만들기 클릭하면 리뷰창으로 이동 -->
-								<!-- 여행후기 갯수  -->
-								<a href="#" class="tourreview manager-div-a">여행후기 <span>0</span></a>
 							</div>
 							
 						</div>
@@ -147,18 +154,15 @@
 					</div>
 					<div class="admin-product-controll">
 						<!-- 관리자만 보이게 만들기 -->
-						<div>
-							<a href="/product/modify?pkNo=${packvo.pkNo }">상품정보 수정하기</a>
-						</div>
-						
-						<div>
-							<div class="product-remove">상품 제거</div>
-						</div>
-					</div>
-					<div>
-						<span>예상 포인트 적립금액</span>
-						<!-- 마일리지  -->
-						<span>???</span>
+						<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+							<div>
+								<a href="/product/modify?pkNo=${packvo.pkNo }">상품정보 수정하기</a>
+							</div>
+							
+							<div>
+								<div class="product-remove">상품 제거</div>
+							</div>               
+             		  </c:if>
 					</div>
 				</div> <!-- 옵션 -->
 			

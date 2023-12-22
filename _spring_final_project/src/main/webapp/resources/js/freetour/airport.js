@@ -21,8 +21,8 @@ let reserH1 = document.querySelector('.reser-h1');
 
 
 
-
-
+let gateNumber = document.getElementById('gateNumber');
+let arrGate = document.getElementById('arrGate');
 reservationBtn.forEach(e=>{
     e.addEventListener('click',()=>{
         reserH1.innerHTML=""
@@ -38,7 +38,7 @@ arrChoice.forEach(e=>{
         arrName.innerHTML = e.closest('div').dataset.airline;
         arrTime.innerHTML = `${e.closest('div').dataset.schedule.substring(8,10)}`+" : "+`${e.closest('div').dataset.schedule.substring(10,12)}`;
         arrAir.innerHTML =  e.closest('div').dataset.airport+" "+` <i class="fa-solid fa-arrow-right"></i> ${startAirport.innerHTML}`;
-
+        gateNumber.value = arrGate.value; 
     })
 })
 
@@ -50,4 +50,5 @@ let seat = document.querySelector('.seat').innerHTML;
 
 
 let pepCnt = document.querySelector('.pep-cnt');
+
 

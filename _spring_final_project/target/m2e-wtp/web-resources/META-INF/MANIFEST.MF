@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: fecd1
 Build-Jdk: 11.0.20
+=======
+Built-By: EZENIC-155
+Build-Jdk: 11.0.19
+>>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98
 Created-By: Maven Integration for Eclipse
 

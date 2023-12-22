@@ -23,7 +23,12 @@
       <typeAlias type="com.easyfestival.www.domain.OrderVO" alias="orderVO" />
       <typeAlias type="com.easyfestival.www.domain.PayDTO" alias="payDTO" />
       <typeAlias type="com.easyfestival.www.domain.OllPayDTO" alias="OllPayDTO"/>
+<<<<<<< HEAD
       <typeAlias type="com.easyfestival.www.domain.FreeTitcketOrderVO" alias="ftoVO"/>
+=======
+      <typeAlias type="com.easyfestival.www.domain.FavoriteDTO" alias="fadto"/>
+      <typeAlias type="com.easyfestival.www.domain.UserInfoDTO" alias="udto"/>
+>>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98
    </typeAliases>
       
 </configuration>

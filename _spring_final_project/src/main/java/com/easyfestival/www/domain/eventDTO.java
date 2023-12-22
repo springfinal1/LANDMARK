@@ -15,14 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class eventDTO 
 {
-	private long evNo; //이벤트 기본키
-	private String evName; //이벤트 이름
-	private String evStart; //이벤트 시작일
-	private String evEnd; //이벤트 종료일
-	private String evType; //이벤트 타입
-	private long userNo; //당첨자 유저 번호
-	private String evContent; //이벤트 내용
-	private String thumbnail;
+	private eventVO evo;
 	private List<String> prizes;
-
+	private attendanceVO atvo;
 }

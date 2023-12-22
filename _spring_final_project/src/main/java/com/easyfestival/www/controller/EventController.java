@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -26,13 +27,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.easyfestival.www.domain.AttendanceHistoryVO;
+import com.easyfestival.www.domain.attendanceVO;
 import com.easyfestival.www.domain.eventDTO;
 import com.easyfestival.www.domain.eventVO;
 import com.easyfestival.www.domain.prizeVO;
@@ -60,30 +65,46 @@ public class EventController {
 		log.info("asdas21412421");
 		return "/event/EventRegister";
 	}
-
+//
 	@PostMapping("/eventRegister")
-	public String eventRegister(eventDTO edto) {
+	public String eventRegister(@ModelAttribute("edto") eventDTO edto) {
 		log.info("edto는???" + edto);
-		log.info("prizes는?"+edto.getPrizes());
-		esv.eventRegister(edto);
-		rouletteVO rlvo=new rouletteVO();
-		rlvo.setEvNo(esv.lastEvno());
+		//log.info("prizes는?"+edto.getPrizes());
 		
-		String prizes="";
-		for(int i=0;i<edto.getPrizes().size();i++) {	//배열 합쳐서 문자열 만들기
-			prizes+=edto.getPrizes().get(i);
-			if(i!=edto.getPrizes().size()-1)
-				prizes+=",";
+		esv.eventRegister(edto.getEvo());
+		
+		if(edto.getEvo().getEvType().equals("rouletteEv")) //이벤트타입이 룰렛이면
+		{
+			rouletteVO rlvo=new rouletteVO();
+			rlvo.setEvNo(esv.lastEvno());
+			String prizes="";
+			for(int i=0;i<edto.getPrizes().size();i++) 
+			{	//배열 합쳐서 문자열 만들기
+				prizes+=edto.getPrizes().get(i);
+				if(i!=edto.getPrizes().size()-1)
+					prizes+=",";
+			}
+			rlvo.setPrizes(prizes);
+			
+			log.info("rlvo:"+prizes);
+
+			esv.rouletteRegister(rlvo);
 		}
-		rlvo.setPrizes(prizes);
-		log.info("rlvo:"+prizes);
+		else if(edto.getEvo().getEvType().equals("AttendanceEv"))	//이벤트타입이 출석체크면
+		{
+			attendanceVO atvo=new attendanceVO();
+			atvo.setEvNo(esv.lastEvno());
+			atvo.setFullAttendancePrize(edto.getAtvo().getFullAttendancePrize());
+			atvo.setPoint(edto.getAtvo().getPoint());
+			atvo.setMaxAttendanceCount(edto.getAtvo().getMaxAttendanceCount());
+			atvo.setSpecialPointCount(edto.getAtvo().getSpecialPointCount());
+			atvo.setSpecialPoint(edto.getAtvo().getSpecialPoint());
+			esv.attendanceRegister(atvo);
+		}
 		
-		esv.rouletteRegister(rlvo);
-		
-		
-		
-		return "index";
+		return "redirect:/event/OneventList";
 	}
+
 
 	@PostMapping("/image")
     public ResponseEntity<String> handleImageUpload(@RequestParam("file") MultipartFile file) {
@@ -165,6 +186,11 @@ public class EventController {
 	public String eventDetail(Model m,@RequestParam("evNo")int evNo)
 	{
 		eventVO evo=esv.detail(evNo);
+		if(evo.getEvType().equals("AttendanceEv")) {
+			attendanceVO atvo=esv.getAttendance(evNo);
+			m.addAttribute("atvo", atvo);
+		}
+		
 		m.addAttribute("evo", evo);
 		return "/event/EventDetail";
 	}
@@ -189,11 +215,6 @@ public class EventController {
 		return "redirect:/event/OneventList";
 	}
 	
-	@GetMapping("/admin")
-	public String admin()
-	{
-		return "/admin";
-	}
 	
 	@PostMapping("/postPrize")
 	public ResponseEntity<String> postPrize(@RequestBody prizeVO prvo)
@@ -213,6 +234,43 @@ public class EventController {
 
 		
 		return new ResponseEntity<String>(prizes,HttpStatus.OK);
+	}
+	
+	@GetMapping("/attendance")
+	public String attendance(String id,long evNo,Model m,RedirectAttributes redirectattributes)
+	{
+		LocalDate now=LocalDate.now();
+		
+		//같은 기록이 있는지 확인하기 위해 불러옴
+		AttendanceHistoryVO ahvo=esv.getAttendanceHistory(evNo,id,now);
+		//현재 이벤트의 포인트 값을 사용하기위해 불러옴
+		attendanceVO atvo=esv.getAttendance(evNo);
+		
+		if(ahvo==null) { //같은 기록이 없다면
+			esv.attendanceHistory(evNo,id,now);//출석이벤트 기록 db에 저장
+			esv.addpoint(id,atvo.getPoint()); //포인트 지급
+			//지정횟수만큼 출석했을때마다 추가 포인트를 주기 위해서 몇번 출석했는지 값을 불러옴
+			int AttendanceCount=esv.getAttendanceCount(evNo,id);
+			if(AttendanceCount%atvo.getSpecialPointCount()==0)	//특정횟수만큼 출석하면 추가 포인트
+			{
+				esv.addSpecialPoint(id,atvo.getSpecialPoint());
+			}
+		}
+		else {
+			redirectattributes.addFlashAttribute("msg", "attendanced");	//model로 보내면 redirect를 거쳐서 값을 못씀
+		}
+		
+		
+		return "redirect:/event/eventDetail?evNo="+evNo;
+	}
+	
+	@PostMapping("/getAttendanceCnt")
+	public ResponseEntity<String> getAttendanceCnt(@RequestParam("id") String id,@RequestParam("evNo")long evNo)
+	{
+		
+		int AttendanceCount=esv.getAttendanceCount(evNo, id);
+		
+		return new ResponseEntity<String>(String.valueOf(AttendanceCount) ,HttpStatus.OK);
 	}
 
 }

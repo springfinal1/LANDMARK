@@ -531,6 +531,65 @@
 	justify-content: center;
 }
 
+/* 관심상품 내역*/
+.favvorite-name{
+	/* 관심상품명 */
+	width: 50%;
+	height: 100%;
+}
+.favvorite-continent{
+	/* 관심상품 지역 */
+	width: 20%;
+	height: 100%;
+}
+.favvorite-continent a{
+	color : inherit;
+}
+.favvorite-price{
+	/* 관심상품 가격 */
+	width: 30%;
+	height: 100%;
+}
+.favvorite-name,.favvorite-continent, .favvorite-price{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 항공권 내역*/
+.ticket-date{
+	/* 항공권 스케쥴 */
+	width: 35%;
+	height: 100%;
+}
+.ticket-arrival{
+	/* 도착공항 */
+	width: 25%;
+	height: 100%;
+}
+.ticket-flighType{
+	/* 항공유형 */
+	width: 13%;
+	height: 100%;
+}
+.ticket-arrival a{
+	color : inherit;
+}
+.ticket-seatType{
+	/* 좌석유형 */
+	width: 17%;
+	height: 100%;
+}
+.ticket-people{
+	/* 티켓 인원수 */
+	width: 10%;
+	height: 100%;
+}
+.ticket-date,.ticket-arrival, .ticket-flighType, .ticket-seatType, .ticket-people{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .noHistory{
 	/* 내역 없는경우 div */
 	gap: 1rem;
