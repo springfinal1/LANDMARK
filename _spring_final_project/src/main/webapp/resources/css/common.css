@@ -251,6 +251,12 @@ dl, dd{
    background-size: cover;
    position: relative;
 }
+.items a{
+	display:block;
+	width: 100%;
+	height: 100%;
+	cursor: default;
+}
 .slider-item1{
    background-image: url("/resources/image/main-image/italian-venezia-7700549_1920.jpg");
 }
