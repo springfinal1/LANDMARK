@@ -37,26 +37,33 @@ body{
     
 }
 .place-drop-menu{
-    width: 33.33%;
+    width: 950px;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    align-items: center;
     padding-top: 40px;
     height: 0;
+    justify-content: center;
+    gap: 15px;
 }
 .place-drop-menu > span{
-    width: 30%;
+    width: 50%;
     height: 50px;
     text-align: center;
     font-size: 0;
     font-weight: 700;
 }
+.place-drop-menu > span > a{
+    color: #222;
+    cursor: pointer;
+    font-weight: 700;
+}
 
-
-
-.list-container{
+.product-list-container{
+	width: 100%;
     padding-left: 20%;
     padding-right: 20%;
+    box-sizing: border-box;
 }
 .itemBox{
     border: 1px solid #ccc;
@@ -136,8 +143,6 @@ h5{
 }
 .check-heart{
     color: #E53E30;
-<<<<<<< HEAD
-=======
 }
 .noProduct{
     padding-top: 200px;
@@ -165,5 +170,4 @@ h5{
 }
 #countryZone-i, #airZone-i, #dateZone-i{
     padding-right:  5px;
->>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 }
