@@ -11,19 +11,21 @@
 <meta charset="UTF-8">
 <title>랜드마크</title>
 
-<link rel="stylesheet" href="/resources/css/peyment/PeyReservation.css"
-	type="text/css">
-
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-<style>
-body, h1, h2, h3, h4, h5, h6, p, span {
-	font-family: 'Noto Sans KR', sans-serif !important;
-}
-</style>
-
 </head>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<link rel="stylesheet" href="/resources/css/peyment/PeyReservation.css"
+	type="text/css">
+<title>Home</title>
+</head>
+
 <body>
+
 	<div class="main-container">
 
 		<div class="left-content">
@@ -181,37 +183,28 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 				</div>
 				<table class="main-mid-mid">
 					<colgroup>
-						<col style="width: 7%">
+						<col style="width: *%">
 						<col style="width: 10%">
 						<col style="width: 15%">
 						<col style="width: 15%">
 						<col style="width: 15%">
-						<col style="width: 15%">
-						<col style="width: 7%">
-						<col style="width: *%">
 					</colgroup>
 					<thead>
 						<tr>
-							<th>구분</th>
-							<th>운임조건</th>
-							<th>항공요금</th>
-							<th>제세공과금</th>
-							<th>유류할증료</th>
-							<th>발권수수료</th>
+							<th>도시</th>
+							<th>시트타입</th>
+							<th>왕복 / 편도</th>
 							<th>인원</th>
 							<th>합계</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><span>성인</span></td>
-							<td><span>성인</span></td>
-							<td><span>1996원</span></td>
-							<td><span>1157원</span></td>
-							<td><span>598498원</span></td>
-							<td><span>5454원</span></td>
-							<td><span>9984원</span></td>
-							<td><span>6999999원</span></td>
+							<td><span>${freeTitcketOrderVO.arruvalDay }</span></td>
+							<td><span>${freeTitcketOrderVO.seatType }</span></td>
+							<td><span>${freeTitcketOrderVO.flightType }</span></td>
+							<td><span>${freeTitcketOrderVO.ftPeple }</span></td>
+							<td><span>${freeTitcketOrderVO.ftPrice }</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -324,26 +317,26 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 			</div>
 
 			<div class="bottom-peyment">
-					<div class="box">
-						<div class="selectBox">
-							<button class="label">결제수단 선택</button>
-							<ul class="optionList" id="paymentMethod">
-								<li class="optionItem" value="kakaopay" data-v-16d1a795>카카오페이</li>
-								<li class="optionItem" value="tosspay">토스</li>
-								<li class="optionItem" value="html5_inicis">KG이니시스</li>
-								<li class="optionItem" value="payco">페이코</li>
-								<li class="optionItem" value="settle">핵토파이낸셜</li>
-								<li class="optionItem" value="daou">키움페이</li>
-							</ul>
-
-						</div>
+				<div class="box">
+					<div class="selectBox">
+						<button class="label">결제수단 선택</button>
+						<ul class="optionList" id="paymentMethod">
+							<li class="optionItem" value="kakaopay" data-v-16d1a795>카카오페이</li>
+							<li class="optionItem" value="tosspay">토스</li>
+							<li class="optionItem" value="html5_inicis">KG이니시스</li>
+							<li class="optionItem" value="payco">페이코</li>
+							<li class="optionItem" value="settle">핵토파이낸셜</li>
+							<li class="optionItem" value="daou">키움페이</li>
+						</ul>
 
 					</div>
-					<button class="btn-gradient cyan" type="button"
-						onclick="requestPay()">
-						<span>결제하기</span>
-					</button>
+
 				</div>
+				<button class="btn-gradient cyan" type="button"
+					onclick="requestPay()">
+					<span>결제하기</span>
+				</button>
+			</div>
 
 		</div>
 
@@ -352,4 +345,14 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 
 	</div>
 </body>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+<script type="text/javascript">
+	let fTOVO = `<c:out value="${freeTitcketOrderVO}" />`;
+</script>
+
+<script type="text/javascript"
+	src="/resources/js/peyment/PeyReservation.js">
+	
+</script>
 </html>

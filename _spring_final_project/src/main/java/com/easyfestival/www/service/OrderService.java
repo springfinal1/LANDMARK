@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.easyfestival.www.domain.FreeTitcketOrderVO;
 import com.easyfestival.www.domain.OllPayDTO;
 import com.easyfestival.www.domain.OrderVO;
 import com.easyfestival.www.domain.PayDTO;
@@ -14,27 +15,25 @@ import com.easyfestival.www.repository.OrderDAO;
 
 @Service
 public class OrderService {
-	
+
 	@Autowired
 	private OrderDAO orderDAO;
-	
+
 	@Autowired
 	private PayService payService;
-	
 
-	public int insert_pay(OrderVO orderVO) throws Exception{
-		
-		
+	public int insert_pay(OrderVO orderVO) throws Exception {
+
 		return orderDAO.insert_pay(orderVO);
 	}
 
-	public int insert_payinfo(PayDTO payVO) throws Exception{
-		
+	public int insert_payinfo(PayDTO payVO) throws Exception {
+
 		return orderDAO.insert_payinfo(payVO);
 	}
 
-	public PayDTO getLastPay(PayDTO payVO) throws Exception{
-		
+	public PayDTO getLastPay(PayDTO payVO) throws Exception {
+
 		return orderDAO.getLastPay(payVO);
 	}
 
@@ -43,31 +42,30 @@ public class OrderService {
 		return orderDAO.getPay(payNum);
 	}
 
-
 	public OrderVO adminList(OrderVO orderVO) {
-		
+
 		return orderDAO.adminList(orderVO);
 	}
 
 	public int payMentCancle(PayDTO payVO) {
-		
+
 		return orderDAO.payMentCancle(payVO.getOrderNum());
 	}
-	
+
 	@Transactional
 	public int orderCancle(OrderVO orderVO) throws Exception {
 		System.out.println("1 : " + orderVO);
 		System.out.println("2 : " + orderVO.getOrderNum());
 		System.out.println("3 : " + orderVO.getImpUid());
-		if(!orderVO.getImpUid().equals("")) {
-			String token = payService.getToken(); 
+		if (!orderVO.getImpUid().equals("")) {
+			String token = payService.getToken();
 			Long price = orderVO.getTotalPrice();
-			Long refundPrice = price ;
+			Long refundPrice = price;
 			System.out.println("Test ss");
-			payService.payMentCancle(token, orderVO.getImpUid(), refundPrice+"", "환불");
+			payService.payMentCancle(token, orderVO.getImpUid(), refundPrice + "", "환불");
 			System.out.println("Test ss2222");
 		}
-		
+
 		return orderDAO.orderCancle((orderVO.getOrderNum()));
 	}
 
@@ -98,21 +96,17 @@ public class OrderService {
 
 	public String getConfirmation(long orderNum) {
 		// TODO Auto-generated method stub
-		return  orderDAO.getConfirmation(orderNum);
+		return orderDAO.getConfirmation(orderNum);
 	}
-<<<<<<< HEAD
-	
-=======
-<<<<<<< HEAD
-=======
 
->>>>>>> 4acc11dbac294939cb34a01200e93999c0b0846a
->>>>>>> a766670d140195c21827654a4af52f91ee92324a
 	public List<OllPayDTO> getPackageList(String id) {
 		// 마이페이지 패키지예약내역 리스트용
 		return orderDAO.getPackageList(id);
 	}
 
+	public int freeinfo_pay(FreeTitcketOrderVO freeTitcketOrderVO) {
+		return orderDAO.freeinfo_pay(freeTitcketOrderVO);
 
+	}
 
 }
