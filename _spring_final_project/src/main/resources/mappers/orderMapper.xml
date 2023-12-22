@@ -124,7 +124,7 @@
 		order_num = #{orderNum};
 	</update>
 
-<<<<<<< HEAD
+
 	<select id="getConfirmation" resultType="java.lang.String">
 		SELECT confirmation
 		FROM
@@ -132,11 +132,5 @@
 		WHERE order_num = #{orderNum};
 	</select>
 
-=======
 
-
-   <!-- <select id="getMyOrderList" parameterType="map" resultType="OrderDTO"> 
-      SELECT * FROM pay_order_user o JOIN package PK ON o.pkNo = PK.pkNo WHERE 
-      o.orderNum = #{orderNum} </select> -->
->>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98
 </mapper>
