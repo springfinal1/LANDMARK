@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +74,7 @@
 								<div class="qa-list">
 									<span class="packge-orderDate">${pack.orderDate}</span>
 									<span class="packge-name"><a href="/peyment/getList?orderNum=${pack.orderNum}">${pack.pkName}</a></span>
-									<span class="packge-price"><fmt:formatNumber value="${pack.totalPrice}" pattern="#,###" />원</span>
+									<span class="packge-price">${pack.totalPrice}원</span>
 								</div>
 								</c:forEach>
 							</div>
@@ -93,6 +92,9 @@
 				</div>
 				<div class="my-list">
 					<!-- 항공예약내역 영역 -->
+<<<<<<< HEAD
+					<div class="noHistory"><i class="fa-solid fa-plane-slash"></i>예약내역이 없습니다.</div>
+=======
 					<c:choose>
 						<c:when test="${not empty faList}">
 							<div class="list-items">
@@ -118,6 +120,7 @@
 							<div class="noHistory"><i class="fa-solid fa-plane-slash"></i>예매한 항공권이 없습니다.</div>
 						</c:otherwise>
 					</c:choose>	
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 				</div>
 			</div>
 			
@@ -131,27 +134,7 @@
 				</div>
 				<div class="my-list">
 					<!-- 관심상품 영역 -->
-					<c:choose>
-						<c:when test="${not empty faList}">
-							<div class="list-items">
-								<div class="fixed-title">
-									<span class="favvorite-name">상품명</span>
-									<span class="favvorite-continent">지역</span>
-									<span class="favvorite-price">패키지금액</span>
-								</div>
-								<c:forEach items="${faList}" var="faList">
-								<div class="qa-list">
-									<span class="favvorite-name">${faList.pkName}</span>
-									<span class="favvorite-continent"><a href="/product/detail?pkNo=${faList.pkNo}">${faList.pkContinent}</a></span>
-									<span class="favvorite-price"><fmt:formatNumber value="${faList.pkPrice}" pattern="#,###" />원</span>
-								</div>
-								</c:forEach>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="noHistory"><i class="fa-solid fa-cart-shopping"></i>관심상품이 없습니다.</div>
-						</c:otherwise>
-					</c:choose>					
+					<div class="noHistory"><i class="fa-solid fa-cart-shopping"></i>관심상품이 없습니다.</div>
 				</div>
 			</div>
 			
