@@ -12,15 +12,17 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 <!-- <div class="detail-container"> -->
-	<div class="detail-delmod-div">
-		<a href="/review/remove?rvNo=${rvo.rvNo}">
-			<i class="fa-solid fa-trash"></i>삭제
-		</a>
-		<a href="/review/modify?rvNo=${rvo.rvNo}">
-			<i class="fa-solid fa-pencil"></i>수정
-		</a>
-	</div>
 
+	<div class="detail-delmod-div">
+		<c:if test="${uvo.id eq rvo.id }">
+			<a href="/review/remove?rvNo=${rvo.rvNo}">
+				<i class="fa-solid fa-trash"></i>삭제
+			</a>
+			<a href="/review/modify?rvNo=${rvo.rvNo}">
+				<i class="fa-solid fa-pencil"></i>수정
+			</a>
+		</c:if>
+	</div>
 	<div class="detail-head-div">
 		<h3>${rvo.title}</h3>
 		

@@ -6,12 +6,16 @@ body {
 /* detail-container{
 	margin: 100px 0px 50px 0px;
 } */
+li{
+	list-style-type: none;	
+}
 
 .detail-head-div,.detail-middle-div,.recommend-div
 	,.review-comment-container,.detail-delmod-div{
 	width: 70%;
 
 }
+
 /* 수정 삭제 부분 */
 .detail-delmod-div{
 	margin: 120px 0px 10px 0px;

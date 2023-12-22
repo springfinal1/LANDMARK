@@ -10,7 +10,7 @@ function printAttendanceContent()
                 let id='attendence-content'+i;
                 let attendenceContent=document.getElementById(id);
                 console.log(attendenceContent);
-                attendenceContent.style.backgroundColor='red';
+                attendenceContent.src="/resources/image/event-image/at.jpg";
                 
             }
         }

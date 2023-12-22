@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 let playbtn = document.querySelector('.play-event');
 
 playbtn.addEventListener('click', () => {
@@ -20,7 +22,9 @@ playbtn.addEventListener('click', () => {
 
 >>>>>>> cb24f3bc9d74f020e0e1a07b4df6554c73d86c98
 
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 
+ 
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
 

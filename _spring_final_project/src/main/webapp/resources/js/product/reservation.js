@@ -22,23 +22,23 @@ console.log("aa" + reservationPrice.value);
 
 
 icon.addEventListener('click',()=>{
-    if(icon.classList.contains('checked-red')){
+    if(icon.classList.contains('checked')){
         for(let i=0; i<checkbox.length; i++){
-            checkbox[i].classList.remove('checked-red');
+            checkbox[i].classList.remove('checked');
         }
     }else{
         for(let i=0; i<checkbox.length; i++){
-            checkbox[i].classList.add('checked-red');
+            checkbox[i].classList.add('checked');
         }
     }
 })
 
 for(let i=0; i<select.length; i++){
     select[i].addEventListener('click', ()=>{
-        if(select[i].classList.contains('checked-red')){
-            select[i].classList.remove('checked-red');
+        if(select[i].classList.contains('checked')){
+            select[i].classList.remove('checked');
         }else{
-            select[i].classList.add('checked-red');
+            select[i].classList.add('checked');
         }
     })
 }
@@ -55,8 +55,8 @@ document.getElementById('reservation-btn').addEventListener('click', () => {
 
     aaa = parseInt(pkNoVal);
 
-    if (!checkBtn1.classList.contains('checked-red') || !checkBtn2.classList.contains('checked-red')
-        || !checkBtn3.classList.contains('checked-red') || !checkBtn4.classList.contains('checked-red') || !checkBtn5.classList.contains('checked-red')) {
+    if (!checkBtn1.classList.contains('checked') || !checkBtn2.classList.contains('checked')
+        || !checkBtn3.classList.contains('checked') || !checkBtn4.classList.contains('checked') || !checkBtn5.classList.contains('checked')) {
         alert("약관을 동의해주세요");
     } else {
         // 여기에서 이동할 URL을 지정하세요.
@@ -108,84 +108,3 @@ document.addEventListener('click', (e) => {
 
 });
 
-
-let closeBtn = document.querySelectorAll('.terms-modal-close'), // 모달창 닫기
-    modalBack = document.querySelector('.terms-modal-back'),
-    modalOpen1 = document.querySelector('#modal-open-1'),
-    modalOpen2 = document.querySelector('#modal-open-2'),
-    modalOpen3 = document.querySelector('#modal-open-3'),
-    modalOpen4 = document.querySelector('#modal-open-4'),
-    modalOpen5 = document.querySelector('#modal-open-5'),
-    modal1 = document.querySelector('#modal-1'),
-    modal2 = document.querySelector('#modal-2'),
-    modal3 = document.querySelector('#modal-3'),
-    modal4 = document.querySelector('#modal-4'),
-    modal5 = document.querySelector('#modal-5');
-
-    modalOpen1.addEventListener('click', function(){
-        modal1Open(1);
-    });
-    modalOpen2.addEventListener('click', function(){
-        modal1Open(2);
-    });
-    modalOpen3.addEventListener('click', function(){
-        modal1Open(3);
-    });
-    modalOpen4.addEventListener('click', function(){
-        modal1Open(4);
-    });
-    modalOpen5.addEventListener('click', function(){
-        modal1Open(5);
-    });
-    closeBtn.forEach( e => {
-        e.addEventListener('click', modalClose);
-    })
-    function modal1Open(num){
-        modalBack.style.display = 'block';
-        switch (num) {
-            case 1:
-                modal1.style.display = 'flex';
-                setTimeout(() => {
-                    modal1.classList.add('terms-modal-translate');
-                }, 100);
-                break;
-            case 2:
-                modal2.style.display = 'flex';
-                setTimeout(() => {
-                    modal2.classList.add('terms-modal-translate');
-                }, 100);
-                break;
-            case 3:
-                modal3.style.display = 'flex';
-                setTimeout(() => {
-                    modal3.classList.add('terms-modal-translate');
-                }, 100);
-                break;
-            case 4:
-                modal4.style.display = 'flex';
-                setTimeout(() => {
-                    modal4.classList.add('terms-modal-translate');
-                }, 100);
-                break;
-            case 5:
-                modal5.style.display = 'flex';
-                setTimeout(() => {
-                    modal5.classList.add('terms-modal-translate');
-                }, 100);
-                break;
-        }
-    }
-    
-    function modalClose(){
-        modalBack.style.display = 'none';
-        modal1.style.display = 'none';
-        modal1.classList.remove('terms-modal-translate');
-        modal2.style.display = 'none';
-        modal2.classList.remove('terms-modal-translate');
-        modal3.style.display = 'none';
-        modal3.classList.remove('terms-modal-translate');
-        modal4.style.display = 'none';
-        modal4.classList.remove('terms-modal-translate');
-        modal5.style.display = 'none';
-        modal5.classList.remove('terms-modal-translate');
-    }

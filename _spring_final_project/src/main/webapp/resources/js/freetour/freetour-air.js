@@ -90,7 +90,7 @@ let oneWay = document.getElementById('oneWay');
 let hiddenVerification = document.querySelector('.hiddenVerification');
 
 let freeChecked = document.querySelector('.freeChecked');
-let calInputBtn = document.querySelector('.cal-input');
+
 
 
 
@@ -101,7 +101,6 @@ roundTrip.addEventListener('click',()=>{
         oneWay.classList.remove('freeChecked');
     }
     hiddenVerification.value = roundTrip.innerHTML;
-    calInputBtn.value = "날짜를 입력해주세요";
     console.log(hiddenVerification.value);
 })
 
@@ -112,7 +111,6 @@ oneWay.addEventListener('click',()=>{
         roundTrip.classList.remove("freeChecked");
     }
     hiddenVerification.value = oneWay.innerHTML;
-    calInputBtn.value = "날짜를 입력해주세요";
     console.log(hiddenVerification.value);
 })
 
@@ -213,7 +211,7 @@ searchPlaceButton.addEventListener('click',()=>{
 
         let str = `<ul>`;
         for(let i=0; i<result.length; i++){
-            str += `<li><a href="#" class="searchPlaceInfo"> <p class="search-city-kor">${result[i].cityKor}</p> <p class="search-city-info">#${result[i].cityJpn},#${result[i].cityEng},#${result[i].cityCode}</p> </a></li>`;
+            str += `<li><a href="#" class="searchPlaceInfo"> <strong class="search-city-kor">${result[i].cityKor}</strong> <p class="search-city-info">#${result[i].cityJpn},#${result[i].cityEng},#${result[i].cityCode}</p> </a></li>`;
         }
         str += `</ul>`;
         resultSearch.innerHTML += str;       
@@ -243,15 +241,15 @@ city.forEach(e=>{
         tripModal.style.display = "none";
     })
 })
-// let transformation = document.getElementById('transformation');
-// let temporaryValue; // 임시값
+let transformation = document.getElementById('transformation');
+let temporaryValue; // 임시값
 
-// transformation.addEventListener('click',()=>{
-//     temporaryValue = arrival.value;
-//     arrival.value = departure.value;
-//     departure.value = temporaryValue;
+transformation.addEventListener('click',()=>{
+    temporaryValue = arrival.value;
+    arrival.value = departure.value;
+    departure.value = temporaryValue;
 
-// })
+})
 
 let adultRemove = document.querySelector(".adult-minus-btn"); // 성인 제거
 let adultCount = document.getElementById("adult-count"); // 성인 인원

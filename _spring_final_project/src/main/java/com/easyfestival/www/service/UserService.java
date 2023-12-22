@@ -2,8 +2,6 @@ package com.easyfestival.www.service;
 
 import java.util.List;
 
-import com.easyfestival.www.domain.FavoriteDTO;
-import com.easyfestival.www.domain.UserInfoDTO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.security.AuthVO;
 import com.easyfestival.www.security.UserVO;
@@ -16,6 +14,8 @@ public interface UserService {
 
 	int authUser(AuthVO avo);
 
+	List<UserVO> getList();
+
 	int modifyUser(UserVO uvo);
 
 	int deleteUser(String id);
@@ -27,8 +27,4 @@ public interface UserService {
 	List<AuthVO> selectAuths(String username);
 
 	UserVO getId(String name, String email);
-
-	List<FavoriteDTO> getFavoriteList(String id);
-
-	List<UserInfoDTO> getUserList(PagingHandler ph);
 }

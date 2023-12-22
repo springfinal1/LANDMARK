@@ -62,7 +62,7 @@ document.addEventListener('click',(e)=>{
          </p></div>`;
         div += `<div class="warning-div">`;
         div += `<span class="material-symbols-outlined">warning</span>`;
-        div += `<p>여행일정은 계약체결시 예상하지 못한 부득이한 사정 등이 발생하는 경우 <br> 여행사의 사전 동의를 거쳐 변경될 수 있음을 양지하시기바랍니다.</p>
+        div += `<p>여행일정은 계약체결시 예상하지 못한 부득이한 사정 등이 발생하는 경우 여행사의 사전 동의를 거쳐 변경될 수 있음을 양지하시기바랍니다.</p>
 		</div>`;
         productDiv.innerHTML = div;
 

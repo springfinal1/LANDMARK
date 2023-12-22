@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,14 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
+      <sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.uvo.id" var="authId" />
+      <sec:authentication property="principal.uvo.email" var="authEmail" />
+      <sec:authentication property="principal.uvo.name" var="authName" />
+      <sec:authentication property="principal.uvo.age" var="authAge" />
+      <sec:authentication property="principal.uvo.phoneNumber" var="authPhoneNumber" />
+      <sec:authentication property="principal.uvo.authList" var="auths" />
+      </sec:authorize>
 
 		
 			
@@ -40,9 +48,11 @@
 						<li>
 							<a href="/event/LasteventList" id="last">지난 이벤트<span>></span></a>
 						</li>
-						<li>
-							<a href="/event/eventRegister">이벤트 추가 <span>></span></a>
-						</li>
+						<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+							<li>
+								<a href="/event/eventRegister">이벤트 추가 <span>></span></a>
+							</li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -53,8 +63,9 @@
 					<li>
 						<div class="event-item">
 							<div class="event-img">
-								<img src="${evo.thumbnail}">
+								<img src="${evo.thumbnail}" onerror="this.onerror=null; this.src='/resources/image/review-image/no-image-icon-23483.png';">
 							</div>
+							
 							<div class="event-title">
 								<a href="/event/eventDetail?evNo=${evo.evNo}"> <strong>
 										${evo.evName} </strong>

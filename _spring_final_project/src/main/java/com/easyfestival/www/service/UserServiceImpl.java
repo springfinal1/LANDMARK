@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.easyfestival.www.domain.FavoriteDTO;
-import com.easyfestival.www.domain.UserInfoDTO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.repository.UserDAO;
 import com.easyfestival.www.security.AuthVO;
@@ -35,6 +33,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public List<UserVO> getList() {
+		return udao.getList();
+	}
+
+	@Override
 	public int modifyUser(UserVO uvo) {
 		return udao.modifyUser(uvo);
 	}
@@ -51,7 +54,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<UserVO> getList(PagingHandler ph) {
-		return udao.getList(ph);
+		return udao.getUserList(ph);
 	}
 
 	@Override
@@ -62,16 +65,6 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserVO getId(String name, String email) {
 		return udao.getId(name, email);
-	}
-
-	@Override
-	public List<FavoriteDTO> getFavoriteList(String id) {
-		return udao.getFavoriteList(id);
-	}
-
-	@Override
-	public List<UserInfoDTO> getUserList(PagingHandler ph) {
-		return udao.getUserList(ph);
 	}
 
 	
