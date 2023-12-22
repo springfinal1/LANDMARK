@@ -98,7 +98,7 @@ function getCommentList(rvNo)
         }
         else
         {
-            let str=`<ul><li>Comment List Empty</li></ul>`;
+            let str=`<ul><li>댓글이 아직 없습니다</li></ul>`;
             ReviewCmtArea.innerHTML=str;
         }
     })

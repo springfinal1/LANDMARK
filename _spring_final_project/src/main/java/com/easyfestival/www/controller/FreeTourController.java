@@ -87,9 +87,9 @@ public class FreeTourController {
 		
 		int finalPrice = ((ticketPrice * seatPrice) * (int)(aivo.getPeple()))*verification;
 		log.info(finalPrice+"최종 결제 금액");
-		aivo.setPrice(finalPrice);
+		aivo.setPrice(0);
 		
-		m.addAttribute("aivo", aivo);
+		
 
 		String departureAirport = aivo.getDeparture(); // 출발공항		
 		m.addAttribute("startAirport", departureAirport);

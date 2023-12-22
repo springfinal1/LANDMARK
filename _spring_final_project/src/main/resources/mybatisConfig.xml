@@ -23,8 +23,6 @@
       <typeAlias type="com.easyfestival.www.domain.OrderVO" alias="orderVO" />
       <typeAlias type="com.easyfestival.www.domain.PayDTO" alias="payDTO" />
       <typeAlias type="com.easyfestival.www.domain.OllPayDTO" alias="OllPayDTO"/>
-      <typeAlias type="com.easyfestival.www.domain.FavoriteDTO" alias="fadto"/>
-      <typeAlias type="com.easyfestival.www.domain.UserInfoDTO" alias="udto"/>
    </typeAliases>
       
 </configuration>

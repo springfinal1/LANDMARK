@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,14 @@ canvas {
 </style>
 </head>
 <body>
-
+      <sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.uvo.id" var="authId" />
+      <sec:authentication property="principal.uvo.email" var="authEmail" />
+      <sec:authentication property="principal.uvo.name" var="authName" />
+      <sec:authentication property="principal.uvo.age" var="authAge" />
+      <sec:authentication property="principal.uvo.phoneNumber" var="authPhoneNumber" />
+      <sec:authentication property="principal.uvo.authList" var="auths" />
+      </sec:authorize>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div class="event-detail-container">
 		<div class="event-tap">
@@ -61,12 +69,12 @@ canvas {
 				${fn:replace(evo.evContent,'\\','/')}</div>
 			<div class="button-box">
 				<button class="play-event">이벤트 참여하기</button>
-				<div class="event-edit">
-					<a href="/event/eventModify?evNo=${evo.evNo}"><button
-							type="button">수정</button></a> <a
-						href="/event/eventRemove?evNo=${evo.evNo}"><button
-							type="button">삭제</button></a>
-				</div>
+				<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
+					<div class="event-edit">
+						<a href="/event/eventModify?evNo=${evo.evNo}"><button type="button">수정</button></a>
+						<a href="/event/eventRemove?evNo=${evo.evNo}"><button type="button">삭제</button></a>
+					</div>
+				</c:if>
 			</div>
 		</div>
 
@@ -91,10 +99,12 @@ canvas {
 				<div class="attendence-div">
 					<ul class="attendence-ul">
 						<c:forEach begin="1" end="${atvo.maxAttendanceCount}" var="i">
-							<li data-atcnt="${i}" class="attendence-content-li" id="attendence-content${i}"></li>
+							<li data-atcnt="${i}" class="attendence-content-li">
+								<img src="/resources/image/event-image/Nat.jpg" id="attendence-content${i}">
+							</li>
 						</c:forEach>
 					</ul>
-					<a href="/event/attendance?id=${uvo.id}&evNo=${evo.evNo}" class="attendanceBtn"><button>출석하기</button></a>
+					<a href="/event/attendance?id=${uvo.id}&evNo=${evo.evNo}" class="attendanceBtn"><button class="abtn">출석하기</button></a>
 				</div>
 			</c:if>
 		</div>
@@ -103,32 +113,23 @@ canvas {
 	
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script
-		src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
-	<script
-		src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 	<script type="text/javascript">
 		let uid = `<c:out value='${uvo.id}'/>`;
 		let evType = `<c:out value='${evo.evType}'/>`;
 		let evNo = `<c:out value='${evo.evNo}'/>`;
+		let endDate=`<c:out value='${evo.evEnd}'/>`;
 		/* let maxAttendanceCount = `<c:out value='${atvo.maxAttendanceCount}'/>`; */
 		let msg = `<c:out value='${msg}'/>`;
 		if (msg == "attendanced")
 			alert('이미 출석했습니다.');
 		console.log(evType);
 	</script>
-	
-	<script type="text/javascript"
-		src="/resources/js/event/AttendanceEvent.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/event/RouletteEvent.js"></script>
+	<script type="text/javascript" src="/resources/js/event/EventDetail.js"></script>
+	<script type="text/javascript" src="/resources/js/event/AttendanceEvent.js"></script>
+	<script type="text/javascript" src="/resources/js/event/RouletteEvent.js"></script>
 	<script type="text/javascript">
 		printAttendanceContent();
 	</script>
 
-
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-   <script charset="UTF-8" src="https://gamekiki.com/kshop/kwidget/js/kwidget.js"></script>
-    <script type="text/javascript" src="/resources/js/event/gamekiki.js"></script> -->
 </body>
 </html>

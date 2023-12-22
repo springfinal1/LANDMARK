@@ -36,22 +36,20 @@
          </div>
          <div class="nav-menu">
                <!-- 여행 메뉴 -->
-            <dl class="drop-menu">	
-               <dd><a href="#">축제즐기기</a>
-                  <dl class="sub-menu">
-                     <dd><a href="/product/list/?pkContinent=동북아" class="festival">동북아</a></dd>
-                     <dd><a href="/product/list/?pkContinent=동남아" class="festival">동남아</a></dd>
-                     <dd><a href="/product/list/?pkContinent=유럽" class="festival">유럽</a></dd>
-                     <dd><a href="/product/list/?pkContinent=아메리카" class="festival">남미/중미/북미</a></dd>
-                  </dl>
-               </dd>
+            <dl class="drop-menu">
                <dd><a href="#">패키지여행</a>
                   <dl class="sub-menu">
-                     <dd><a href="/product/list/?pkContinent=이색휴양지" class="package">이색 휴양지</a></dd>
-                     <dd><a href="/product/list/?pkContinent=아름다운도시" class="package">아름다운도시</a></dd>
-                     <dd><a href="/product/list/?pkContinent=커플여행" class="package">커플여행</a></dd>
-                     <dd><a href="/product/list/?pkContinent=럭셔리호캉스" class="package">럭셔리호캉스</a></dd>
-                     <dd><a href="/product/list/?pkContinent=일본료칸(온천)" class="package">일본 료칸(온천)</a></dd>
+                     <dd><a href="/product/list/?pkContinent=동북아">동북아</a></dd>
+                     <dd><a href="/product/list/?pkContinent=동남아">동남아</a></dd>
+                     <dd><a href="/product/list/?pkContinent=유럽">유럽</a></dd>
+                     <dd><a href="/product/list/?pkContinent=아메리카">아메리카</a></dd>
+                  </dl>
+               </dd>
+               <dd><a href="#">테마여행</a>
+                  <dl class="sub-menu">
+                     <dd><a href="/peyment/OrderList?pageNo=1">휴양지</a></dd>
+                     <dd><a href="/peyment/PeyReservation">아름다운도시</a></dd>
+                     <dd><a href="#">신나는여행지</a></dd>
                   </dl>
                </dd>
                <dd><a href="#">항공</a>
@@ -65,6 +63,7 @@
                <dd class="not-dd"><span>|</span></dd>
                <dd><a href="/event/OneventList">이벤트</a></dd>
                <dd><a href="/review/reviewList">리뷰</a></dd>
+               <dd><a href="#">할인/혜택</a></dd>
             </dl>
          </div>
 
@@ -75,6 +74,7 @@
                <c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
                <dd><a href="/user/list?pageNo=1">회원목록(관리자전용)</a></dd>
                <dd><a href="/product/register">상품등록(관리자전용)</a></dd>
+               <dd><a href="/event/admin">관리자전용</a></dd>
                </c:if>
                
                <!-- 게스트 -->

@@ -1,17 +1,5 @@
-let playbtn = document.querySelector('.play-event');
 
-playbtn.addEventListener('click', () => {
-  document.querySelector('.play-div').style.display = 'block';
-})
-
- let closebtn= document.querySelector('.close-playdiv-btn');
-
- closebtn.addEventListener('click', () => {
-   document.querySelector('.play-div').style.display = 'none';
- })
-
-
-
+ 
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
 

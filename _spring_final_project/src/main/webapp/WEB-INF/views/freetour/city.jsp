@@ -76,7 +76,10 @@
 					<div class="final-reser-payment-peple-info">
 						<div>
 							<span class="peple-seat">
-														  					
+								<span class="adult">${adult }</span>
+								<span class="child">${child }</span>
+								<span class="infant">${infant }</span>
+								<span class="seat">${seat }</span>							  					
 							</span>
 							
 							<span class="air-detail">비행상세</span>

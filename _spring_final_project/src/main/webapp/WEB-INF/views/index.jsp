@@ -212,6 +212,14 @@
 		
 	</div>
 	
+	
+	<c:if test="${uvo ne null}">
+		<div class="user-info">
+			<div>${uvo.id}님</div>
+			<div>반갑습니다.</div>
+		</div>
+	</c:if>
+	
 	<!-- 회원가입 완료시 모달창 오픈 -->
 	<div class="join-background">
 		<div class="join-modal">
