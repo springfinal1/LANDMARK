@@ -19,4 +19,5 @@ public class AirArrInfoVO {
 	private String airline; // 항공사
 	private String scheduleDateTime; // 출발예정일자 시간
 	private String flightId; // 편명
+	private String gatenumber; // 게이트
 }

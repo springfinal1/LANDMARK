@@ -62,10 +62,9 @@ public class FreetourHandler {
 		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); // 페이지 수
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100000", "UTF-8")); // 한페이지 수																													// 수
 		urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); // 타입
-		urlBuilder.append("&" + URLEncoder.encode("searchday", "UTF-8") + "=" + fullYear); // 조회일자
-		//urlBuilder.append("&" + URLEncoder.encode("from_time", "UTF-8") + "=" + URLEncoder.encode("0000", "UTF-8")); // ~시~분 부터
-		//urlBuilder.append("&" + URLEncoder.encode("to_time", "UTF-8") + "=" + URLEncoder.encode("2400", "UTF-8")); // ~시~분 까지
-		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "=" +airportCode); // airportCode -> 인천
+		urlBuilder.append("&" + URLEncoder.encode("searchday", "UTF-8") + "=" + URLEncoder.encode(fullYear,"UTF-8")); // 조회일자		
+		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "=" +URLEncoder.encode(airportCode,"UTF-8")); // airportCode -> 인천
+		
 		
 		
 		URL url = new URL(urlBuilder.toString());
@@ -155,10 +154,8 @@ public class FreetourHandler {
 		urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); // 페이지 수
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("100000", "UTF-8")); // 한페이지 수																													// 수
 		urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); // 타입
-		urlBuilder.append("&" + URLEncoder.encode("searchday", "UTF-8") + "=" + fullYear);// 조회일자
-		//urlBuilder.append("&" + URLEncoder.encode("from_time", "UTF-8") + "=" + URLEncoder.encode("0000", "UTF-8")); // ~시~분 부터
-		//urlBuilder.append("&" + URLEncoder.encode("to_time", "UTF-8") + "=" + URLEncoder.encode("2400", "UTF-8")); // ~시~분 까지
-		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "=" + airportCode); // 인천 -> airportCode 
+		urlBuilder.append("&" + URLEncoder.encode("searchday", "UTF-8") + "=" + URLEncoder.encode(fullYear,"UTF-8"));// 조회일자
+		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "=" + URLEncoder.encode(airportCode,"UTF-8")); // 인천 -> airportCode 
 		
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();

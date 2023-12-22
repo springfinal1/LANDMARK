@@ -167,3 +167,6 @@ h5{
     align-items: center;
     font-size: 18px;
 }
+#countryZone-i, #airZone-i, #dateZone-i{
+    padding-right:  5px;
+}

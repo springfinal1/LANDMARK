@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.easyfestival.www.domain.FavoriteDTO;
 import com.easyfestival.www.domain.HelpDTO;
 import com.easyfestival.www.domain.MemberShipVO;
 import com.easyfestival.www.domain.OllPayDTO;
@@ -167,12 +166,9 @@ public class UserController {
       List<OllPayDTO> packageList = oderService.getPackageList(uvo.getId());
       // 멤버쉽 정보
       MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
-      // 관심상품 리스트
-      List<FavoriteDTO> faList = usv.getFavoriteList(uvo.getId());
       model.addAttribute("msvo", msvo); // 멤버쉽정보
       model.addAttribute("hList", hList);
       model.addAttribute("packList", packageList);
-      model.addAttribute("faList", faList);
    }
 
    // 아이디, 비밀번호 찾기

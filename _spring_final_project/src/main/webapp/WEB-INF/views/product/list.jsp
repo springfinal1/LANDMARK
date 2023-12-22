@@ -86,22 +86,18 @@
 							<div class="list-product">
 							
 								<div>
-									<h5 class="airdate"><span class="material-symbols-outlined">volunteer_activism</span>상품명</h5>
+									<h5 class="airdate"><i class="fa-solid fa-hashtag" id="dateZone-i"></i>상품명</h5>
 									${pldto.packvo.pkName }
 								</div>
 								
 								<div id="countryZone">
-									<h5 class="airdate"><span class="material-symbols-outlined">flag_circle</span>나라</h5>
+									<h5 class="airdate">
+									<i class="fa-solid fa-location-dot" id="countryZone-i"></i>지역</h5>
 									${pldto.plvo.plCountry }
 								</div>
-								
-								<%-- <div id="festivalZone">
-									<h5>축제</h5>
-									${pldto.fvo.fvName }
-								</div> --%>
 							
 								<div id="airZone">						
-									<h5 class="airdate"><span class="material-symbols-outlined">calendar_month</span>출발기간</h5>
+									<h5 class="airdate"><span class="material-symbols-outlined" id="airZone-i">calendar_month</span>출발기간</h5>
 									${pldto.avo.apArrival } ~ ${pldto.avo.apDeparture }
 								</div>
 							</div>

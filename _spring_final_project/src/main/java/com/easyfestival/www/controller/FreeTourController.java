@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.easyfestival.www.domain.AirArrInfoVO;
 import com.easyfestival.www.domain.AirInfoVO;
@@ -89,7 +90,6 @@ public class FreeTourController {
 		log.info(finalPrice+"최종 결제 금액");
 		aivo.setPrice(finalPrice);
 		
-		m.addAttribute("aivo", aivo);
 
 		String departureAirport = aivo.getDeparture(); // 출발공항		
 		m.addAttribute("startAirport", departureAirport);
@@ -99,12 +99,16 @@ public class FreeTourController {
 		//공항 코드 구하기
 		String departureAirportCode = fsv.getDepartureAirport(arrivalAirport);		
 		String arrivalAirportCode = fsv.getArrivalAirport(arrivalAirport);
-
+		
+		m.addAttribute("dep", departureAirportCode);
+		m.addAttribute("arr", arrivalAirportCode);
 		
 		List<AirInfoVO> depInfo = fhd.getDepartureInfo(arrivalAirportCode,aivo); // 출발 정보 / 인천 -> 해외
 		List<AirArrInfoVO> arrInfo = fhd.getArrivalInfo(departureAirportCode, aivo); // 도착 정보 / 해외 -> 인천
 		
 		
+		
+		m.addAttribute("aivo", aivo);
 		//100 150 200 300
 		
 		if(arrInfo != null) {			
@@ -120,5 +124,15 @@ public class FreeTourController {
 		
 		return "/freetour/city";
 	}
+	
+	@GetMapping("theme")
+	public String theme(Model m,@RequestParam("type") int type) {
+		log.info(type+"타입<<<<<<<<<<<");
+		m.addAttribute("type", type);
+		
+		
+		return "/freetour/theme";
+	}
+	
 	
 }
