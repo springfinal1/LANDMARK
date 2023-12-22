@@ -66,6 +66,43 @@
                      <span class="arrName"></span>
                   </div>
 
+<<<<<<< HEAD
+						
+						<div class="air-time">							
+							<span class="arrAir"></span>
+							<span class="arrTime"></span>							
+						</div>
+					</div>			
+				</div>
+				
+				<div class="final-reser-payment">
+					<div class="final-reser-payment-peple-info">
+						<div>
+							<span class="peple-seat">
+								<span class="adult">${adult }</span>
+								<span class="child">${child }</span>
+								<span class="infant">${infant }</span>
+								<span class="seat">${seat }</span>							  					
+							</span>
+							
+							<span class="air-detail">비행상세</span>
+						</div>
+					</div>
+					
+					
+					<div class="final-reser-payment-pay-info">
+						<div>
+							<span class="pep-cnt">인원</span>
+							<span class="reser-pay">0원</span>
+						</div>
+						<div>
+							<button>예약하기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+=======
                   
                   <div class="air-time">                     
                      <span class="arrAir"></span>
@@ -124,6 +161,7 @@
             </div>
          </div>
       </div>
+>>>>>>> 2617e0278ddf94bf6a7cba7eecab976c99163e1d
 
       
       <!-- 인천 -> 해외 -->

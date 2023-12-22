@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .antMatchers("/user/modify").hasRole("USER") // 일반 회원
       .antMatchers("/","/resources/**","/user/join","/user/login","/user/checkId/*"
             ,"/package/**","/product/**","/product_upload/**","/review/**","/freetour/**"
-            ,"/login/oauth2/**","/help/customerCenter","/user/searchAccount/*","/static/list").permitAll() // 모든 이용자 권한
+            ,"/login/oauth2/**","/help/customerCenter","/user/searchAccount/*","/static/list","/event/**").permitAll() // 모든 이용자 권한
       .anyRequest().authenticated(); // => 인증된 사용자만 처리
       
       // 커스텀 로그인 페이지 구성

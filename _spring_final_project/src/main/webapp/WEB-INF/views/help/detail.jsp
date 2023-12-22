@@ -46,7 +46,7 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea class="content-text" readonly="readonly">${hdto.content}</textarea></td>
+						<td>${hdto.content}</td>
 					</tr>
 					<tr>
 						<th>답변여부</th>

@@ -32,28 +32,21 @@ public class FreetourHandler {
 		//도착
 		final String myKey = "ijQL0nu774ZPOX%2B4O4A1liiipYbCGKpoAGKZfExa6pDSbgqb4r1kI33P%2Byoz1pZ3MuNh4YuLM8SH%2BHI57KBwEQ%3D%3D";
 		
-		String thisYear = "";
-		String year = "";
-		String month = "";
-		String day = "";
-		String fullYear = "";
 		
-		if(aivo.getVerification().equals("왕복")) {
-			thisYear = aivo.getDate().substring(aivo.getDate().indexOf("~")+1,aivo.getDate().length()); // 년-월-일
-			year = thisYear.substring(0,thisYear.indexOf("-")); // 년
-			month = thisYear.substring(thisYear.indexOf("-")+1, thisYear.lastIndexOf("-")); // 월
-			if(month.length() == 1) {
-				month = "0"+month;
-			}
-			day = thisYear.substring(thisYear.lastIndexOf("-")+1,thisYear.length()); // 일
-			if(day.length() == 1) {
-				day = "0"+day;
-			}
-			
-			fullYear = year+month+day;
-		}else if(aivo.getVerification().equals("편도")){
-			fullYear = aivo.getDate();
+		String thisYear = aivo.getDate().substring(aivo.getDate().indexOf("~")+1,aivo.getDate().length()); // 년-월-일
+		String year = thisYear.substring(0,thisYear.indexOf("-")); // 년
+		
+		String month = thisYear.substring(thisYear.indexOf("-")+1, thisYear.lastIndexOf("-")); // 월
+		if(month.length() == 1) {
+			month = "0"+month;
 		}
+		String day = thisYear.substring(thisYear.lastIndexOf("-")+1,thisYear.length()); // 일
+		if(day.length() == 1) {
+			day = "0"+day;
+		}
+		
+		String fullYear = year+month+day;
+
 
 		
 		StringBuilder urlBuilder = new StringBuilder(
@@ -118,31 +111,22 @@ public class FreetourHandler {
 	public List<AirInfoVO> getDepartureInfo(String airportCode, AirplaneInfoVO aivo) throws IOException, ParseException {
 		//출발
 		final String myKey = "ijQL0nu774ZPOX%2B4O4A1liiipYbCGKpoAGKZfExa6pDSbgqb4r1kI33P%2Byoz1pZ3MuNh4YuLM8SH%2BHI57KBwEQ%3D%3D";
-		String thisYear = "";
-		String year = "";
-		String month = "";
-		String day = "";
-		String fullYear = "";
-		
+
 		// 필요한거 출발 날짜 , 
-		if(aivo.getVerification() == "왕복") {
-			thisYear = aivo.getDate().substring(0,aivo.getDate().indexOf("~")); // 년-월-일
-			
-			year = thisYear.substring(0,thisYear.indexOf("-")); // 년
-			
-			month = thisYear.substring(thisYear.indexOf("-")+1, thisYear.lastIndexOf("-")); // 월
-			if(month.length() == 1) {
-				month = "0"+month;
-			}
-			day = thisYear.substring(thisYear.lastIndexOf("-")+1,thisYear.length()); // 일
-			if(day.length() == 1) {
-				day = "0"+day;
-			}
-			fullYear = year+month+day;
-			
-		}else if(aivo.getVerification().equals("편도")){
-			fullYear = aivo.getDate();
+		
+		String thisYear = aivo.getDate().substring(0,aivo.getDate().indexOf("~")); // 년-월-일
+
+		String year = thisYear.substring(0,thisYear.indexOf("-")); // 년
+		
+		String month = thisYear.substring(thisYear.indexOf("-")+1, thisYear.lastIndexOf("-")); // 월
+		if(month.length() == 1) {
+			month = "0"+month;
 		}
+		String day = thisYear.substring(thisYear.lastIndexOf("-")+1,thisYear.length()); // 일
+		if(day.length() == 1) {
+			day = "0"+day;
+		}
+		String fullYear = year+month+day;
 		
 		
 		

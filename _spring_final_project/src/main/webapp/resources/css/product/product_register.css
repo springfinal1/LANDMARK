@@ -16,13 +16,12 @@ strong{
     font-weight: 700;
 }
 th,td{
-    padding: 20px 5px;
+    padding: 10px 5px;
 }
 
 .product-table{
     border-top: 2px solid black;
     margin-top: 30px;
-    padding: 20px;
 }
 .product-input{
     width: 100%;
@@ -54,23 +53,18 @@ th,td{
     background-color: black;
     color: white;
     margin-top: 20px;
-    border-radius: 9px;
 }
 .imgBtn{
     border-bottom: 1px solid black;
     font-size: 14px;
     font-weight: 700;
-    background-color: transparent;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 9px;
+    background-color: white;
 }
 
 .product-continent{
     padding: 10px 10px;
 }
 
-.arrivalDay{
-    text-align: center;
-    font-weight: 700;
-}
+
+
+
